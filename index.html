@@ -116,104 +116,325 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ════════════════════════════════
-       PRESENTACIÓN
-    ════════════════════════════════ */
+ <!-- ══ PRESENTACIÓN ══ -->
+  <!-- REEMPLAZA todo el bloque <section id="presentacion">...</section> con esto -->
+
+  <!-- ESTILOS DEL HERO CON CARRUSEL -->
+  <style>
+    /* ── Hero full-screen ── */
     #presentacion {
-      display: none;
+      position: relative;
+      min-height: 100vh;
+      display: flex !important;
       align-items: center;
-      padding-top: 0;
-    }
-    #presentacion.active { display: flex; }
-
-    .hero-inner {
-      max-width: 1200px; margin: auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-      align-items: center; padding-top: 2rem;
+      padding: 0 !important;
+      overflow: hidden;
     }
 
-    .hero-text {}
+    /* ── Carrusel de fondos ── */
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
 
-    .hero-badge {
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    /* Overlay oscuro encima de la foto */
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(10, 15, 10, 0.82) 0%,
+        rgba(10, 15, 10, 0.5) 60%,
+        rgba(10, 15, 10, 0.15) 100%
+      );
+    }
+
+    /* ── Contenido encima del carrusel ── */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 4rem;
+      animation: fadeUp .8s ease forwards;
+    }
+
+    .hero-content .hero-badge {
       display: inline-block;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(90,158,111,0.5);
       padding: .35rem 1rem;
-      border-radius: 2px;
-      font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--accent1); margin-bottom: 2rem;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 5.5vw, 5.2rem);
-      line-height: 1.07; font-weight: 900;
+      font-size: .75rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent1);
       margin-bottom: 1.8rem;
     }
 
-    .hero-title span { color: var(--accent1); }
-
-    .hero-desc {
-      color: var(--muted); font-size: 1.1rem; line-height: 1.75;
-      max-width: 480px; margin-bottom: 3rem;
-    }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: .6rem;
-      padding: .85rem 2.2rem;
-      background: var(--accent1); color: #0a0a0f;
-      font-weight: 600; font-size: .9rem;
-      letter-spacing: .06em; text-transform: uppercase;
-      text-decoration: none; border: none; cursor: pointer;
-      transition: background .2s, transform .2s;
-    }
-    .btn:hover { background: var(--accent2); transform: translateY(-2px); }
-
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      margin-left: 1rem;
-    }
-    .btn-ghost:hover { background: var(--glow); color: var(--accent1); }
-
-    .hero-visual {
-      position: relative;
-    }
-
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 3rem;
-      position: relative; overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute; top: -60px; right: -60px;
-      width: 180px; height: 180px;
-      background: radial-gradient(circle, rgba(200,169,110,0.18) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-
-    .stat-item {}
-    .stat-number {
+    .hero-content h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem; font-weight: 900; color: var(--accent1);
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,.4);
+    }
+
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--accent1);
+    }
+
+    .hero-content p {
+      color: rgba(255,255,255,.78);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Indicadores (puntos) ── */
+    .hero-dots {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 4rem;
+      z-index: 3;
+      display: flex;
+      gap: .6rem;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      border: none;
+      cursor: pointer;
+      transition: all .3s;
+      padding: 0;
+    }
+
+    .hero-dot.active {
+      background: var(--accent1);
+      width: 28px;
+      border-radius: 4px;
+    }
+
+    /* ── Barra de progreso ── */
+    .hero-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent1);
+      z-index: 3;
+      width: 0%;
+      transition: width linear;
+    }
+
+    /* ── Estadísticas flotantes ── */
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      right: 4rem;
+      z-index: 3;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent1);
       line-height: 1;
     }
-    .stat-label { color: var(--muted); font-size: .85rem; margin-top: .3rem; }
 
-    .hero-quote {
-      margin-top: 2.5rem; padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      font-family: 'Playfair Display', serif;
-      font-style: italic; color: var(--muted);
-      font-size: 1rem; line-height: 1.6;
+    .hero-stat-label {
+      color: rgba(255,255,255,.6);
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: .25rem;
     }
 
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 0 1.5rem;
+        padding-top: 7rem;
+      }
+
+      .hero-stats {
+        display: none;
+      }
+
+      .hero-dots {
+        left: 1.5rem;
+      }
+
+      .hero-slide::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(10,15,10,0.3) 0%,
+          rgba(10,15,10,0.85) 100%
+        );
+      }
+    }
+  </style>
+
+  <section id="presentacion" class="active">
+
+    <!-- CARRUSEL DE FONDOS -->
+    <div class="hero-slides">
+      <!--
+        INSTRUCCIONES:
+        Agrega tus fotos cambiando el src de cada slide.
+        Puedes agregar más slides copiando el patrón.
+        Formato recomendado: JPG, mínimo 1400px de ancho.
+      -->
+      <div class="hero-slide active"
+           style="background-image: url('img/P1060026.jpg')">
+        <!-- Reemplaza foto-hero-1.jpg con el nombre real de tu primera foto -->
+      </div>
+      <div class="hero-slide"
+           style="background-image: url('img/P1060033.jpg')">
+        <!-- Segunda foto -->
+      </div>
+      <div class="hero-slide"
+           style="background-image: url('img/P1060036.jpg')">
+        <!-- Tercera foto -->
+      </div>
+    </div>
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="hero-progress" id="heroProgress"></div>
+
+    <!-- CONTENIDO -->
+    <div class="hero-content">
+      <div class="hero-badge">✦ Conservatorio P'urhépecha A.C. · Desde 2015</div>
+      <h1>
+        Música<br>
+        comunidad <em>y</em>,<br>
+        territorio
+      </h1>
+      <p>
+       Formamos nuevas generaciones con identidad y memoria. 
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn" onclick="showTab('servicios'); return false;">
+          Ver programas educativos →
+        </a>
+        <a href="#" class="btn btn-ghost" onclick="showTab('colaboradores'); return false;">
+          Conoce al equipo
+        </a>
+      </div>
+    </div>
+
+    <!-- PUNTOS INDICADORES -->
+    <div class="hero-dots">
+      <button class="hero-dot active" data-index="0"></button>
+      <button class="hero-dot" data-index="1"></button>
+      <button class="hero-dot" data-index="2"></button>
+    </div>
+
+    <!-- ESTADÍSTICAS FLOTANTES -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">2015</div>
+        <div class="hero-stat-label">Año de fundación</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">+150</div>
+        <div class="hero-stat-label">Estudiantes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">20+</div>
+        <div class="hero-stat-label">Docentes y músicos</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SCRIPT DEL CARRUSEL -->
+  <!-- Pega este bloque ANTES del </body> final, junto a los demás scripts -->
+  <script>
+    (function() {
+      const slides   = document.querySelectorAll('.hero-slide');
+      const dots     = document.querySelectorAll('.hero-dot');
+      const progress = document.getElementById('heroProgress');
+      const DURATION = 5000; // milisegundos entre cada foto (5 segundos)
+      let current = 0;
+      let timer;
+
+      function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+
+        // Reinicia barra de progreso
+        progress.style.transition = 'none';
+        progress.style.width = '0%';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            progress.style.transition = `width ${DURATION}ms linear`;
+            progress.style.width = '100%';
+          });
+        });
+      }
+
+      function next() {
+        goTo((current + 1) % slides.length);
+      }
+
+      function startAuto() {
+        timer = setInterval(next, DURATION);
+      }
+
+      function stopAuto() {
+        clearInterval(timer);
+      }
+
+      // Clic en los puntos
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          stopAuto();
+          goTo(parseInt(dot.dataset.index));
+          startAuto();
+        });
+      });
+
+      // Inicia automático
+      goTo(0);
+      startAuto();
+    })();
+  </script>
     /* ════════════════════════════════
        SERVICIOS
     ════════════════════════════════ */
