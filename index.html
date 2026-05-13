@@ -589,312 +589,312 @@
     </div>
   </section>
 
- <!-- ══ CATÁLOGO ══ -->
+ <!-- ══ CATÁLOGO / SELLO EDITORIAL ══ -->
+  <!-- REEMPLAZA todo el bloque <section id="catalogo">...</section> con esto -->
+
   <section id="catalogo">
     <div class="section-eyebrow">✦ Nuestras publicaciones</div>
     <h2 class="section-title">Catálogo <em>editorial</em></h2>
     <div class="divider"></div>
- 
+
     <div class="catalog-filters">
       <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="Meiedosem ediciones">Meiedosem ediciones</button>
-      <button class="filter-btn" data-filter="AMESMúsicas">Academia Mexicana de Estudios Sociales de la Música</button>
-      <button class="filter-btn" data-filter="partituras">Partituras </button>
-      <button class="filter-btn" data-filter="planes de estudio y material didáctico">Planes de estudio y material didáctico</button>
+      <button class="filter-btn" data-filter="meiedosem">Meiedosem ediciones</button>
+      <button class="filter-btn" data-filter="academia">Academia Mexicana de Estudios Sociales de la Música</button>
+      <button class="filter-btn" data-filter="partituras">Partituras</button>
+      <button class="filter-btn" data-filter="didactico">Planes de estudio y material didáctico</button>
     </div>
- 
-    <div class="catalog-grid">
- 
-      <div class="product-card" data-category="Meiedosem ediciones">
-        <div class="product-thumb">
-          <!-- Reemplaza el emoji por: <img src="img/portada-libro1.jpg" alt="Título" style="width:100%;height:100%;object-fit:cover;"> -->
-          <img src="img/árbolciliar.png" alt="Título" style="width:100%;height:100%;object-fit:cover;">
-          <span class="product-badge">Nuevo</span>
-        </div>
-        <div class="product-info">
-          <div class="product-cat">Poesía · 2026</div>
-          <div class="product-name">árbol ciliar</div>
-          <div class="product-desc">
-            <strong style="color:var(--accent1);">Autor:</strong> Flor Malfatto<br>
-            <strong style="color:var(--accent1);">ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483909"
-   target="_blank"
-   style="color:var(--muted); text-decoration:underline;">978-607-69464-2-8<br>
-            <strong style="color:var(--accent1);">Páginas:</strong> 59
-          </div>
-          <div class="product-footer" style="margin-top:1.2rem;">
-            <span class="product-price">$450</span>
-            <div style="display:flex;gap:.5rem;">
-              <a href="pdfs/ficha-libro1.pdf" target="_blank" class="btn-small">Ver ficha</a>
-              <a href="pdfs/ficha-libro1.pdf" download class="btn-small" title="Descargar">↓</a>
-            <!-- Reseña oculta -->
-<div id="resena-libro1" style="display:none; margin-top:1rem;
-     color:var(--muted); font-size:.85rem; line-height:1.7;
-     border-top:1px solid var(--border); padding-top:1rem;">
-  que bendita sea
-loada boca sin cesar
-que bese boca sin nombre
-que beban pájaros
-y que leve sea aire
-balbuceo de sol
-de luz
-de sol
-</div>
 
-<!-- Botón para mostrar/ocultar -->
-<button class="btn-small"
-        style="margin-top:.8rem;"
-        onclick="
-          const r = document.getElementById('resena-libro1');
-          const abierto = r.style.display === 'block';
-          r.style.display = abierto ? 'none' : 'block';
-          this.textContent = abierto ? 'Leer reseña' : 'Cerrar reseña';
-        ">
-  Leer reseña
-</button>
+    <!-- ESTILOS EXCLUSIVOS DEL CATÁLOGO EDITORIAL -->
+    <style>
+      /* Tarjetas horizontales anchas */
+      .catalog-grid-editorial {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .book-card {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        background: var(--card);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        transition: transform .3s, box-shadow .3s;
+      }
+
+      .book-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0,0,0,.4), 0 0 0 1px var(--accent1);
+      }
+
+      /* Portada */
+      .book-cover {
+        width: 220px;
+        min-height: 300px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        background: #0e0e18;
+      }
+
+      .book-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        transition: transform .4s ease;
+      }
+
+      .book-card:hover .book-cover img {
+        transform: scale(1.04);
+      }
+
+      .book-cover-placeholder {
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        background: linear-gradient(145deg, #1a1a28, #0e0e18);
+      }
+
+      /* Contenido */
+      .book-body {
+        padding: 2.2rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .book-top {}
+
+      .book-cat {
+        font-size: .72rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--accent1);
+        margin-bottom: .6rem;
+      }
+
+      .book-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      .book-meta {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        font-size: .88rem;
+        color: var(--muted);
+        margin-bottom: 1.2rem;
+      }
+
+      .book-meta span strong {
+        color: var(--accent1);
+        font-weight: 600;
+      }
+
+      /* Reseña */
+      .book-resena {
+        display: none;
+        margin-top: .8rem;
+        color: var(--muted);
+        font-size: .86rem;
+        line-height: 1.75;
+        border-top: 1px solid var(--border);
+        padding-top: 1rem;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .book-resena::-webkit-scrollbar { width: 4px; }
+      .book-resena::-webkit-scrollbar-track { background: transparent; }
+      .book-resena::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+      /* Footer de la tarjeta */
+      .book-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        margin-top: auto;
+      }
+
+      .book-price {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        color: var(--accent1);
+        font-weight: 700;
+      }
+
+      .book-price.gratis {
+        font-size: 1.1rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #5a9e6f;
+      }
+
+      .book-actions {
+        display: flex;
+        gap: .5rem;
+        flex-wrap: wrap;
+      }
+
+      /* Responsive */
+      @media (max-width: 700px) {
+        .book-card {
+          grid-template-columns: 1fr;
+        }
+        .book-cover {
+          width: 100%;
+          min-height: 260px;
+        }
+        .book-body {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+
+    <div class="catalog-grid-editorial">
+
+      <!-- LIBRO 1 -->
+      <div class="book-card" data-category="meiedosem">
+        <div class="book-cover">
+          <img src="img/árbolciliar.png" alt="árbol ciliar" />
+          <!-- Si la imagen no carga, descomenta la siguiente línea y comenta la de arriba: -->
+          <!-- <div class="book-cover-placeholder">📖</div> -->
+        </div>
+        <div class="book-body">
+          <div class="book-top">
+            <div class="book-cat">Poesía · 2026 · Meiedosem ediciones</div>
+            <div class="book-title">árbol ciliar</div>
+            <div class="book-meta">
+              <span><strong>Autora:</strong> Flor Malfatto</span>
+              <span><strong>ISBN:</strong>
+                <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483909"
+                   target="_blank"
+                   style="color:var(--muted); text-decoration:underline;">
+                  978-607-69464-2-8
+                </a>
+              </span>
+              <span><strong>Páginas:</strong> 59</span>
+            </div>
+            <div id="resena-1" class="book-resena">
+              que bendita sea / loada boca sin cesar / que bese boca sin nombre / que beban pájaros / y que leve sea aire / balbuceo de sol / de luz / de sol
+            </div>
+          </div>
+          <div class="book-footer">
+            <span class="book-price">$450</span>
+            <div class="book-actions">
+              <button class="btn-small"
+                onclick="const r=document.getElementById('resena-1');const a=r.style.display==='block';r.style.display=a?'none':'block';this.textContent=a?'Leer reseña':'Cerrar reseña';">
+                Leer reseña
+              </button>
+              <a href="pdfs/ficha-arbolciliar.pdf" target="_blank" class="btn-small">Ver ficha</a>
+              <a href="pdfs/ficha-arbolciliar.pdf" download class="btn-small" title="Descargar">↓</a>
             </div>
           </div>
         </div>
       </div>
- 
-       <div class="catalog-grid">
- 
-      <div class="product-card" data-category="Meiedosem ediciones">
-        <div class="product-thumb">
-          <!-- Reemplaza el emoji por: <img src="img/portada-libro1.jpg" alt="Título" style="width:100%;height:100%;object-fit:cover;"> -->
-          <img src="img/oir.jpg" alt="Título" style="width:100%;height:100%;object-fit:cover;">
-          <span class="product-badge">Nuevo</span>
-        </div>
-        <div class="product-info">
-          <div class="product-cat">Ensayo · 2026</div>
-          <div class="product-name">Oír</div>
-          <div class="product-desc">
-            <strong style="color:var(--accent1);">Autor:</strong> Samuel Cedillo<br>
-            <strong style="color:var(--accent1);">ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483907"
-   target="_blank"
-   style="color:var(--muted); text-decoration:underline;">978-607-69464-1-1<br>
-            <strong style="color:var(--accent1);">Páginas:</strong> 193
-          </div>
-          <div class="product-footer" style="margin-top:1.2rem;">
-            <span class="product-price">$500</span>
-            <div style="display:flex;gap:.5rem;">
-              <a href="pdfs/ficha-libro1.pdf" target="_blank" class="btn-small">Ver ficha</a>
-              <a href="pdfs/ficha-libro1.pdf" download class="btn-small" title="Descargar">↓</a>
-            <!-- Reseña oculta -->
-<div id="resena-libro1" style="display:none; margin-top:1rem;
-     color:var(--muted); font-size:.85rem; line-height:1.7;
-     border-top:1px solid var(--border); padding-top:1rem;">
-  Y escucha porque es un cuerpo vivo.
-El sonido está implicado totalmente con la vida, con la materia viva: la biomasa.
-El sonido es en la vida de manera irrecusable.
-En la transformación de la biomasa en porciones separables a modo de cuerpos, en el
-proceso de conformación de sociedades endosimbióticas a modo de organismos
-complejos, en el desarrollo de sistemas sensores extensiones del tacto, en la
-conformación de un sistema auditivo, finalmente, es así, sólo bajo la historia evolutiva
-de esta bioforma, que este cuerpo tiene la experiencia de sonido.
-La energía acústica, la vibración que el cuerpo mismo produce y que el oído —parte de
-este mismo cuerpo— detecta, es sentida igualmente por el cuerpo como una sonancia.
-Es la detección de la transformación del movimiento de su propia materia, del
-funcionamiento de éste mismo como sistema operando, de la perturbación y variación
-de su masa extensiva que igualmente es un medio.
-Un medio vivo, en movimiento, un hábitat donde la vida se alberga, que se siente a sí
-mismo como medio en sonancias.
-Se trata de una detección para sí, y con esto el cuerpo mismo se sabe materia viva: un
-cuerpo en movimiento, vivo.
-Pertenece al cuerpo la experiencia de sonido.
-Pertenece a la vida la experiencia de sonido.
-Sólo el cuerpo vivo escucha.
-</div>
 
-<!-- Botón para mostrar/ocultar -->
-<button class="btn-small"
-        style="margin-top:.8rem;"
-        onclick="
-          const r = document.getElementById('resena-libro1');
-          const abierto = r.style.display === 'block';
-          r.style.display = abierto ? 'none' : 'block';
-          this.textContent = abierto ? 'Leer reseña' : 'Cerrar reseña';
-        ">
-  Leer reseña
-</button>
+      <!-- LIBRO 2 -->
+      <div class="book-card" data-category="meiedosem">
+        <div class="book-cover">
+          <img src="img/oir.jpg" alt="Oír" />
+        </div>
+        <div class="book-body">
+          <div class="book-top">
+            <div class="book-cat">Ensayo · 2026 · Meiedosem ediciones</div>
+            <div class="book-title">Oír</div>
+            <div class="book-meta">
+              <span><strong>Autor:</strong> Samuel Cedillo</span>
+              <span><strong>ISBN:</strong>
+                <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483907"
+                   target="_blank"
+                   style="color:var(--muted); text-decoration:underline;">
+                  978-607-69464-1-1
+                </a>
+              </span>
+              <span><strong>Páginas:</strong> 193</span>
+            </div>
+            <div id="resena-2" class="book-resena">
+              Y escucha porque es un cuerpo vivo. El sonido está implicado totalmente con la vida, con la materia viva: la biomasa. El sonido es en la vida de manera irrecusable. En la transformación de la biomasa en porciones separables a modo de cuerpos, en el proceso de conformación de sociedades endosimbióticas a modo de organismos complejos, en el desarrollo de sistemas sensores extensiones del tacto, en la conformación de un sistema auditivo, finalmente, es así, sólo bajo la historia evolutiva de esta bioforma, que este cuerpo tiene la experiencia de sonido.
+            </div>
+          </div>
+          <div class="book-footer">
+            <span class="book-price">$500</span>
+            <div class="book-actions">
+              <button class="btn-small"
+                onclick="const r=document.getElementById('resena-2');const a=r.style.display==='block';r.style.display=a?'none':'block';this.textContent=a?'Leer reseña':'Cerrar reseña';">
+                Leer reseña
+              </button>
+              <a href="pdfs/ficha-oir.pdf" target="_blank" class="btn-small">Ver ficha</a>
+              <a href="pdfs/ficha-oir.pdf" download class="btn-small" title="Descargar">↓</a>
             </div>
           </div>
         </div>
       </div>
- 
-      <div class="product-card" data-category="AMESMúsicas">
-        <div class="product-thumb">
-          <!-- Reemplaza el emoji por: <img src="img/portada-libro1.jpg" alt="Título" style="width:100%;height:100%;object-fit:cover;"> -->
-          <img src="img/concantosyvihuelas.png" alt="Título" style="width:100%;height:100%;object-fit:cover;">
-          <span class="product-badge">Nuevo</span>
+
+      <!-- LIBRO 3 -->
+      <div class="book-card" data-category="academia">
+        <div class="book-cover">
+          <img src="img/concantosyvihuelas.png" alt="Con cantos y vihuelas" />
         </div>
-        <div class="product-info">
-          <div class="product-cat">Investigación · 2026</div>
-          <div class="product-name">Con cantos y vihuelas... el objeto sonoro en las culturas músicales de México</div>
-          <div class="product-desc">
-            <strong style="color:var(--accent1);">Coordinadores:</strong> Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, José Ingacio Maldonado Cerano<br>
-            <strong style="color:var(--accent1);">ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=480612"
-   target="_blank"
-   style="color:var(--muted); text-decoration:underline;">978-607-69464-0-4<br>
-            <strong style="color:var(--accent1);">Páginas:</strong> 239
+        <div class="book-body">
+          <div class="book-top">
+            <div class="book-cat">Investigación · 2026 · Academia Mexicana de Estudios Sociales de la Música</div>
+            <div class="book-title">Con cantos y vihuelas... el objeto sonoro en las culturas musicales de México</div>
+            <div class="book-meta">
+              <span><strong>Coordinadores:</strong> Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, José Ignacio Maldonado Cerano</span>
+              <span><strong>ISBN:</strong>
+                <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=480612"
+                   target="_blank"
+                   style="color:var(--muted); text-decoration:underline;">
+                  978-607-69464-0-4
+                </a>
+              </span>
+              <span><strong>Páginas:</strong> 239</span>
+            </div>
+            <div id="resena-3" class="book-resena">
+              En México hay una diversidad de instrumentos musicales y objetos sonoros precolombinos rescatados en contextos arqueológicos. Este volumen reúne investigaciones sobre el papel del instrumento musical como mediador entre prácticas sociales, intenciones individuales, estéticas colectivas, rutas de comercio y mercados musicales, en contextos cotidianos, fiestas religiosas y profanas.
+            </div>
           </div>
-          <div class="product-footer" style="margin-top:1.2rem;">
-            <span class="product-price">$0</span>
-            <div style="display:flex;gap:.5rem;">
-              <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=48061" target="_blank" class="btn-small">Ver ficha</a>
+          <div class="book-footer">
+            <span class="book-price gratis">Descarga gratuita</span>
+            <div class="book-actions">
+              <button class="btn-small"
+                onclick="const r=document.getElementById('resena-3');const a=r.style.display==='block';r.style.display=a?'none':'block';this.textContent=a?'Leer reseña':'Cerrar reseña';">
+                Leer reseña
+              </button>
+              <a href="img/concantosyvihuelasdigitalopt.pdf" target="_blank" class="btn-small">Leer en línea</a>
               <a href="img/concantosyvihuelasdigitalopt.pdf" download class="btn-small" title="Descargar">↓</a>
-            <!-- Reseña oculta -->
-<div id="resena-libro1" style="display:none; margin-top:1rem;
-     color:var(--muted); font-size:.85rem; line-height:1.7;
-     border-top:1px solid var(--border); padding-top:1rem;">
-  En México hay una diversidad de instrumentos musicales y objetos sonoros precolombinos rescatados en contextos arqueológicos; la colección del maestro Guillermo Contreras tiene más de cuatro mil instrumentos musicales obtenidos de las diversas regiones geo-culturales del país; pero estamos lejos de suponer que ésa es la cifra total; por ejemplo, en Michoacán hemos recuperado instrumentos que estaban fuera del foco de las personas dedicadas a la etnomusicología, el tenor, un instrumento de cuerda pulsada, mástil y forma de 8, con 5 órdenes de cuerdas dobles de metal usado en la música p’urhépecha; o la armonía de igual especie y con 5 órdenes de cuerdas dobles de metal, usada en Los Balcones; otros sólo están referidos en los relatos de músicos, como “la periquita”, un requinto de cuatro cuerdas, del tamaño de un violín, que punteaba la melodía en la cuenca del río Puruarán, y que nos describieron don Leandro Corona y Vicente Murillo; o el arpa jarabera que aparece en la literatura en el Mazahuacán, al oriente de Michoacán. Por no incluir las variedades de “flautas” de carrizo que cada vez se construyen menos, con la llegada de las de modelo barroco y material plástico.
-El tener catalogado un instrumento musical, con su correspondiente ficha, no es una garantía de su “conocimiento”; pues en las fichas falta muchas veces el contexto de uso, por ejemplo, la o las afinaciones que puede tener de acuerdo con los hechos musicales; los procesos constructivos y sus dimensiones. En la Costa Sierra de Michoacán distingue la “jarana” de la “guitarra de golpe”, por el ancho de los aros, su sonido “ladino”, menos grave, y por su uso para el ámbito ritual en las funciones religiosas; así que un instrumento musical que puede parecernos “el mismo”, es diferenciado por su timbre, por su dimensión y su contexto de uso.
-El estudio de los instrumentos musicales puede ser entonces una disciplina en sí misma, como ha propuesto Víctor Hernández Vaca con la etnolaudería, a partir de su construcción; pero también desde otras perspectivas, como la historia, la arqueología y las demás disciplinas sociales y humanísticas.
-Estamos lejos de conocer algo todavía sobre los instrumentos musicales y menos sobre los objetos sonoros que, en contextos arqueológicos, han perdido las formas y objetivos de uso; sin embargo, a lo largo de las cuatro partes en que dividimos este libro, podemos recuperar algunas propuestas para su análisis. Iniciamos con los objetos arqueológicos, de tarascos y pirindas, en colecciones museísticas analizados con una perspectiva arqueológica e histórica, manejada por Dante Bernardo Martínez Vázquez que combina fuentes históricas y arqueológicas, y una arqueomusicológica, que hace sonar los instrumentos para registrar frecuencias y alturas en la música occidental, pero con una intención descentrada, realizada por Héctor Isaac Borges Montaño.
-La segunda parte se dedica a explorar al objeto sonoro en la danza, inicia con los toros de carnaval en Tacámbaro, registro realizado por Ulises Salazar, quien describe dos momentos en la fiesta, que trajeron cambios en la dotación instrumental y por ello también tímbricos. En seguida Ana Cristina González Villanueva y Victoria Jiménez Ramos analizan la danza del paloteo en Puruándiro, caracterizada por el entrechoque de los “palos” que los danzantes portan en sus manos.
-Sigue una tercera parte que se ocupa de los objetos sonoros en los paisajes, la corporalidad y los discursos, para ello Sonia Medrano Ruiz y Luis Díaz Santana recuperan el papel de la música vida cotidiana de Zacatecas, y para ello usan como fuente los escritos periodísticos de Luis G. Ledezma, quien da cuenta de la vida del ilustre músico zacatecano Genaro Codina, quien inició junto con sus hermanos tocando un arpa de juguete. Sigue la propuesta de Elizabeth Avendaño Sayagua quien analiza el papel que tiene el cuerpo como mediador entre la música y el baile a través del zapateado sobre la tabla. Continúa Jorge Daniel Salas Mier, quien utiliza las coplas presentes en la lírica tradicional de la Tierra Caliente para mostrarnos que en ellas y sus versos hay referencias a los instrumentos musicales, los objetos sonoros y la fiesta, formando discursos que sentencian sobre la conducta humana.
-La cuarta sección se refiere al comercio, la identidad y las prácticas sociales que propician los objetos sonoros, para ello Jorge Amós Martínez Ayalanos muestra el papel que ha tenido el Estado mexicano en la construcción de la identidad social del gremio de guitarreros en Paracho. En seguida Carlos Flores Claudio nos cuenta la historia del negocio musical de la familia Veerkamp un referente para muchos músicos de la Tierra Caliente. Prosigue en el mismo tenor Igael González Sánchez, quien nos platica una migración igual de distante pero más reciente, el de constructores y comercializadores de tambores yembé de África occidental a nuestro país.
-La última parte nos muestra las rutas que generan parentescos en los objetos y las prácticas sonoras, para ello Alejandro Martínez de la Rosa nos refiere un circuito comercial antiguo, entre el norte de Perú y la Costa del Pacífico mexicano, centrado en las arpas que en Tixtla y la Costa Chica muestran características semejantes a las Lambayeque, en Perú. Termina el libro con el trabajo de Eduardo Martínez Muñoz sobre la trompeta en el mariachi, que inició a fines del siglo XIX, cuando llegaron los pistones y otros instrumentos de aliento al mariachi.
-Con cantos y con vihuelas... se conquistan las mozuelas, reza el refrán popular, y nos muestra que el instrumento musical es un “mediador” entre prácticas sociales, intenciones individuales, estéticas colectivas, rutas de comercio y mercados musicales, en contextos cotidianos, fiestas religiosas y profanas; en ellas, la dimensión del cuerpo y el género de quien construye y usa el instrumento son importantes. Llegar a estas afirmaciones requirió de fuentes diversas: objetos arqueológicos, periódicos de siglos pasados, entrevistas con intención etnográfica, necesitamos usar mapas, fotografías, programas para hacer análisis de frecuencia, estadística de comercio, diccionarios antiguos, crónicas de frailes, transcribir partituras y una buena cantidad de ingenio, que nos permitiera mirar al instrumento y escucharlo sobre la música. Esperamos caro lector o lectora que este volumen te permita reflexionar sobre algunos de los elementos de la práctica musical.
-
-Morelia, Michoacán, día de Santa Cecilia, 22 de noviembre de 2025, a quien celebramos...Con cantos y con vihuelas...
-</div>
-
-<!-- Botón para mostrar/ocultar -->
-<button class="btn-small"
-        style="margin-top:.8rem;"
-        onclick="
-          const r = document.getElementById('resena-libro1');
-          const abierto = r.style.display === 'block';
-          r.style.display = abierto ? 'none' : 'block';
-          this.textContent = abierto ? 'Leer reseña' : 'Cerrar reseña';
-        ">
-  Leer reseña
-</button>
             </div>
           </div>
         </div>
       </div>
- 
-    </div>
-  </section>
 
-  <!-- ══ COLABORADORES ══ -->
-  <section id="colaboradores">
-    <div class="section-eyebrow">✦ Nuestro equipo</div>
-    <h2 class="section-title">Los <em>talentos</em><br>que nos mueven</h2>
-    <div class="divider"></div>
-    <p style="color:var(--muted); max-width:560px; line-height:1.7;">
-      Cada miembro de nuestro equipo aporta una perspectiva única y una pasión genuina por crear soluciones que importan.
-    </p>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar">👩‍💼</div>
-        <div class="team-body">
-          <div class="team-name">José Irepan Mejía Almonte</div>
-          <div class="team-role">Rector</div>
-          <div class="team-bio">osé Irepan Mejía Almonte es violonchelista, compositor y multiinstrumentista originario de Morelia, Michoacán. Su trabajo artístico se desarrolla entre la música tradicional mexicana y la creación contemporánea. Ha formado parte de agrupaciones dedicadas a la preservación y difusión de sones calentanos, pirekuas y otras expresiones musicales de raíz popular. Integrante del proyecto familiar Media Luna, ha participado en diversos festivales, conciertos y encuentros culturales en México. Estudió composición musical en la Universidad Veracruzana, donde también colaboró en proyectos de música contemporánea y experimental. Como compositor, ha escrito obras para cuarteto de cuerdas y ensambles interdisciplinarios. Su labor artística combina investigación, interpretación y rescate del patrimonio sonoro tradicional. Asimismo, ha colaborado con iniciativas de documentación musical vinculadas a instituciones académicas y culturales. Su trayectoria destaca por el diálogo entre tradición oral, creación contemporánea y experimentación sonora.</div>
-          <div class="team-skills">
-            <span class="skill-tag">Liderazgo</span>
-            <span class="skill-tag">Estrategia</span>
-            <span class="skill-tag">Innovación</span>
-          </div>
-          <div class="team-links" style="margin-top:1.2rem;">
-            <a href="#" class="team-link">LinkedIn</a>
-            <a href="#" class="team-link">Portfolio</a>
-          </div>
-        </div>
-      </div>
+      <!-- AGREGA MÁS LIBROS COPIANDO EL BLOQUE DE ARRIBA Y CAMBIANDO:
+           - data-category (meiedosem / academia / partituras / didactico)
+           - src de la imagen
+           - id de la reseña (resena-4, resena-5, etc.)
+           - Título, autor, ISBN, páginas, precio
+           - Rutas de los PDFs
+      -->
 
-      <div class="team-card">
-        <div class="team-avatar"><img src="img/isaac.jpg" alt="Título" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div class="team-body">
-          <div class="team-name">H. Isaac Borges Montaño</div>
-          <div class="team-role">Coordinador académico</div>
-          <div class="team-bio">Héctor Isaac Borges Montaño es investigador, músico y gestor cultural mexicano, cuyo trabajo se centra en la relación entre música, tradición oral, memoria y patrimonio cultural. Su trayectoria articula la investigación académica con la práctica artística, particularmente en el estudio de las músicas tradicionales y populares de México. Ha participado en proyectos de documentación, difusión y análisis de expresiones sonoras vinculadas a comunidades y procesos culturales regionales. Asimismo, ha colaborado en iniciativas interdisciplinarias relacionadas con la historia cultural, la musicología y los estudios de oralidad. Su trabajo también incluye actividades de docencia, edición y divulgación académica en torno a la música y la cultura mexicana. Como músico, ha participado en proyectos enfocados en el rescate y reinterpretación de repertorios tradicionales. Su producción académica y cultural busca fortalecer el diálogo entre investigación, creación artística y preservación del patrimonio inmaterial.</div>
-          <div class="team-skills">
-            <span class="skill-tag">Musicología</span>
-            <span class="skill-tag">Etnomusicología</span>
-            <span class="skill-tag">Organología</span>
-          </div>
-          <div class="team-links" style="margin-top:1.2rem;">
-            <a href="https://orcid.org/0009-0008-4865-6101" class="team-link">ORCID</a>
-            <a href="img/cvuconahcytisaacborges.pdf" class="team-link">CVU</a>
-            <a href="https://independent.academia.edu/iisaaco" class="team-link">ACADEMIA.EDU</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-avatar">👩‍🎨</div>
-        <div class="team-body">
-          <div class="team-name">Dante Cruz Mejía</div>
-          <div class="team-role">Director Licenciatura en Gestión Cultural</div>
-          <div class="team-bio">Dante Cruz Mejía es músico y promotor cultural mexicano vinculado a proyectos de difusión de la música tradicional y popular de México. Su trabajo se ha desarrollado en espacios dedicados a la preservación y reinterpretación de repertorios de raíz comunitaria, colaborando con agrupaciones y actividades culturales de carácter interdisciplinario. Ha participado en conciertos, encuentros artísticos y proyectos orientados al fortalecimiento del patrimonio musical regional. Asimismo, su labor integra procesos de investigación, interpretación y divulgación cultural relacionados con las tradiciones sonoras mexicanas. Su trayectoria destaca por el interés en el diálogo entre práctica musical, memoria colectiva y transmisión cultural.</div>
-          <div class="team-skills">
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">UI/UX</span>
-            <span class="skill-tag">Branding</span>
-          </div>
-          <div class="team-links" style="margin-top:1.2rem;">
-            <a href="#" class="team-link">Behance</span></a>
-            <a href="#" class="team-link">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-avatar">👨‍📊</div>
-        <div class="team-body">
-          <div class="team-name">Tsiueriti Barrera Soto</div>
-          <div class="team-role">Director de Licenciatura en Educación Musical</div>
-          <div class="team-bio">Tsiueriti Barrera Soto es intérprete y promotor cultural vinculado a la música tradicional mexicana, particularmente al ámbito artístico de Michoacán. Ha participado en proyectos dedicados a la difusión de repertorios populares y tradicionales, colaborando en ensambles y actividades culturales de carácter comunitario. Su trabajo aparece relacionado con agrupaciones musicales que integran sones y expresiones folclóricas de distintas regiones del estado. Asimismo, ha participado en registros y producciones impulsadas por instituciones culturales dedicadas a la preservación del patrimonio sonoro mexicano. Su nombre figura como intérprete en el cancionero Canto Floral, publicado por la Dirección General de Culturas Populares, Indígenas y Urbanas de México. Su labor artística se ha desarrollado en espacios de difusión cultural, encuentros musicales y proyectos colectivos orientados al fortalecimiento de las tradiciones musicales regionales.</div>
-          <div class="team-skills">
-            <span class="skill-tag">SEO</span>
-            <span class="skill-tag">SEM</span>
-            <span class="skill-tag">Analytics</span>
-          </div>
-          <div class="team-links" style="margin-top:1.2rem;">
-            <a href="#" class="team-link">LinkedIn</a>
-            <a href="#" class="team-link">Blog</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-avatar">👩‍🔬</div>
-        <div class="team-body">
-          <div class="team-name">Oliverio Rosas</div>
-          <div class="team-role">Data Scientist</div>
-          <div class="team-bio">.</div>
-          <div class="team-skills">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">ML</span>
-            <span class="skill-tag">PowerBI</span>
-          </div>
-          <div class="team-links" style="margin-top:1.2rem;">
-            <a href="#" class="team-link">Kaggle</a>
-            <a href="#" class="team-link">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="team-avatar">👨‍🛠️</div>
-        <div class="team-body">
-          <div class="team-name">Roberto Sánchez</div>
-          <div class="team-role">DevOps Engineer</div>
-          <div class="team-bio">Garantiza que cada producto se entregue rápido, seguro y sin interrupciones. Experto en infraestructura cloud y CI/CD.</div>
-          <div class="team-skills">
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Kubernetes</span>
-            <span class="skill-tag">CI/CD</span>
-          </div>
-          <div class="team-links" style="margin-top:1.2rem;">
-            <a href="#" class="team-link">GitHub</a>
-            <a href="#" class="team-link">LinkedIn</a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
