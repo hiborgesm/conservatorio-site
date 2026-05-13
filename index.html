@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Empresa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #111118;
+      --card:     #16161f;
+      --accent1:  #c8a96e;
+      --accent2:  #e8c98a;
+      --text:     #f0ece4;
+      --muted:    #7a7870;
+      --border:   rgba(200,169,110,0.18);
+      --glow:     rgba(200,169,110,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: .5;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--accent1);
+      letter-spacing: .04em;
+    }
+
+    .nav-tabs {
+      display: flex; gap: .5rem; list-style: none;
+    }
+
+    .nav-tabs li a {
+      display: block;
+      padding: .55rem 1.3rem;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .88rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: all .25s ease;
+    }
+
+    .nav-tabs li a:hover,
+    .nav-tabs li a.active {
+      color: var(--accent1);
+      border-color: var(--border);
+      background: var(--glow);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      display: none;
+      min-height: 100vh;
+      padding: 9rem 4rem 5rem;
+      position: relative; z-index: 1;
+      animation: fadeUp .5s ease forwards;
+    }
+    section.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-eyebrow {
+      font-size: .78rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent1); margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900; line-height: 1.05;
+      color: var(--text); margin-bottom: 1.5rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--accent1); }
+
+    .divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--accent1), transparent);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ════════════════════════════════
+       PRESENTACIÓN
+    ════════════════════════════════ */
+    #presentacion {
+      display: none;
+      align-items: center;
+      padding-top: 0;
+    }
+    #presentacion.active { display: flex; }
+
+    .hero-inner {
+      max-width: 1200px; margin: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center; padding-top: 2rem;
+    }
+
+    .hero-text {}
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--border);
+      padding: .35rem 1rem;
+      border-radius: 2px;
+      font-size: .75rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent1); margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      line-height: 1.07; font-weight: 900;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title span { color: var(--accent1); }
+
+    .hero-desc {
+      color: var(--muted); font-size: 1.1rem; line-height: 1.75;
+      max-width: 480px; margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .85rem 2.2rem;
+      background: var(--accent1); color: #0a0a0f;
+      font-weight: 600; font-size: .9rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .btn:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      margin-left: 1rem;
+    }
+    .btn-ghost:hover { background: var(--glow); color: var(--accent1); }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3rem;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(200,169,110,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    .stat-item {}
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900; color: var(--accent1);
+      line-height: 1;
+    }
+    .stat-label { color: var(--muted); font-size: .85rem; margin-top: .3rem; }
+
+    .hero-quote {
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Playfair Display', serif;
+      font-style: italic; color: var(--muted);
+      font-size: 1rem; line-height: 1.6;
+    }
+
+    /* ════════════════════════════════
+       SERVICIOS
+    ════════════════════════════════ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5px; /* gap becomes border lines */
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      transition: background .3s;
+      cursor: default;
+    }
+    .service-card:hover { background: #1c1c28; }
+
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent1);
+      transition: width .4s ease;
+    }
+    .service-card:hover::after { width: 100%; }
+
+    .service-icon {
+      font-size: 2.2rem; margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      margin-bottom: .8rem;
+    }
+
+    .service-desc {
+      color: var(--muted); font-size: .92rem; line-height: 1.7;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: .25rem .8rem;
+      background: var(--glow);
+      border: 1px solid var(--border);
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent1);
+    }
+
+    /* ════════════════════════════════
+       CATÁLOGO
+    ════════════════════════════════ */
+    .catalog-filters {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem; margin-top: 2rem;
+    }
+
+    .filter-btn {
+      padding: .4rem 1.1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted); font-size: .8rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      cursor: pointer; transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .filter-btn:hover,
+    .filter-btn.active { background: var(--glow); color: var(--accent1); border-color: var(--accent1); }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4), 0 0 0 1px var(--accent1);
+    }
+
+    .product-thumb {
+      width: 100%; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      background: linear-gradient(135deg, #16161f 0%, #1e1e2e 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .product-thumb::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.1) 0%, transparent 65%);
+    }
+
+    .product-badge {
+      position: absolute; top: .8rem; right: .8rem;
+      padding: .2rem .6rem;
+      background: var(--accent1); color: #0a0a0f;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    .product-info { padding: 1.5rem; }
+
+    .product-cat {
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent1); margin-bottom: .5rem;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .product-desc {
+      color: var(--muted); font-size: .85rem; line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+
+    .product-footer {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .product-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--accent1); font-weight: 700;
+    }
+
+    .btn-small {
+      padding: .5rem 1.1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text); font-size: .8rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      cursor: pointer; transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-small:hover { background: var(--accent1); color: #0a0a0f; border-color: var(--accent1); }
+
+    /* ════════════════════════════════
+       COLABORADORES
+    ════════════════════════════════ */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+
+    .team-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .3s;
+    }
+    .team-card:hover { transform: translateY(-5px); }
+
+    .team-avatar {
+      width: 100%; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4.5rem;
+      background: linear-gradient(145deg, #1a1a28, #0e0e18);
+      position: relative; overflow: hidden;
+    }
+
+    .team-avatar::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 40%; 
+      background: linear-gradient(to top, var(--card), transparent);
+    }
+
+    .team-body { padding: 1.8rem; }
+
+    .team-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700;
+      margin-bottom: .3rem;
+    }
+
+    .team-role {
+      color: var(--accent1); font-size: .82rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .team-bio {
+      color: var(--muted); font-size: .88rem; line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-links { display: flex; gap: .6rem; }
+
+    .team-link {
+      display: inline-flex; align-items: center;
+      padding: .35rem .85rem;
+      background: var(--glow);
+      border: 1px solid var(--border);
+      color: var(--muted); font-size: .75rem;
+      text-decoration: none; letter-spacing: .06em;
+      transition: all .2s;
+    }
+    .team-link:hover { color: var(--accent1); border-color: var(--accent1); }
+
+    .team-skills {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
+    }
+    .skill-tag {
+      padding: .2rem .65rem;
+      background: rgba(200,169,110,0.08);
+      border: 1px solid rgba(200,169,110,0.15);
+      color: var(--accent1); font-size: .7rem;
+      letter-spacing: .06em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: .82rem;
+      letter-spacing: .05em;
+    }
+    footer span { color: var(--accent1); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-tabs li a { padding: .45rem .8rem; font-size: .75rem; }
+      section { padding: 7rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { order: -1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nexus<em style="color:var(--text);">Co</em></div>
+    <ul class="nav-tabs">
+      <li><a href="#" class="active" data-tab="presentacion">Presentación</a></li>
+      <li><a href="#" data-tab="servicios">Servicios</a></li>
+      <li><a href="#" data-tab="catalogo">Catálogo</a></li>
+      <li><a href="#" data-tab="colaboradores">Colaboradores</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ PRESENTACIÓN ══ -->
+  <section id="presentacion" class="active">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">✦ Desde 2018 · Excelencia garantizada</div>
+        <h1 class="hero-title">
+          Soluciones que<br><span>transforman</span><br>negocios reales
+        </h1>
+        <p class="hero-desc">
+          Somos un equipo apasionado por crear experiencias digitales de alto impacto.
+          Combinamos estrategia, diseño y tecnología para impulsar el crecimiento de tu empresa.
+        </p>
+        <div>
+          <a href="#" class="btn" onclick="showTab('servicios'); return false;">Ver servicios →</a>
+          <a href="#" class="btn btn-ghost" onclick="showTab('colaboradores'); return false;">Conoce al equipo</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="stat-grid">
+            <div class="stat-item">
+              <div class="stat-number">+200</div>
+              <div class="stat-label">Proyectos entregados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Satisfacción de clientes</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Expertos en el equipo</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Años de experiencia</div>
+            </div>
+          </div>
+          <div class="hero-quote">
+            "La innovación no es un destino, es el camino que recorremos juntos cada día."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICIOS ══ -->
+  <section id="servicios">
+    <div class="section-eyebrow">✦ Lo que hacemos</div>
+    <h2 class="section-title">Nuestros <em>servicios</em></h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted); max-width:560px; line-height:1.7; margin-bottom:1rem;">
+      Ofrecemos soluciones integrales adaptadas a las necesidades específicas de cada cliente,
+      con un enfoque en calidad, innovación y resultados medibles.
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎨</span>
+        <div class="service-name">Diseño UI/UX</div>
+        <p class="service-desc">Creamos interfaces intuitivas y experiencias visuales que conectan con tus usuarios y convierten visitantes en clientes.</p>
+        <span class="service-tag">Diseño</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💻</span>
+        <div class="service-name">Desarrollo Web</div>
+        <p class="service-desc">Construimos sitios web y aplicaciones robustas con tecnologías modernas, enfocados en rendimiento y escalabilidad.</p>
+        <span class="service-tag">Tecnología</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📱</span>
+        <div class="service-name">Apps Móviles</div>
+        <p class="service-desc">Desarrollamos aplicaciones nativas y multiplataforma para iOS y Android con experiencias fluidas y atractivas.</p>
+        <span class="service-tag">Mobile</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📊</span>
+        <div class="service-name">Marketing Digital</div>
+        <p class="service-desc">Estrategias de SEO, SEM y redes sociales que aumentan tu visibilidad y generan leads de calidad de manera sostenida.</p>
+        <span class="service-tag">Estrategia</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛡️</span>
+        <div class="service-name">Consultoría TI</div>
+        <p class="service-desc">Asesoramiento experto para optimizar tu infraestructura tecnológica, reducir costos y aumentar la seguridad digital.</p>
+        <span class="service-tag">Consultoría</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🤖</span>
+        <div class="service-name">Automatización IA</div>
+        <p class="service-desc">Implementamos soluciones con inteligencia artificial que automatizan procesos, analizan datos y mejoran decisiones.</p>
+        <span class="service-tag">Innovación</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CATÁLOGO ══ -->
+  <section id="catalogo">
+    <div class="section-eyebrow">✦ Nuestros productos</div>
+    <h2 class="section-title">Catálogo de <em>productos</em></h2>
+    <div class="divider"></div>
+
+    <div class="catalog-filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="software">Software</button>
+      <button class="filter-btn" data-filter="plantillas">Plantillas</button>
+      <button class="filter-btn" data-filter="cursos">Cursos</button>
+      <button class="filter-btn" data-filter="hardware">Hardware</button>
+    </div>
+
+    <div class="catalog-grid">
+      <!-- ITEMS -->
+      <div class="product-card" data-category="software">
+        <div class="product-thumb">🖥️<span class="product-badge">Nuevo</span></div>
+        <div class="product-info">
+          <div class="product-cat">Software</div>
+          <div class="product-name">Dashboard Pro</div>
+          <div class="product-desc">Panel de control avanzado con análisis en tiempo real y reportes personalizables.</div>
+          <div class="product-footer">
+            <span class="product-price">$499</span>
+            <button class="btn-small">Adquirir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="plantillas">
+        <div class="product-thumb">📐</div>
+        <div class="product-info">
+          <div class="product-cat">Plantillas</div>
+          <div class="product-name">Kit Diseño Web</div>
+          <div class="product-desc">50+ componentes listos para usar en Figma y código. Actualización de por vida.</div>
+          <div class="product-footer">
+            <span class="product-price">$129</span>
+            <button class="btn-small">Adquirir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="cursos">
+        <div class="product-thumb">🎓<span class="product-badge">Popular</span></div>
+        <div class="product-info">
+          <div class="product-cat">Cursos</div>
+          <div class="product-name">Masterclass UX</div>
+          <div class="product-desc">Aprende a diseñar experiencias de usuario con métodos profesionales en 8 semanas.</div>
+          <div class="product-footer">
+            <span class="product-price">$299</span>
+            <button class="btn-small">Inscribirse</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="software">
+        <div class="product-thumb">⚙️</div>
+        <div class="product-info">
+          <div class="product-cat">Software</div>
+          <div class="product-name">AutoFlow CRM</div>
+          <div class="product-desc">Gestiona clientes, ventas y soporte desde una plataforma centralizada e inteligente.</div>
+          <div class="product-footer">
+            <span class="product-price">$799</span>
+            <button class="btn-small">Adquirir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="hardware">
+        <div class="product-thumb">🖨️</div>
+        <div class="product-info">
+          <div class="product-cat">Hardware</div>
+          <div class="product-name">Impresora Smart</div>
+          <div class="product-desc">Conectividad WiFi, compatible con todos los sistemas operativos y calidad fotográfica.</div>
+          <div class="product-footer">
+            <span class="product-price">$350</span>
+            <button class="btn-small">Adquirir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="plantillas">
+        <div class="product-thumb">📋</div>
+        <div class="product-info">
+          <div class="product-cat">Plantillas</div>
+          <div class="product-name">Business Starter</div>
+          <div class="product-desc">Pack completo: presentación, propuesta, contrato y factura en formato editable.</div>
+          <div class="product-footer">
+            <span class="product-price">$89</span>
+            <button class="btn-small">Adquirir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="cursos">
+        <div class="product-thumb">🚀<span class="product-badge">Nuevo</span></div>
+        <div class="product-info">
+          <div class="product-cat">Cursos</div>
+          <div class="product-name">Dev Fullstack</div>
+          <div class="product-desc">Conviértete en desarrollador fullstack con React, Node.js y bases de datos modernas.</div>
+          <div class="product-footer">
+            <span class="product-price">$599</span>
+            <button class="btn-small">Inscribirse</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="hardware">
+        <div class="product-thumb">📡</div>
+        <div class="product-info">
+          <div class="product-cat">Hardware</div>
+          <div class="product-name">Router Mesh 6E</div>
+          <div class="product-desc">Cobertura WiFi 6E para grandes espacios con gestión inteligente del tráfico de red.</div>
+          <div class="product-footer">
+            <span class="product-price">$420</span>
+            <button class="btn-small">Adquirir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ COLABORADORES ══ -->
+  <section id="colaboradores">
+    <div class="section-eyebrow">✦ Nuestro equipo</div>
+    <h2 class="section-title">Los <em>talentos</em><br>que nos mueven</h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted); max-width:560px; line-height:1.7;">
+      Cada miembro de nuestro equipo aporta una perspectiva única y una pasión genuina por crear soluciones que importan.
+    </p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👩‍💼</div>
+        <div class="team-body">
+          <div class="team-name">Ana Martínez</div>
+          <div class="team-role">CEO & Fundadora</div>
+          <div class="team-bio">Visionaria con 12 años liderando proyectos de transformación digital en LATAM. Apasionada por la innovación y el impacto social.</div>
+          <div class="team-skills">
+            <span class="skill-tag">Liderazgo</span>
+            <span class="skill-tag">Estrategia</span>
+            <span class="skill-tag">Innovación</span>
+          </div>
+          <div class="team-links" style="margin-top:1.2rem;">
+            <a href="#" class="team-link">LinkedIn</a>
+            <a href="#" class="team-link">Portfolio</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">👨‍💻</div>
+        <div class="team-body">
+          <div class="team-name">Carlos Reyes</div>
+          <div class="team-role">Director de Tecnología</div>
+          <div class="team-bio">Arquitecto de software con experiencia en sistemas distribuidos y IA aplicada. Construye la base técnica de cada solución.</div>
+          <div class="team-skills">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">AWS</span>
+          </div>
+          <div class="team-links" style="margin-top:1.2rem;">
+            <a href="#" class="team-link">GitHub</a>
+            <a href="#" class="team-link">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">👩‍🎨</div>
+        <div class="team-body">
+          <div class="team-name">Sofía Luna</div>
+          <div class="team-role">Lead Designer</div>
+          <div class="team-bio">Diseñadora con enfoque en psicología del usuario y sistemas de diseño escalables. Sus interfaces ganan premios internacionales.</div>
+          <div class="team-skills">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">UI/UX</span>
+            <span class="skill-tag">Branding</span>
+          </div>
+          <div class="team-links" style="margin-top:1.2rem;">
+            <a href="#" class="team-link">Behance</span></a>
+            <a href="#" class="team-link">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">👨‍📊</div>
+        <div class="team-body">
+          <div class="team-name">Diego Torres</div>
+          <div class="team-role">Director de Marketing</div>
+          <div class="team-bio">Especialista en growth hacking y performance marketing. Ha escalado marcas desde cero hasta posiciones dominantes en su sector.</div>
+          <div class="team-skills">
+            <span class="skill-tag">SEO</span>
+            <span class="skill-tag">SEM</span>
+            <span class="skill-tag">Analytics</span>
+          </div>
+          <div class="team-links" style="margin-top:1.2rem;">
+            <a href="#" class="team-link">LinkedIn</a>
+            <a href="#" class="team-link">Blog</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">👩‍🔬</div>
+        <div class="team-body">
+          <div class="team-name">Laura Vega</div>
+          <div class="team-role">Data Scientist</div>
+          <div class="team-bio">Experta en machine learning y análisis predictivo. Transforma datos complejos en decisiones de negocio claras y accionables.</div>
+          <div class="team-skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">ML</span>
+            <span class="skill-tag">PowerBI</span>
+          </div>
+          <div class="team-links" style="margin-top:1.2rem;">
+            <a href="#" class="team-link">Kaggle</a>
+            <a href="#" class="team-link">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">👨‍🛠️</div>
+        <div class="team-body">
+          <div class="team-name">Roberto Sánchez</div>
+          <div class="team-role">DevOps Engineer</div>
+          <div class="team-bio">Garantiza que cada producto se entregue rápido, seguro y sin interrupciones. Experto en infraestructura cloud y CI/CD.</div>
+          <div class="team-skills">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">CI/CD</span>
+          </div>
+          <div class="team-links" style="margin-top:1.2rem;">
+            <a href="#" class="team-link">GitHub</a>
+            <a href="#" class="team-link">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 <span>NexusCo</span> · Todos los derechos reservados · Hecho con ♥ en México</p>
+  </footer>
+
+  <script>
+    // ── TAB NAVIGATION ──
+    function showTab(tabName) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
+
+      const section = document.getElementById(tabName);
+      if (section) { section.classList.add('active'); }
+
+      document.querySelectorAll('.nav-tabs a').forEach(a => {
+        if (a.dataset.tab === tabName) a.classList.add('active');
+      });
+    }
+
+    document.querySelectorAll('.nav-tabs a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showTab(link.dataset.tab);
+      });
+    });
+
+    // ── CATALOG FILTER ──
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.product-card').forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+            card.style.animation = 'fadeUp .35s ease forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
