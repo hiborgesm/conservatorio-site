@@ -594,76 +594,238 @@
     /* ════════════════════════════════
        COLABORADORES
     ════════════════════════════════ */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem; margin-top: 3rem;
+   <style>
+    /* ── Grupos desplegables ── */
+    .collab-group {
+      border: 1px solid var(--border);
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      transition: box-shadow .3s;
     }
 
-    .team-card {
+    .collab-group:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,.3);
+    }
+
+    /* Cabecera del grupo (clic para abrir/cerrar) */
+    .collab-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.6rem 2rem;
+      cursor: pointer;
+      background: var(--card);
+      border: none;
+      width: 100%;
+      text-align: left;
+      transition: background .2s;
+      gap: 1rem;
+    }
+
+    .collab-group-header:hover {
+      background: #1c1c28;
+    }
+
+    .collab-group-header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .collab-group-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .collab-group-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .collab-group-count {
+      font-size: .75rem;
+      color: var(--accent1);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: .2rem;
+    }
+
+    /* Flecha indicadora */
+    .collab-arrow {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent1);
+      font-size: .9rem;
+      flex-shrink: 0;
+      transition: transform .35s ease, background .2s;
+    }
+
+    .collab-group.open .collab-arrow {
+      transform: rotate(180deg);
+      background: var(--glow);
+    }
+
+    /* Contenido desplegable */
+    .collab-group-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1);
+      background: var(--surface);
+      border-top: 0px solid var(--border);
+    }
+
+    .collab-group.open .collab-group-body {
+      max-height: 2000px;
+      border-top: 1px solid var(--border);
+    }
+
+    .collab-group-inner {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* ── Tarjeta horizontal con foto redonda ── */
+    .collab-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.2rem 1.5rem;
       background: var(--card);
       border: 1px solid var(--border);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .collab-card:hover {
+      border-color: var(--accent1);
+      transform: translateX(4px);
+    }
+
+    /* Foto redonda */
+    .collab-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
       overflow: hidden;
-      transition: transform .3s;
-    }
-    .team-card:hover { transform: translateY(-5px); }
-
-    .team-avatar {
-      width: 100%; aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 4.5rem;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
       background: linear-gradient(145deg, #1a1a28, #0e0e18);
-      position: relative; overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: border-color .2s;
     }
 
-    .team-avatar::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 40%; 
-      background: linear-gradient(to top, var(--card), transparent);
+    .collab-card:hover .collab-avatar {
+      border-color: var(--accent1);
     }
 
-    .team-body { padding: 1.8rem; }
+    .collab-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
 
-    .team-name {
+    /* Info */
+    .collab-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .collab-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700;
-      margin-bottom: .3rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .2rem;
     }
 
-    .team-role {
-      color: var(--accent1); font-size: .82rem;
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: 1rem;
+    .collab-role {
+      color: var(--accent1);
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
     }
 
-    .team-bio {
-      color: var(--muted); font-size: .88rem; line-height: 1.65;
-      margin-bottom: 1.5rem;
+    .collab-bio {
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.55;
     }
 
-    .team-links { display: flex; gap: .6rem; }
+    /* Habilidades */
+    .collab-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: .6rem;
+    }
 
-    .team-link {
-      display: inline-flex; align-items: center;
-      padding: .35rem .85rem;
+    .collab-tag {
+      padding: .15rem .55rem;
+      background: rgba(90,158,111,0.08);
+      border: 1px solid rgba(90,158,111,0.2);
+      color: var(--accent1);
+      font-size: .68rem;
+      letter-spacing: .06em;
+    }
+
+    /* Links */
+    .collab-links {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      flex-shrink: 0;
+    }
+
+    .collab-link {
+      padding: .3rem .8rem;
       background: var(--glow);
       border: 1px solid var(--border);
-      color: var(--muted); font-size: .75rem;
-      text-decoration: none; letter-spacing: .06em;
-      transition: all .2s;
-    }
-    .team-link:hover { color: var(--accent1); border-color: var(--accent1); }
-
-    .team-skills {
-      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
-    }
-    .skill-tag {
-      padding: .2rem .65rem;
-      background: rgba(200,169,110,0.08);
-      border: 1px solid rgba(200,169,110,0.15);
-      color: var(--accent1); font-size: .7rem;
+      color: var(--muted);
+      font-size: .72rem;
+      text-decoration: none;
       letter-spacing: .06em;
+      text-align: center;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .collab-link:hover {
+      color: var(--accent1);
+      border-color: var(--accent1);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .collab-card {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .collab-links {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .collab-group-header {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .collab-group-inner {
+        padding: 1rem;
+      }
     }
 
     /* ─── FOOTER ─── */
@@ -1152,6 +1314,443 @@ Morelia, Michoacán, día de Santa Cecilia, 22 de noviembre de 2025, a quien cel
     </div>
   </section>
 
+<!-- ══ COLABORADORES ══ -->
+  <!-- REEMPLAZA todo el bloque <section id="colaboradores">...</section> con esto -->
+
+ <section>
+  <section id="colaboradores">
+    <div class="section-eyebrow">✦ Nuestro equipo</div>
+    <h2 class="section-title">Quiénes nos <em>mueven</em></h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted); max-width:560px; line-height:1.7; margin-bottom:3rem;">
+      El Conservatorio P'urhépecha A.C. está formado por músicos, investigadores y gestores
+      culturales comprometidos con la preservación y transmisión de nuestra música.
+    </p>
+
+    <!-- ══════════════════════════════════════
+         GRUPO 1 — COORDINACIÓN ACADÉMICA
+    ══════════════════════════════════════ -->
+    <div class="collab-group open" id="grupo-coordinacion">
+      <button class="collab-group-header"
+              onclick="toggleGroup('grupo-coordinacion')">
+        <div class="collab-group-header-left">
+          <span class="collab-group-icon">🎓</span>
+          <div>
+            <div class="collab-group-title">Coordinación académica</div>
+            <div class="collab-group-count">3 integrantes</div>
+          </div>
+        </div>
+        <div class="collab-arrow">▼</div>
+      </button>
+      <div class="collab-group-body">
+        <div class="collab-group-inner">
+
+          <!-- Colaborador 1 -->
+          <div class="collab-card">
+            <div class="collab-avatar">
+              <!-- Reemplaza el emoji por tu foto:
+              <img src="img/nombre.jpg" alt="Nombre"> -->
+              👩‍💼
+            </div>
+            <div class="collab-info">
+              <div class="collab-name">José Irepan Mejía Almonte</div>
+              <div class="collab-role">Rector</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Gestión cultural</span>
+                <span class="collab-tag">Música P'urhépecha</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">LinkedIn</a>
+              <a href="#" class="collab-link">Correo</a>
+            </div>
+          </div>
+
+          <!-- Colaborador 2 -->
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍💼</div>
+            <div class="collab-info">
+              <div class="collab-name">Héctor Isaac Borges Montaño</div>
+              <div class="collab-role">Coordinación académica</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Pedagogía musical</span>
+                <span class="collab-tag">Dirección coral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">LinkedIn</a>
+            </div>
+          </div>
+
+          <!-- Colaborador 3 -->
+          <div class="collab-card">
+            <div class="collab-avatar">👩‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Victor Manuel Francisco Corona</div>
+              <div class="collab-role">Coordinación administrativa</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Administración</span>
+                <span class="collab-tag">Vinculación</span>
+              </div>
+              <div class="collab-card">
+            <div class="collab-avatar">👩‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Dante Cruz Mejía</div>
+              <div class="collab-role">Director de la Licenciatura en Gestión Cultural</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Administración</span>
+                <span class="collab-tag">Vinculación</span>
+              </div>
+              <div class="collab-card">
+            <div class="collab-avatar">👩‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Tsiueriti Barrera Soto</div>
+              <div class="collab-role">Director de la licenciatura en Educación Musical</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Administración</span>
+                <span class="collab-tag">Vinculación</span>
+              </div>
+              <div class="collab-card">
+            <div class="collab-avatar">👩‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Oliverio Rosales </div>
+              <div class="collab-role">Coordinación Técnico en Música</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Administración</span>
+                <span class="collab-tag">Vinculación</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Correo</a>
+            </div>
+          </div>
+
+          <!--
+            PARA AGREGAR MÁS: copia una tarjeta completa
+            desde <div class="collab-card"> hasta su </div>
+          -->
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         GRUPO 2 — ACADEMIA MEXICANA
+    ══════════════════════════════════════ -->
+    <div class="collab-group" id="grupo-academia">
+      <button class="collab-group-header"
+              onclick="toggleGroup('grupo-academia')">
+        <div class="collab-group-header-left">
+          <span class="collab-group-icon">📚</span>
+          <div>
+            <div class="collab-group-title">Academia Mexicana de Estudios Sociales de la Música</div>
+            <div class="collab-group-count"> 15 integrantes</div>
+          </div>
+        </div>
+        <div class="collab-arrow">▼</div>
+      </button>
+      <div class="collab-group-body">
+        <div class="collab-group-inner">
+
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🔬</div>
+            <div class="collab-info">
+              <div class="collab-name">Jorge Amós Martínez Ayala</div>
+              <div class="collab-role">Investigador titular</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Etnomusicología</span>
+                <span class="collab-tag">Investigación</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+              <a href="#" class="collab-link">Correo</a>
+            </div>
+          </div>
+
+          <div class="collab-card">
+            <div class="collab-avatar">👩‍🔬</div>
+            <div class="collab-info">
+              <div class="collab-name">Héctor Isaac Borges Montaño</div>
+              <div class="collab-role">Investigadora asociada</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Musicología</span>
+                <span class="collab-tag">Archivo sonoro</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+          </div>
+
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Dante Cruz Mejía</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+            <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Ulises Salazar Rosales</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+              <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Cloe Xóchitl Pérez Valladares</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+              <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Ireri Mejía Almonte</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+                <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Alejandro Martínez de la Rosa</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+                  <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Eduardo Martínez Muñóz</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+          </div>
+                  <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Tsiueriti Barrera Soto</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+<div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">José Ignacio Maldonado Cerano</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+  <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Amanda Zoar Cuevas Cárcamo</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+    <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Arturo Ramírez Estrada</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+      <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Elizabeth Avendaño Sayahua</div>
+              <div class="collab-role">Investigador asociado</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Historia musical</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Academia.edu</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         GRUPO 3 — CUERPO DOCENTE
+    ══════════════════════════════════════ -->
+    <div class="collab-group" id="grupo-docentes">
+      <button class="collab-group-header"
+              onclick="toggleGroup('grupo-docentes')">
+        <div class="collab-group-header-left">
+          <span class="collab-group-icon">🎵</span>
+          <div>
+            <div class="collab-group-title">Cuerpo docente</div>
+            <div class="collab-group-count">4 integrantes</div>
+          </div>
+        </div>
+        <div class="collab-arrow">▼</div>
+      </button>
+      <div class="collab-group-body">
+        <div class="collab-group-inner">
+
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎤</div>
+            <div class="collab-info">
+              <div class="collab-name">Julián Martínez</div>
+              <div class="collab-role">Docente de violín</div>
+              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Violín</span>
+                <span class="collab-tag">Música de cámara</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Perfil</a>
+            </div>
+          </div>
+
+          <div class="collab-card">
+            <div class="collab-avatar">👩‍🎤</div>
+            <div class="collab-info">
+              <div class="collab-name">Fabián </div>
+              <div class="collab-role">Docente de clarinete</div>
+              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Canto</span>
+                <span class="collab-tag">Tradición oral</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Perfil</a>
+            </div>
+          </div>
+
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎵</div>
+            <div class="collab-info">
+              <div class="collab-name">Allison Alonso Mendoza</div>
+              <div class="collab-role">Docente de percusiones</div>
+              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Percusiones</span>
+                <span class="collab-tag">Ritmos tradicionales</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Perfil</a>
+            </div>
+          </div>
+
+          <div class="collab-card">
+            <div class="collab-avatar">👩‍🎵</div>
+            <div class="collab-info">
+              <div class="collab-name">pendiente</div>
+              <div class="collab-role">Docente de teoría musical</div>
+              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
+              <div class="collab-tags">
+                <span class="collab-tag">Teoría musical</span>
+                <span class="collab-tag">Armonía</span>
+              </div>
+            </div>
+            <div class="collab-links">
+              <a href="#" class="collab-link">Perfil</a>
+            </div>
+             
+  </section>
+    <!--
+      PARA AGREGAR UN CUARTO GRUPO:
+      Copia cualquier bloque <div class="collab-group">...</div>
+      Cambia el id (ej: id="grupo-nuevo")
+      Cambia el onclick a toggleGroup('grupo-nuevo')
+      Actualiza título, ícono, cantidad e integrantes
+    -->
+
+
+
+  <!-- ══ SCRIPT DE LOS GRUPOS ══ -->
+  <!-- Pega esto ANTES del </body>, junto a los demás scripts -->
+  <script>
+    function toggleGroup(id) {
+      const group = document.getElementById(id);
+      group.classList.toggle('open');
+    }
+  </script>
+  
   <footer>
     <p>© 2025 <span>Conservatorio P'urhépecha</span> · Todos los derechos reservados · Hecho con ♥ en México</p>
   </footer>
