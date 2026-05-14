@@ -73,7 +73,8 @@
       border-color: var(--border);
       background: var(--glow);
     }
-
+<li><a href="#" data-tab="actividades">Actividades</a></li>
+    
     /* ─── SECTIONS ─── */
     section {
       display: none;
@@ -1405,7 +1406,579 @@
     </div>
 
   </section>
-
+<style>
+    /* ── Subpestañas ── */
+    .act-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      margin-top: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+ 
+    .act-tab-btn {
+      padding: .7rem 1.4rem;
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all .2s;
+      position: relative;
+      bottom: -1px;
+    }
+ 
+    .act-tab-btn:hover {
+      color: var(--text);
+    }
+ 
+    .act-tab-btn.active {
+      color: var(--accent1);
+      border-color: var(--border);
+      border-bottom-color: var(--bg);
+      background: var(--bg);
+    }
+ 
+    /* ── Paneles de cada subpestaña ── */
+    .act-panel {
+      display: none;
+      animation: fadeUp .4s ease forwards;
+    }
+    .act-panel.active { display: block; }
+ 
+    /* ── Encabezado de cada panel ── */
+    .act-panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+ 
+    .act-panel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+ 
+    .act-panel-title em { font-style: italic; color: var(--accent1); }
+ 
+    /* ── Botón YouTube ── */
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .7rem 1.4rem;
+      background: #ff0000;
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      flex-shrink: 0;
+    }
+    .yt-btn:hover { background: #cc0000; transform: translateY(-2px); }
+ 
+    .yt-icon {
+      width: 18px; height: 18px;
+      fill: #fff;
+      flex-shrink: 0;
+    }
+ 
+    /* ── Galería de fotos ── */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+ 
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+ 
+    .photo-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+ 
+    .photo-item:hover img { transform: scale(1.06); }
+ 
+    .photo-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,15,10,0);
+      display: flex; align-items: flex-end;
+      padding: 1rem;
+      transition: background .3s;
+    }
+ 
+    .photo-item:hover .photo-overlay {
+      background: rgba(10,15,10,0.55);
+    }
+ 
+    .photo-caption {
+      color: #fff;
+      font-size: .8rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all .3s;
+      line-height: 1.4;
+    }
+ 
+    .photo-item:hover .photo-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+ 
+    /* ── Placeholder cuando no hay fotos ── */
+    .photo-placeholder {
+      aspect-ratio: 4/3;
+      background: var(--card);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+ 
+    .photo-placeholder-icon { font-size: 2.5rem; }
+ 
+    /* ── Sección de videos de YouTube ── */
+    .yt-section {
+      margin-top: 1rem;
+    }
+ 
+    .yt-section-title {
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 1.2rem;
+    }
+ 
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+ 
+    .yt-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+ 
+    .yt-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0,0,0,.4);
+    }
+ 
+    .yt-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #000;
+    }
+ 
+    .yt-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease, opacity .3s;
+    }
+ 
+    .yt-card:hover .yt-thumb img { transform: scale(1.04); opacity: .85; }
+ 
+    .yt-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+ 
+    .yt-play-icon {
+      width: 52px; height: 52px;
+      background: rgba(255,0,0,0.88);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .2s, background .2s;
+    }
+ 
+    .yt-card:hover .yt-play-icon {
+      transform: scale(1.12);
+      background: #ff0000;
+    }
+ 
+    .yt-play-icon svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+ 
+    .yt-card-body { padding: 1.1rem 1.3rem; }
+ 
+    .yt-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+      line-height: 1.3;
+    }
+ 
+    .yt-card-desc {
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.55;
+    }
+ 
+    /* ── Lightbox (visor de fotos) ── */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+ 
+    .lightbox.open { display: flex; }
+ 
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 1px solid var(--border);
+    }
+ 
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text); font-size: 1.4rem;
+      width: 44px; height: 44px;
+      cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .lightbox-close:hover { background: var(--glow); color: var(--accent1); }
+ 
+    .lightbox-caption {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted); font-size: .85rem;
+      text-align: center; white-space: nowrap;
+    }
+ 
+    /* Responsive */
+    @media (max-width: 768px) {
+      .act-tabs { gap: .3rem; }
+      .act-tab-btn { padding: .55rem .9rem; font-size: .72rem; }
+      .photo-gallery { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+      .yt-grid { grid-template-columns: 1fr; }
+      .act-panel-header { flex-direction: column; }
+    }
+ 
+    @media (max-width: 480px) {
+      .photo-gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+ 
+  <section id="actividades">
+    <div class="section-eyebrow">✦ Vida institucional</div>
+    <h2 class="section-title">Nuestras <em>actividades</em></h2>
+    <div class="divider"></div>
+ 
+    <!-- SUBPESTAÑAS -->
+    <div class="act-tabs">
+      <button class="act-tab-btn active" onclick="showActTab('coloquio')">Coloquio · Semana de la Música Tradicional</button>
+      <button class="act-tab-btn" onclick="showActTab('clases')">Clases Magistrales</button>
+      <button class="act-tab-btn" onclick="showActTab('conciertos')">Conciertos</button>
+      <button class="act-tab-btn" onclick="showActTab('festivales')">Festivales</button>
+    </div>
+ 
+    <!-- ══ PANEL 1 — Coloquio ══ -->
+    <div class="act-panel active" id="act-coloquio">
+      <div class="act-panel-header">
+        <div>
+          <div class="section-eyebrow">✦ Anual</div>
+          <div class="act-panel-title">Coloquio · Semana de la<br><em>Música Tradicional</em></div>
+        </div>
+        <a href="https://www.youtube.com/@conservatoriopurhepecha" target="_blank" class="yt-btn">
+          <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><path fill="var(--card)" d="M9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          Ver en YouTube
+        </a>
+      </div>
+ 
+      <!-- Galería -->
+      <div class="photo-gallery" id="gallery-coloquio">
+        <!--
+          INSTRUCCIONES PARA AGREGAR FOTOS:
+          Copia este bloque para cada foto:
+ 
+          <div class="photo-item" onclick="openLightbox('img/tu-foto.jpg', 'Descripción')">
+            <img src="img/tu-foto.jpg" alt="Descripción" loading="lazy" />
+            <div class="photo-overlay">
+              <div class="photo-caption">Descripción de la foto</div>
+            </div>
+          </div>
+        -->
+ 
+        <!-- Ejemplo con fotos reales — reemplaza los src -->
+        <div class="photo-item" onclick="openLightbox('img/coloquio-1.jpg', 'Coloquio 2024')">
+          <img src="img/coloquio-1.jpg" alt="Coloquio 2024" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Coloquio 2024</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/coloquio-2.jpg', 'Mesa de ponentes')">
+          <img src="img/coloquio-2.jpg" alt="Mesa de ponentes" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Mesa de ponentes</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/coloquio-3.jpg', 'Presentación musical')">
+          <img src="img/coloquio-3.jpg" alt="Presentación musical" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Presentación musical</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/coloquio-4.jpg', 'Público asistente')">
+          <img src="img/coloquio-4.jpg" alt="Público asistente" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Público asistente</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/coloquio-5.jpg', 'Talleres')">
+          <img src="img/coloquio-5.jpg" alt="Talleres" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Talleres</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/coloquio-6.jpg', 'Clausura')">
+          <img src="img/coloquio-6.jpg" alt="Clausura" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Clausura</div></div>
+        </div>
+      </div>
+ 
+      <!-- Videos YouTube -->
+      <div class="yt-section">
+        <div class="yt-section-title">✦ Videos del coloquio</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+            <div class="yt-thumb">
+              <!-- La miniatura se obtiene automáticamente de YouTube con este formato:
+                   https://img.youtube.com/vi/ID_DEL_VIDEO/hqdefault.jpg -->
+              <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Coloquio 2024" />
+              <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="yt-card-body">
+              <div class="yt-card-title">Coloquio Semana de la Música Tradicional 2024</div>
+              <div class="yt-card-desc">Conferencias, ponencias y presentaciones musicales del coloquio anual.</div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID_2" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+            <div class="yt-thumb">
+              <img src="https://img.youtube.com/vi/REEMPLAZA_ID_2/hqdefault.jpg" alt="Coloquio 2023" />
+              <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="yt-card-body">
+              <div class="yt-card-title">Coloquio Semana de la Música Tradicional 2023</div>
+              <div class="yt-card-desc">Memoria del coloquio del año anterior.</div>
+            </div>
+          </a>
+          <!--
+            PARA AGREGAR MÁS VIDEOS:
+            1. Copia el bloque <a class="yt-card">...</a>
+            2. Reemplaza REEMPLAZA_ID con el ID real del video de YouTube
+               (el ID es la parte después de ?v= en la URL)
+               Ejemplo: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+               El ID sería: dQw4w9WgXcQ
+          -->
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ══ PANEL 2 — Clases Magistrales ══ -->
+    <div class="act-panel" id="act-clases">
+      <div class="act-panel-header">
+        <div>
+          <div class="section-eyebrow">✦ Formación continua</div>
+          <div class="act-panel-title"><em>Clases</em><br>Magistrales</div>
+        </div>
+        <a href="https://www.youtube.com/@conservatoriopurhepecha" target="_blank" class="yt-btn">
+          <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><path fill="var(--card)" d="M9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          Ver en YouTube
+        </a>
+      </div>
+ 
+      <div class="photo-gallery">
+        <div class="photo-item" onclick="openLightbox('img/clases-1.jpg', 'Clase magistral')">
+          <img src="img/clases-1.jpg" alt="Clase magistral" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Clase magistral</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/clases-2.jpg', 'Taller de instrumentos')">
+          <img src="img/clases-2.jpg" alt="Taller de instrumentos" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Taller de instrumentos</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/clases-3.jpg', 'Demostración musical')">
+          <img src="img/clases-3.jpg" alt="Demostración musical" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Demostración musical</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/clases-4.jpg', 'Participantes')">
+          <img src="img/clases-4.jpg" alt="Participantes" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Participantes</div></div>
+        </div>
+      </div>
+ 
+      <div class="yt-section">
+        <div class="yt-section-title">✦ Videos de clases magistrales</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+            <div class="yt-thumb">
+              <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Clase magistral" />
+              <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="yt-card-body">
+              <div class="yt-card-title">Clase magistral — Título del video</div>
+              <div class="yt-card-desc">Descripción breve de la clase magistral.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ══ PANEL 3 — Conciertos ══ -->
+    <div class="act-panel" id="act-conciertos">
+      <div class="act-panel-header">
+        <div>
+          <div class="section-eyebrow">✦ Música en vivo</div>
+          <div class="act-panel-title">Nuestros <em>conciertos</em></div>
+        </div>
+        <a href="https://www.youtube.com/@conservatoriopurhepecha" target="_blank" class="yt-btn">
+          <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><path fill="var(--card)" d="M9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          Ver en YouTube
+        </a>
+      </div>
+ 
+      <div class="photo-gallery">
+        <div class="photo-item" onclick="openLightbox('img/concierto-1.jpg', 'Concierto')">
+          <img src="img/concierto-1.jpg" alt="Concierto" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Concierto</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/concierto-2.jpg', 'Ensamble P\'urhépecha')">
+          <img src="img/concierto-2.jpg" alt="Ensamble" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Ensamble P'urhépecha</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/concierto-3.jpg', 'Presentación')">
+          <img src="img/concierto-3.jpg" alt="Presentación" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Presentación</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/concierto-4.jpg', 'Público')">
+          <img src="img/concierto-4.jpg" alt="Público" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Público</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/concierto-5.jpg', 'Solista')">
+          <img src="img/concierto-5.jpg" alt="Solista" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Solista</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/concierto-6.jpg', 'Cierre')">
+          <img src="img/concierto-6.jpg" alt="Cierre" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Cierre</div></div>
+        </div>
+      </div>
+ 
+      <div class="yt-section">
+        <div class="yt-section-title">✦ Videos de conciertos</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+            <div class="yt-thumb">
+              <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Concierto" />
+              <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="yt-card-body">
+              <div class="yt-card-title">Concierto — Título del video</div>
+              <div class="yt-card-desc">Descripción breve del concierto.</div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID_2" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+            <div class="yt-thumb">
+              <img src="https://img.youtube.com/vi/REEMPLAZA_ID_2/hqdefault.jpg" alt="Concierto" />
+              <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="yt-card-body">
+              <div class="yt-card-title">Concierto — Título del video</div>
+              <div class="yt-card-desc">Descripción breve del concierto.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ══ PANEL 4 — Festivales ══ -->
+    <div class="act-panel" id="act-festivales">
+      <div class="act-panel-header">
+        <div>
+          <div class="section-eyebrow">✦ Patrimonio vivo</div>
+          <div class="act-panel-title">Participación en <em>festivales</em></div>
+        </div>
+        <a href="https://www.youtube.com/@conservatoriopurhepecha" target="_blank" class="yt-btn">
+          <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><path fill="var(--card)" d="M9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          Ver en YouTube
+        </a>
+      </div>
+ 
+      <div class="photo-gallery">
+        <div class="photo-item" onclick="openLightbox('img/festival-1.jpg', 'Festival Erandeni')">
+          <img src="img/festival-1.jpg" alt="Festival Erandeni" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Festival Erandeni</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/festival-2.jpg', 'Participación comunitaria')">
+          <img src="img/festival-2.jpg" alt="Participación comunitaria" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Participación comunitaria</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/festival-3.jpg', 'Danza y música')">
+          <img src="img/festival-3.jpg" alt="Danza y música" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Danza y música</div></div>
+        </div>
+        <div class="photo-item" onclick="openLightbox('img/festival-4.jpg', 'Presentación')">
+          <img src="img/festival-4.jpg" alt="Presentación" loading="lazy" />
+          <div class="photo-overlay"><div class="photo-caption">Presentación</div></div>
+        </div>
+      </div>
+ 
+      <div class="yt-section">
+        <div class="yt-section-title">✦ Videos de festivales</div>
+        <div class="yt-grid">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+            <div class="yt-thumb">
+              <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Festival" />
+              <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+            </div>
+            <div class="yt-card-body">
+              <div class="yt-card-title">Festival — Título del video</div>
+              <div class="yt-card-desc">Descripción breve de la participación en el festival.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+ 
+  </section>
+ 
+  <!-- Lightbox visor de fotos -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
   <footer>
     <p>© 2025 <span>Conservatorio P'urhépecha</span> · Todos los derechos reservados · Hecho con ♥ en México</p>
   </footer>
@@ -1558,7 +2131,33 @@
       wrapper.classList.toggle('open');
     }
   </script>
-
+ <script>
+    // Subpestañas de Actividades
+    function showActTab(tab) {
+      document.querySelectorAll('.act-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.act-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('act-' + tab).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+ 
+    // Lightbox
+    function openLightbox(src, caption) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').textContent = caption;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+ 
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+ 
+    // Cerrar lightbox con tecla Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
   
 </body>
 </html>
