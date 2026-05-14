@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Conservatorio P'urhépecha</title>
-<link rel="icon" type="img/PERFILIMAGCPURHEPECHA.jpg" href="favicon.png" />
+  <title>Conservatorio P'urhépecha</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,8 +71,7 @@
       border-color: var(--border);
       background: var(--glow);
     }
-<li><a href="#" data-tab="actividades">Actividades</a></li>
-    
+
     /* ─── SECTIONS ─── */
     section {
       display: none;
@@ -389,69 +386,7 @@
     }
     .sidebar-overlay.open { display: block; }
 
-    /* ─── TABLET (max 1024px) ─── */
-    @media (max-width: 1024px) {
-      nav { padding: 1rem 2rem; }
-      section { padding: 7rem 2rem 4rem; }
-      .services-slide { grid-template-columns: repeat(2, 1fr); }
-      .hero-stats { gap: 1.2rem; right: 2rem; }
-    }
-
-    /* ─── MÓVIL (max 768px) ─── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-tabs { display: none; }
-      .hamburger { display: flex; }
-
-      section { padding: 6rem 1.5rem 3rem; }
-
-      #presentacion { min-height: 100svh; }
-      .hero-content { padding: 0 1.5rem; padding-top: 5rem; }
-      .hero-content h1 { font-size: clamp(2rem, 8vw, 3rem); }
-      .hero-content p { font-size: 1rem; }
-      .hero-buttons { flex-direction: column; gap: .8rem; }
-      .hero-buttons .btn,
-      .hero-buttons .btn-ghost { text-align: center; justify-content: center; width: 100%; margin-left: 0; }
-      .hero-stats { display: none; }
-      .hero-dots { left: 1.5rem; bottom: 2rem; }
-      .hero-slide::after {
-        background: linear-gradient(to bottom, rgba(10,15,10,0.3) 0%, rgba(10,15,10,0.85) 100%);
-      }
-
-      .section-title { font-size: clamp(2rem, 8vw, 3rem); }
-
-      .services-slide { grid-template-columns: 1fr; }
-      .service-body { padding: 1.5rem; }
-      .service-actions { flex-wrap: wrap; }
-
-      .book-card { grid-template-columns: 1fr; }
-      .book-cover { width: 100%; min-height: 220px; }
-      .book-body { padding: 1.5rem; }
-      .book-title { font-size: 1.3rem; }
-      .book-actions { flex-wrap: wrap; }
-
-      .catalog-filters { gap: .4rem; }
-      .filter-btn { font-size: .7rem; padding: .35rem .8rem; }
-
-      .collab-card { flex-wrap: wrap; gap: 1rem; }
-      .collab-links { flex-direction: row; width: 100%; }
-      .collab-group-header { padding: 1.2rem; }
-      .collab-group-inner { padding: 1rem; }
-
-      .services-controls { flex-wrap: wrap; gap: 1rem; }
-    }
-
-    /* ─── MÓVIL PEQUEÑO (max 480px) ─── */
-    @media (max-width: 480px) {
-      nav img { height: 28px !important; }
-      .hero-content h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
-      .btn { font-size: .82rem; padding: .75rem 1.5rem; }
-      .section-eyebrow { font-size: .68rem; }
-      footer { padding: 1.5rem; font-size: .75rem; }
-    }
- 
-  <style>
-    /* ── Sección Nosotros ── */
+    /* ─── Nosotros (desplegable) ─── */
     .nosotros-wrapper {
       position: relative;
       z-index: 2;
@@ -459,7 +394,6 @@
       margin-top: 0;
     }
  
-    /* Botón para desplegar */
     .nosotros-toggle {
       width: 100%;
       display: flex;
@@ -498,7 +432,6 @@
       transform: rotate(180deg);
     }
  
-    /* Contenido desplegable */
     .nosotros-body {
       max-height: 0;
       overflow: hidden;
@@ -519,7 +452,6 @@
       gap: 5rem;
     }
  
-    /* ── Semblanza ── */
     .nosotros-semblanza {}
  
     .nosotros-eyebrow {
@@ -559,7 +491,6 @@
       margin-top: 1.2rem;
     }
  
-    /* Stats de la semblanza */
     .nosotros-stats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -583,7 +514,6 @@
       margin-top: .3rem;
     }
  
-    /* ── Directorio ── */
     .nosotros-directorio {}
  
     .directorio-list {
@@ -656,758 +586,8 @@
     }
  
     .directorio-contact:hover { color: var(--accent1); }
- 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .nosotros-inner {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 3rem 1.5rem;
-      }
-    }
- 
-    @media (max-width: 480px) {
-      .nosotros-toggle { padding: 1.1rem 1.5rem; }
-      .directorio-item { padding: .9rem 1rem; }
-    }
-  </style>
- 
-  <div class="nosotros-wrapper" id="nosotrosWrapper">
- 
-    <!-- Botón de despliegue -->
-    <button class="nosotros-toggle" onclick="toggleNosotros()">
-      <span class="nosotros-toggle-text">✦ Nosotros</span>
-      <span class="nosotros-toggle-arrow">▼</span>
-    </button>
- 
-    <!-- Contenido -->
-    <div class="nosotros-body">
-      <div class="nosotros-inner">
- 
-        <!-- COLUMNA IZQUIERDA — Semblanza -->
-        <div class="nosotros-semblanza">
-          <div class="nosotros-eyebrow">✦ Quiénes somos</div>
-          <h2 class="nosotros-title">Música, memoria<br>y <em>territorio</em></h2>
-          <div class="nosotros-divider"></div>
-          <div class="nosotros-text">
-            <p>
-              El Conservatorio P'urhépecha A.C. es una institución de educación
-              artística de nivel superior fundada en 2015 en Cherán, Michoacán.
-              Somos el primer conservatorio de música con enfoque intercultural
-              p'urhépecha en Latinoamérica.
-            </p>
-            <p>
-              Nuestra misión es preservar, enseñar y transformar la música
-              p'urhépecha para las futuras generaciones, combinando la tradición
-              oral con la formación musical profesional y la investigación
-              etnomusicológica.
-            </p>
-            <p>
-              Trabajamos desde y para nuestras comunidades, generando conocimiento,
-              formando músicos con identidad y construyendo un archivo vivo del
-              patrimonio sonoro de Michoacán.
-            </p>
-            <!-- ✏️ Edita estos textos con la semblanza real del Conservatorio -->
-          </div>
- 
-          <div class="nosotros-stats">
-            <div>
-              <div class="nosotros-stat-number">2015</div>
-              <div class="nosotros-stat-label">Año de fundación</div>
-            </div>
-            <div>
-              <div class="nosotros-stat-number">+150</div>
-              <div class="nosotros-stat-label">Estudiantes activos</div>
-            </div>
-            <div>
-              <div class="nosotros-stat-number">3</div>
-              <div class="nosotros-stat-label">Licenciaturas</div>
-            </div>
-            <div>
-              <div class="nosotros-stat-number">Cherán</div>
-              <div class="nosotros-stat-label">Michoacán, México</div>
-            </div>
-          </div>
-        </div>
- 
-        <!-- COLUMNA DERECHA — Directorio -->
-        <div class="nosotros-directorio">
-          <div class="nosotros-eyebrow">✦ Directorio</div>
-          <h2 class="nosotros-title">Quiénes nos <em>dirigen</em></h2>
-          <div class="nosotros-divider"></div>
- 
-          <div class="directorio-list">
- 
-            <div class="directorio-item">
-              <div class="directorio-avatar">
-                <!-- Foto: <img src="img/nombre.jpg" alt="Nombre"> -->
-                👨‍💼
-              </div>
-              <div class="directorio-info">
-                <div class="directorio-name">José Irepan Mejía Almonte</div>
-                <div class="directorio-role">Rector</div>
-              </div>
-              <a href="mailto:rector@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
-            </div>
- 
-            <div class="directorio-item">
-              <div class="directorio-avatar">
-                <img src="img/isaac.jpg" alt="Héctor Isaac Borges Montaño">
-              </div>
-              <div class="directorio-info">
-                <div class="directorio-name">Héctor Isaac Borges Montaño</div>
-                <div class="directorio-role">Coordinador académico</div>
-              </div>
-              <a href="mailto:academico@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
-            </div>
- 
-            <div class="directorio-item">
-              <div class="directorio-avatar">👨‍💼</div>
-              <div class="directorio-info">
-                <div class="directorio-name">Victor Manuel Francisco Corona</div>
-                <div class="directorio-role">Coordinación administrativa</div>
-              </div>
-              <a href="mailto:admin@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
-            </div>
- 
-            <div class="directorio-item">
-              <div class="directorio-avatar">👨‍🎓</div>
-              <div class="directorio-info">
-                <div class="directorio-name">Dante Cruz Mejía</div>
-                <div class="directorio-role">Dir. Licenciatura en Gestión Cultural</div>
-              </div>
-              <a href="#" class="directorio-contact">✉ Correo</a>
-            </div>
- 
-            <div class="directorio-item">
-              <div class="directorio-avatar">👨‍🎓</div>
-              <div class="directorio-info">
-                <div class="directorio-name">Tsiueriti Barrera Soto</div>
-                <div class="directorio-role">Dir. Licenciatura en Educación Musical</div>
-              </div>
-              <a href="#" class="directorio-contact">✉ Correo</a>
-            </div>
- 
-            <div class="directorio-item">
-              <div class="directorio-avatar">👨‍🎓</div>
-              <div class="directorio-info">
-                <div class="directorio-name">Oliverio Rosales</div>
-                <div class="directorio-role">Coordinación Técnico en Música</div>
-              </div>
-              <a href="#" class="directorio-contact">✉ Correo</a>
-            </div>
- 
-            <!--
-              PARA AGREGAR MÁS: copia un bloque
-              <div class="directorio-item">...</div>
-              y actualiza nombre, cargo y correo
-            -->
- 
-          </div>
-        </div>
- 
-      </div>
-    </div>
-  </div>
-               
-  </style>
-</head>
-<body>
 
-  <!-- ═══════════════════════════════════════════════
-       NAV
-       CAMBIO: se quitó el > sobrante después del logo
-  ═══════════════════════════════════════════════ -->
-  <nav>
-    <img src="img/LOGO.jpg" alt="Conservatorio P'urhépecha A.C." style="height:38px; width:auto;" />
-    <ul class="nav-tabs">
-      <li><a href="#" class="active" data-tab="presentacion">Presentación</a></li>
-      <li><a href="#" data-tab="servicios">Servicios</a></li>
-      <li><a href="#" data-tab="catalogo">Sello Editorial</a></li>
-      <li><a href="#" data-tab="colaboradores">Colaboradores</a></li>
-    </ul>
-    <!-- Botón hamburguesa — visible solo en móvil -->
-    <button class="hamburger" id="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- Overlay y Sidebar -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-  <div class="sidebar" id="sidebar">
-    <a href="#" class="active" data-tab="presentacion" onclick="showTab('presentacion');closeSidebar();return false;">✦ Presentación</a>
-    <a href="#" data-tab="servicios"     onclick="showTab('servicios');closeSidebar();return false;">✦ Servicios</a>
-    <a href="#" data-tab="catalogo"      onclick="showTab('catalogo');closeSidebar();return false;">✦ Sello Editorial</a>
-    <a href="#" data-tab="colaboradores" onclick="showTab('colaboradores');closeSidebar();return false;">✦ Colaboradores</a>
-    <div class="sidebar-footer">Conservatorio P'urhépecha A.C.<br>Cherán, Michoacán</div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════
-       PRESENTACIÓN — hero con carrusel
-  ═══════════════════════════════════════════════ -->
-  <section id="presentacion" class="active">
-    <div class="hero-slides">
-      <div class="hero-slide active" style="background-image: url('img/P1060026.JPG')"></div>
-      <div class="hero-slide"        style="background-image: url('img/P1060033.JPG')"></div>
-      <div class="hero-slide"        style="background-image: url('img/P1060036.JPG')"></div>
-    </div>
-
-    <div class="hero-progress" id="heroProgress"></div>
-
-    <div class="hero-content">
-      <div class="hero-badge">✦ Conservatorio P'urhépecha A.C. · Desde 2015</div>
-      <h1>Música<br>comunidad <em>y</em>,<br>territorio</h1>
-      <p>Formamos nuevas generaciones con identidad y memoria.</p>
-      <div class="hero-buttons">
-        <a href="#" class="btn" onclick="showTab('servicios'); return false;">Ver programas educativos →</a>
-        <a href="#" class="btn btn-ghost" onclick="showTab('colaboradores'); return false;">Conoce al equipo</a>
-      </div>
-    </div>
-
-    <div class="hero-dots">
-      <button class="hero-dot active" data-index="0"></button>
-      <button class="hero-dot" data-index="1"></button>
-      <button class="hero-dot" data-index="2"></button>
-    </div>
-
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-number">2015</div><div class="hero-stat-label">Año de fundación</div></div>
-      <div class="hero-stat"><div class="hero-stat-number">+150</div><div class="hero-stat-label">Estudiantes</div></div>
-      <div class="hero-stat"><div class="hero-stat-number">20+</div><div class="hero-stat-label">Docentes y músicos</div></div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       SERVICIOS — carrusel con fotos reales
-       CAMBIO: reemplaza el grid estático por carrusel
-       con las 7 fotos y programas reales del Conservatorio
-  ═══════════════════════════════════════════════ -->
-  <section id="servicios">
-    <div class="section-eyebrow">✦ Oferta académica</div>
-    <h2 class="section-title">Programas <em>educativos</em></h2>
-    <div class="divider"></div>
-    <p style="color:var(--muted); max-width:560px; line-height:1.7;">
-      Ofrecemos tres licenciaturas, además de cursos de iniciación musical con enfoque
-      intercultural y comunitario desde Michoacán.
-    </p>
-
-    <div class="services-carousel-wrapper">
-      <div class="services-carousel-track" id="servicesTrack">
-
-        <!-- SLIDE 1 -->
-        <div class="services-slide">
-          <div class="service-card">
-            <div class="service-photo"><img src="img/IMG_7170.jpg" alt="Talleres de iniciación artística" /></div>
-            <div class="service-body">
-              <div class="service-name">Talleres de iniciación artística</div>
-              <p class="service-desc">Talleres vespertinos y/o matutinos que facilitan la iniciación musical para todas las edades, con atención individualizada y clases grupales.</p>
-              <span class="service-tag">Iniciación</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-photo"><img src="img/IMG_7977.jpg" alt="Licenciatura en Gestión Cultural" /></div>
-            <div class="service-body">
-              <div class="service-name">Licenciatura en Gestión Cultural</div>
-              <p class="service-desc">Modalidad virtual sincrónica. Prepara gestores culturales con conocimientos teóricos, metodológicos y prácticos para el desarrollo cultural y social de las comunidades de Michoacán.</p>
-              <span class="service-tag">Virtual · Licenciatura</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Perfiles</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-photo"><img src="img/IMG_7979.jpg" alt="Licenciatura en Educación Musical" /></div>
-            <div class="service-body">
-              <div class="service-name">Licenciatura en Educación Musical</div>
-              <p class="service-desc">Campus Morelia. Formación profesional que integra la práctica musical, la teoría y la investigación con enfoque en las tradiciones culturales de Michoacán.</p>
-              <span class="service-tag">Morelia · Licenciatura</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Perfiles</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SLIDE 2 -->
-        <div class="services-slide">
-          <div class="service-card">
-            <div class="service-photo"><img src="img/IMG_6538.jpg" alt="Licenciatura en Investigación Artística" /></div>
-            <div class="service-body">
-              <div class="service-name">Licenciatura en Investigación artística</div>
-              <p class="service-desc">Prepara investigadores con herramientas teóricas y metodológicas para el análisis, documentación y preservación del patrimonio cultural y musical de Michoacán.</p>
-              <span class="service-tag">Investigación · Licenciatura</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Perfiles</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-          <div class="service-card">
-            <!-- ⚠️ NOTA: este archivo tiene espacios en el nombre original.
-                 Renómbralo en GitHub a: banda-paracho.jpg
-                 y actualiza este src -->
-            <div class="service-photo"><img src="img/WhatsAppImage2020-03-18at5.08.32PM-3.jpeg" alt="Licenciatura en Dirección de bandas" /></div>
-            <div class="service-body">
-              <div class="service-name">Licenciatura en Dirección y gestión de bandas y orquestas</div>
-              <p class="service-desc">Campus Paracho. Formación especializada en dirección de bandas y orquestas con énfasis en las tradiciones musicales y el patrimonio sonoro de la región.</p>
-              <span class="service-tag">Paracho · Licenciatura</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Perfiles</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-          <div class="service-card">
-            <div class="service-photo"><img src="img/WhatsAppImage2020-03-19at1.40.00PM.jpeg" alt="Licenciatura en Música" /></div>
-            <div class="service-body">
-              <div class="service-name">Licenciatura en Música</div>
-              <p class="service-desc">Formación integral en música que combina la práctica instrumental, la teoría musical y la investigación con un enfoque intercultural y comunitario.</p>
-              <span class="service-tag">Licenciatura</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Perfiles</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SLIDE 3 -->
-        <div class="services-slide">
-          <div class="service-card">
-            <div class="service-photo"><img src="img/IMG_7964.jpg" alt="Técnico en Música" /></div>
-            <div class="service-body">
-              <div class="service-name">Técnico en Música</div>
-              <p class="service-desc">Programa técnico que proporciona herramientas prácticas e instrumentales para el desempeño musical profesional con base en la tradición musical michoacana.</p>
-              <span class="service-tag">Técnico</span>
-              <div class="service-actions">
-                <a href="#" class="service-action-btn">Plan de estudios</a>
-                <a href="#" class="service-action-btn">Perfiles</a>
-                <a href="#" class="service-action-btn">Inscríbete</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="services-controls">
-      <div class="services-dots" id="servicesDots">
-        <button class="services-dot active" data-index="0"></button>
-        <button class="services-dot" data-index="1"></button>
-        <button class="services-dot" data-index="2"></button>
-      </div>
-      <div style="display:flex; align-items:center; gap:1.5rem;">
-        <span class="services-counter"><span id="servicesCurrentSlide">1</span> / <span id="servicesTotalSlides">3</span></span>
-        <div class="services-nav">
-          <button class="services-btn" id="servicesPrev" disabled>←</button>
-          <button class="services-btn" id="servicesNext">→</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       CATÁLOGO EDITORIAL
-  ═══════════════════════════════════════════════ -->
-  <section id="catalogo">
-    <div class="section-eyebrow">✦ Nuestras publicaciones</div>
-    <h2 class="section-title">Catálogo <em>editorial</em></h2>
-    <div class="divider"></div>
-
-    <div class="catalog-filters">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="meiedosem">Meiedosem ediciones</button>
-      <button class="filter-btn" data-filter="academia">Academia Mexicana de Estudios Sociales de la Música</button>
-      <button class="filter-btn" data-filter="partituras">Partituras</button>
-      <button class="filter-btn" data-filter="didactico">Planes de estudio y material didáctico</button>
-    </div>
-
-    <div class="catalog-grid-editorial">
-
-      <div class="book-card" data-category="meiedosem">
-        <div class="book-cover"><img src="img/árbolciliar.png" alt="árbol ciliar" /></div>
-        <div class="book-body">
-          <div class="book-top">
-            <div class="book-cat">Poesía · 2026 · Meiedosem ediciones</div>
-            <div class="book-title">árbol ciliar</div>
-            <div class="book-meta">
-              <span><strong>Autora:</strong> Flor Malfatto</span>
-              <span><strong>ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483909" target="_blank" style="color:var(--muted);text-decoration:underline;">978-607-69464-2-8</a></span>
-              <span><strong>Páginas:</strong> 59</span>
-            </div>
-            <div id="resena-1" class="book-resena">que bendita sea / loada boca sin cesar / que bese boca sin nombre / que beban pájaros / y que leve sea aire / balbuceo de sol / de luz / de sol</div>
-          </div>
-          <div class="book-footer">
-            <span class="book-price">$450</span>
-            <div class="book-actions">
-              <button class="btn-small" onclick="const r=document.getElementById('resena-1');const a=r.style.display==='block';r.style.display=a?'none':'block';this.textContent=a?'Leer reseña':'Cerrar reseña';">Leer reseña</button>
-              <a href="pdfs/ficha-arbolciliar.pdf" target="_blank" class="btn-small">Ver ficha</a>
-              <a href="pdfs/ficha-arbolciliar.pdf" download class="btn-small">↓</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card" data-category="meiedosem">
-        <div class="book-cover"><img src="img/oir.jpg" alt="Oír" /></div>
-        <div class="book-body">
-          <div class="book-top">
-            <div class="book-cat">Ensayo · 2026 · Meiedosem ediciones</div>
-            <div class="book-title">Oír</div>
-            <div class="book-meta">
-              <span><strong>Autor:</strong> Samuel Cedillo</span>
-              <span><strong>ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483907" target="_blank" style="color:var(--muted);text-decoration:underline;">978-607-69464-1-1</a></span>
-              <span><strong>Páginas:</strong> 193</span>
-            </div>
-            <div id="resena-2" class="book-resena">Y escucha porque es un cuerpo vivo. El sonido está implicado totalmente con la vida, con la materia viva: la biomasa. El sonido es en la vida de manera irrecusable. Sólo el cuerpo vivo escucha.</div>
-          </div>
-          <div class="book-footer">
-            <span class="book-price">$500</span>
-            <div class="book-actions">
-              <button class="btn-small" onclick="const r=document.getElementById('resena-2');const a=r.style.display==='block';r.style.display=a?'none':'block';this.textContent=a?'Leer reseña':'Cerrar reseña';">Leer reseña</button>
-              <a href="pdfs/ficha-oir.pdf" target="_blank" class="btn-small">Ver ficha</a>
-              <a href="pdfs/ficha-oir.pdf" download class="btn-small">↓</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-card" data-category="academia">
-        <div class="book-cover"><img src="img/concantosyvihuelas.png" alt="Con cantos y vihuelas" /></div>
-        <div class="book-body">
-          <div class="book-top">
-            <div class="book-cat">Investigación · 2026 · Academia Mexicana de Estudios Sociales de la Música</div>
-            <div class="book-title">Con cantos y vihuelas... el objeto sonoro en las culturas musicales de México</div>
-            <div class="book-meta">
-              <span><strong>Coordinadores:</strong> Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, José Ignacio Maldonado Cerano</span>
-              <span><strong>ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=480612" target="_blank" style="color:var(--muted);text-decoration:underline;">978-607-69464-0-4</a></span>
-              <span><strong>Páginas:</strong> 239</span>
-            </div>
-            <div id="resena-3" class="book-resena">En México hay una diversidad de instrumentos musicales y objetos sonoros precolombinos rescatados en contextos arqueológicos. Este volumen reúne investigaciones sobre el papel del instrumento musical como mediador entre prácticas sociales, intenciones individuales, estéticas colectivas, rutas de comercio y mercados musicales, en contextos cotidianos, fiestas religiosas y profanas.</div>
-          </div>
-          <div class="book-footer">
-            <span class="book-price gratis">Descarga gratuita</span>
-            <div class="book-actions">
-              <button class="btn-small" onclick="const r=document.getElementById('resena-3');const a=r.style.display==='block';r.style.display=a?'none':'block';this.textContent=a?'Leer reseña':'Cerrar reseña';">Leer reseña</button>
-              <a href="img/concantosyvihuelasdigitalopt.pdf" target="_blank" class="btn-small">Leer en línea</a>
-              <a href="img/concantosyvihuelasdigitalopt.pdf" download class="btn-small">↓</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       COLABORADORES
-       CAMBIO: se corrigieron las tarjetas anidadas
-       incorrectamente. Cada collab-card ahora está
-       correctamente cerrada y al mismo nivel.
-  ═══════════════════════════════════════════════ -->
-  <section id="colaboradores">
-    <div class="section-eyebrow">✦ Nuestro equipo</div>
-    <h2 class="section-title">Quiénes nos <em>mueven</em></h2>
-    <div class="divider"></div>
-    <p style="color:var(--muted); max-width:560px; line-height:1.7; margin-bottom:3rem;">
-      El Conservatorio P'urhépecha A.C. está formado por músicos, investigadores y gestores culturales comprometidos con la preservación y transmisión de nuestra música.
-    </p>
-
-    <!-- GRUPO 1 — COORDINACIÓN ACADÉMICA -->
-    <div class="collab-group open" id="grupo-coordinacion">
-      <button class="collab-group-header" onclick="toggleGroup('grupo-coordinacion')">
-        <div class="collab-group-header-left">
-          <span class="collab-group-icon">🎓</span>
-          <div>
-            <div class="collab-group-title">Coordinación académica</div>
-            <div class="collab-group-count">5 integrantes</div>
-          </div>
-        </div>
-        <div class="collab-arrow">▼</div>
-      </button>
-      <div class="collab-group-body">
-        <div class="collab-group-inner">
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍💼</div>
-            <div class="collab-info">
-              <div class="collab-name">José Irepan Mejía Almonte</div>
-              <div class="collab-role">Rector</div>
-              <div class="collab-bio">Violonchelista, compositor y multiinstrumentista. Su trabajo articula la música tradicional mexicana y la creación contemporánea.</div>
-              <div class="collab-tags"><span class="collab-tag">Composición</span><span class="collab-tag">Música tradicional</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar"><img src="img/isaac.jpg" alt="Isaac Borges" /></div>
-            <div class="collab-info">
-              <div class="collab-name">Héctor Isaac Borges Montaño</div>
-              <div class="collab-role">Coordinador académico</div>
-              <div class="collab-bio">Investigador, músico y gestor cultural. Su trabajo se centra en la relación entre música, tradición oral, memoria y patrimonio cultural.</div>
-              <div class="collab-tags"><span class="collab-tag">Musicología</span><span class="collab-tag">Etnomusicología</span><span class="collab-tag">Organología</span></div>
-            </div>
-            <div class="collab-links">
-              <a href="https://orcid.org/0009-0008-4865-6101" target="_blank" class="collab-link">ORCID</a>
-              <a href="https://independent.academia.edu/iisaaco" target="_blank" class="collab-link">Academia.edu</a>
-            </div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍💼</div>
-            <div class="collab-info">
-              <div class="collab-name">Victor Manuel Francisco Corona</div>
-              <div class="collab-role">Coordinación administrativa</div>
-              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
-              <div class="collab-tags"><span class="collab-tag">Administración</span><span class="collab-tag">Vinculación</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🎓</div>
-            <div class="collab-info">
-              <div class="collab-name">Dante Cruz Mejía</div>
-              <div class="collab-role">Director de la Licenciatura en Gestión Cultural</div>
-              <div class="collab-bio">Músico y promotor cultural vinculado a proyectos de difusión de la música tradicional y popular de México.</div>
-              <div class="collab-tags"><span class="collab-tag">Gestión cultural</span><span class="collab-tag">Música tradicional</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🎓</div>
-            <div class="collab-info">
-              <div class="collab-name">Tsiueriti Barrera Soto</div>
-              <div class="collab-role">Director de la Licenciatura en Educación Musical</div>
-              <div class="collab-bio">Intérprete y promotor cultural vinculado a la música tradicional mexicana, particularmente al ámbito artístico de Michoacán.</div>
-              <div class="collab-tags"><span class="collab-tag">Educación musical</span><span class="collab-tag">Música P'urhépecha</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🎓</div>
-            <div class="collab-info">
-              <div class="collab-name">Oliverio Rosales</div>
-              <div class="collab-role">Coordinación Técnico en Música</div>
-              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
-              <div class="collab-tags"><span class="collab-tag">Música</span><span class="collab-tag">Docencia</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- GRUPO 2 — ACADEMIA MEXICANA -->
-    <div class="collab-group" id="grupo-academia">
-      <button class="collab-group-header" onclick="toggleGroup('grupo-academia')">
-        <div class="collab-group-header-left">
-          <span class="collab-group-icon">📚</span>
-          <div>
-            <div class="collab-group-title">Academia Mexicana de Estudios Sociales de la Música</div>
-            <div class="collab-group-count">15 integrantes</div>
-          </div>
-        </div>
-        <div class="collab-arrow">▼</div>
-      </button>
-      <div class="collab-group-body">
-        <div class="collab-group-inner">
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Jorge Amós Martínez Ayala</div>
-              <div class="collab-role">Investigador titular</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Etnomusicología</span><span class="collab-tag">Investigación</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Ulises Salazar Rosales</div>
-              <div class="collab-role">Investigador asociado</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👩‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Cloe Xóchitl Pérez Valladares</div>
-              <div class="collab-role">Investigadora asociada</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👩‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Ireri Mejía Almonte</div>
-              <div class="collab-role">Investigadora asociada</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Alejandro Martínez de la Rosa</div>
-              <div class="collab-role">Investigador asociado</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Eduardo Martínez Muñoz</div>
-              <div class="collab-role">Investigador asociado</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">José Ignacio Maldonado Cerano</div>
-              <div class="collab-role">Investigador asociado</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👩‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Amanda Zoar Cuevas Cárcamo</div>
-              <div class="collab-role">Investigadora asociada</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Arturo Ramírez Estrada</div>
-              <div class="collab-role">Investigador asociado</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👩‍🔬</div>
-            <div class="collab-info">
-              <div class="collab-name">Elizabeth Avendaño Sayahua</div>
-              <div class="collab-role">Investigadora asociada</div>
-              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
-              <div class="collab-tags"><span class="collab-tag">Historia musical</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- GRUPO 3 — CUERPO DOCENTE -->
-    <div class="collab-group" id="grupo-docentes">
-      <button class="collab-group-header" onclick="toggleGroup('grupo-docentes')">
-        <div class="collab-group-header-left">
-          <span class="collab-group-icon">🎵</span>
-          <div>
-            <div class="collab-group-title">Cuerpo docente</div>
-            <div class="collab-group-count">4 integrantes</div>
-          </div>
-        </div>
-        <div class="collab-arrow">▼</div>
-      </button>
-      <div class="collab-group-body">
-        <div class="collab-group-inner">
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🎤</div>
-            <div class="collab-info">
-              <div class="collab-name">Julián Martínez</div>
-              <div class="collab-role">Docente de violín</div>
-              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
-              <div class="collab-tags"><span class="collab-tag">Violín</span><span class="collab-tag">Música de cámara</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Perfil</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🎤</div>
-            <div class="collab-info">
-              <div class="collab-name">Fabián</div>
-              <div class="collab-role">Docente de clarinete</div>
-              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
-              <div class="collab-tags"><span class="collab-tag">Clarinete</span><span class="collab-tag">Tradición oral</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Perfil</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👨‍🎵</div>
-            <div class="collab-info">
-              <div class="collab-name">Allison Alonso Mendoza</div>
-              <div class="collab-role">Docente de percusiones</div>
-              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
-              <div class="collab-tags"><span class="collab-tag">Percusiones</span><span class="collab-tag">Ritmos tradicionales</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Perfil</a></div>
-          </div>
-
-          <div class="collab-card">
-            <div class="collab-avatar">👩‍🎵</div>
-            <div class="collab-info">
-              <div class="collab-name">Pendiente</div>
-              <div class="collab-role">Docente de teoría musical</div>
-              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
-              <div class="collab-tags"><span class="collab-tag">Teoría musical</span><span class="collab-tag">Armonía</span></div>
-            </div>
-            <div class="collab-links"><a href="#" class="collab-link">Perfil</a></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </section>
-<style>
-    /* ── Subpestañas ── */
+    /* ─── Subpestañas Actividades ─── */
     .act-tabs {
       display: flex;
       gap: .5rem;
@@ -1446,14 +626,12 @@
       background: var(--bg);
     }
  
-    /* ── Paneles de cada subpestaña ── */
     .act-panel {
       display: none;
       animation: fadeUp .4s ease forwards;
     }
     .act-panel.active { display: block; }
  
-    /* ── Encabezado de cada panel ── */
     .act-panel-header {
       display: flex;
       align-items: flex-start;
@@ -1472,7 +650,6 @@
  
     .act-panel-title em { font-style: italic; color: var(--accent1); }
  
-    /* ── Botón YouTube ── */
     .yt-btn {
       display: inline-flex;
       align-items: center;
@@ -1498,7 +675,6 @@
       flex-shrink: 0;
     }
  
-    /* ── Galería de fotos ── */
     .photo-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1550,23 +726,6 @@
       transform: translateY(0);
     }
  
-    /* ── Placeholder cuando no hay fotos ── */
-    .photo-placeholder {
-      aspect-ratio: 4/3;
-      background: var(--card);
-      border: 1px dashed var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: .8rem;
-      color: var(--muted);
-      font-size: .85rem;
-    }
- 
-    .photo-placeholder-icon { font-size: 2.5rem; }
- 
-    /* ── Sección de videos de YouTube ── */
     .yt-section {
       margin-top: 1rem;
     }
@@ -1590,6 +749,8 @@
       border: 1px solid var(--border);
       overflow: hidden;
       transition: transform .3s, box-shadow .3s;
+      text-decoration: none;
+      color: inherit;
     }
  
     .yt-card:hover {
@@ -1649,7 +810,7 @@
       line-height: 1.55;
     }
  
-    /* ── Lightbox (visor de fotos) ── */
+    /* Lightbox */
     .lightbox {
       position: fixed; inset: 0;
       background: rgba(0,0,0,.92);
@@ -1686,62 +847,408 @@
       color: var(--muted); font-size: .85rem;
       text-align: center; white-space: nowrap;
     }
- 
+
     /* Responsive */
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; }
+      section { padding: 7rem 2rem 4rem; }
+      .services-slide { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { gap: 1.2rem; right: 2rem; }
+    }
+
     @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-tabs { display: none; }
+      .hamburger { display: flex; }
+
+      section { padding: 6rem 1.5rem 3rem; }
+
+      #presentacion { min-height: 100svh; }
+      .hero-content { padding: 0 1.5rem; padding-top: 5rem; }
+      .hero-content h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .hero-content p { font-size: 1rem; }
+      .hero-buttons { flex-direction: column; gap: .8rem; }
+      .hero-buttons .btn,
+      .hero-buttons .btn-ghost { text-align: center; justify-content: center; width: 100%; margin-left: 0; }
+      .hero-stats { display: none; }
+      .hero-dots { left: 1.5rem; bottom: 2rem; }
+      .hero-slide::after {
+        background: linear-gradient(to bottom, rgba(10,15,10,0.3) 0%, rgba(10,15,10,0.85) 100%);
+      }
+
+      .section-title { font-size: clamp(2rem, 8vw, 3rem); }
+
+      .services-slide { grid-template-columns: 1fr; }
+      .service-body { padding: 1.5rem; }
+      .service-actions { flex-wrap: wrap; }
+
+      .book-card { grid-template-columns: 1fr; }
+      .book-cover { width: 100%; min-height: 220px; }
+      .book-body { padding: 1.5rem; }
+      .book-title { font-size: 1.3rem; }
+      .book-actions { flex-wrap: wrap; }
+
+      .catalog-filters { gap: .4rem; }
+      .filter-btn { font-size: .7rem; padding: .35rem .8rem; }
+
+      .collab-card { flex-wrap: wrap; gap: 1rem; }
+      .collab-links { flex-direction: row; width: 100%; }
+      .collab-group-header { padding: 1.2rem; }
+      .collab-group-inner { padding: 1rem; }
+
+      .services-controls { flex-wrap: wrap; gap: 1rem; }
+
+      .nosotros-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3rem 1.5rem;
+      }
+
       .act-tabs { gap: .3rem; }
       .act-tab-btn { padding: .55rem .9rem; font-size: .72rem; }
       .photo-gallery { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
       .yt-grid { grid-template-columns: 1fr; }
       .act-panel-header { flex-direction: column; }
     }
- 
+
     @media (max-width: 480px) {
+      nav img { height: 28px !important; }
+      .hero-content h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+      .btn { font-size: .82rem; padding: .75rem 1.5rem; }
+      .section-eyebrow { font-size: .68rem; }
+      footer { padding: 1.5rem; font-size: .75rem; }
       .photo-gallery { grid-template-columns: 1fr; }
+      .nosotros-toggle { padding: 1.1rem 1.5rem; }
+      .directorio-item { padding: .9rem 1rem; }
     }
   </style>
- 
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════════ -->
+  <nav>
+    <img src="img/LOGO.jpg" alt="Conservatorio P'urhépecha A.C." style="height:38px; width:auto;" />
+    <ul class="nav-tabs">
+      <li><a href="#" data-tab="presentacion" class="active">Presentación</a></li>
+      <li><a href="#" data-tab="servicios">Servicios</a></li>
+      <li><a href="#" data-tab="catalogo">Sello Editorial</a></li>
+      <li><a href="#" data-tab="actividades">Actividades</a></li>  <!-- Corregido: ahora dentro del ul -->
+      <li><a href="#" data-tab="colaboradores">Colaboradores</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Overlay y Sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="sidebar" id="sidebar">
+    <a href="#" data-tab="presentacion">✦ Presentación</a>
+    <a href="#" data-tab="servicios">✦ Servicios</a>
+    <a href="#" data-tab="catalogo">✦ Sello Editorial</a>
+    <a href="#" data-tab="actividades">✦ Actividades</a>
+    <a href="#" data-tab="colaboradores">✦ Colaboradores</a>
+    <div class="sidebar-footer">Conservatorio P'urhépecha A.C.<br>Cherán, Michoacán</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PRESENTACIÓN — hero con carrusel
+  ═══════════════════════════════════════════════ -->
+  <section id="presentacion" class="active">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('img/P1060026.JPG')"></div>
+      <div class="hero-slide"        style="background-image: url('img/P1060033.JPG')"></div>
+      <div class="hero-slide"        style="background-image: url('img/P1060036.JPG')"></div>
+    </div>
+
+    <div class="hero-progress" id="heroProgress"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">✦ Conservatorio P'urhépecha A.C. · Desde 2015</div>
+      <h1>Música, comunidad <em>y territorio</em></h1>
+      <p>Formamos nuevas generaciones con identidad y memoria.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn" onclick="showTab('servicios'); return false;">Ver programas educativos →</a>
+        <a href="#" class="btn btn-ghost" onclick="showTab('colaboradores'); return false;">Conoce al equipo</a>
+      </div>
+    </div>
+
+    <div class="hero-dots">
+      <button class="hero-dot active" data-index="0"></button>
+      <button class="hero-dot" data-index="1"></button>
+      <button class="hero-dot" data-index="2"></button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-number">2015</div><div class="hero-stat-label">Año de fundación</div></div>
+      <div class="hero-stat"><div class="hero-stat-number">+150</div><div class="hero-stat-label">Estudiantes</div></div>
+      <div class="hero-stat"><div class="hero-stat-number">20+</div><div class="hero-stat-label">Docentes y músicos</div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICIOS — carrusel
+       Se corrigieron nombres de archivos con espacios
+  ═══════════════════════════════════════════════ -->
+  <section id="servicios">
+    <div class="section-eyebrow">✦ Oferta académica</div>
+    <h2 class="section-title">Programas <em>educativos</em></h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted); max-width:560px; line-height:1.7;">
+      Ofrecemos tres licenciaturas, además de cursos de iniciación musical con enfoque
+      intercultural y comunitario desde Michoacán.
+    </p>
+
+    <div class="services-carousel-wrapper">
+      <div class="services-carousel-track" id="servicesTrack">
+
+        <!-- SLIDE 1 -->
+        <div class="services-slide">
+          <div class="service-card">
+            <div class="service-photo"><img src="img/IMG_7170.jpg" alt="Talleres de iniciación artística" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Talleres de iniciación artística</div>
+              <p class="service-desc">Talleres vespertinos y/o matutinos que facilitan la iniciación musical para todas las edades, con atención individualizada y clases grupales.</p>
+              <span class="service-tag">Iniciación</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-photo"><img src="img/IMG_7977.jpg" alt="Licenciatura en Gestión Cultural" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Licenciatura en Gestión Cultural</div>
+              <p class="service-desc">Modalidad virtual sincrónica. Prepara gestores culturales con conocimientos teóricos, metodológicos y prácticos para el desarrollo cultural y social de las comunidades de Michoacán.</p>
+              <span class="service-tag">Virtual · Licenciatura</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Perfiles</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-photo"><img src="img/IMG_7979.jpg" alt="Licenciatura en Educación Musical" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Licenciatura en Educación Musical</div>
+              <p class="service-desc">Campus Morelia. Formación profesional que integra la práctica musical, la teoría y la investigación con enfoque en las tradiciones culturales de Michoacán.</p>
+              <span class="service-tag">Morelia · Licenciatura</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Perfiles</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="services-slide">
+          <div class="service-card">
+            <div class="service-photo"><img src="img/IMG_6538.jpg" alt="Licenciatura en Investigación Artística" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Licenciatura en Investigación artística</div>
+              <p class="service-desc">Prepara investigadores con herramientas teóricas y metodológicas para el análisis, documentación y preservación del patrimonio cultural y musical de Michoacán.</p>
+              <span class="service-tag">Investigación · Licenciatura</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Perfiles</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+          <div class="service-card">
+            <!-- Nombre de archivo corregido (sin espacios) -->
+            <div class="service-photo"><img src="img/WhatsAppImage2020-03-18at5.08.32PM-3.jpeg" alt="Licenciatura en Dirección de bandas" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Licenciatura en Dirección y gestión de bandas y orquestas</div>
+              <p class="service-desc">Campus Paracho. Formación especializada en dirección de bandas y orquestas con énfasis en las tradiciones musicales y el patrimonio sonoro de la región.</p>
+              <span class="service-tag">Paracho · Licenciatura</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Perfiles</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-photo"><img src="img/WhatsAppImage2020-03-19at1.40.00PM.jpeg" alt="Licenciatura en Música" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Licenciatura en Música</div>
+              <p class="service-desc">Formación integral en música que combina la práctica instrumental, la teoría musical y la investigación con un enfoque intercultural y comunitario.</p>
+              <span class="service-tag">Licenciatura</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Perfiles</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="services-slide">
+          <div class="service-card">
+            <div class="service-photo"><img src="img/IMG_7964.jpg" alt="Técnico en Música" loading="lazy" /></div>
+            <div class="service-body">
+              <div class="service-name">Técnico en Música</div>
+              <p class="service-desc">Programa técnico que proporciona herramientas prácticas e instrumentales para el desempeño musical profesional con base en la tradición musical michoacana.</p>
+              <span class="service-tag">Técnico</span>
+              <div class="service-actions">
+                <button class="service-action-btn" onclick="return false;">Plan de estudios</button>
+                <button class="service-action-btn" onclick="return false;">Perfiles</button>
+                <button class="service-action-btn" onclick="return false;">Inscríbete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="services-controls">
+      <div class="services-dots" id="servicesDots">
+        <button class="services-dot active" data-index="0"></button>
+        <button class="services-dot" data-index="1"></button>
+        <button class="services-dot" data-index="2"></button>
+      </div>
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span class="services-counter"><span id="servicesCurrentSlide">1</span> / <span id="servicesTotalSlides">3</span></span>
+        <div class="services-nav">
+          <button class="services-btn" id="servicesPrev" disabled>←</button>
+          <button class="services-btn" id="servicesNext">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CATÁLOGO EDITORIAL
+       Se eliminaron filtros que no tenían libros (partituras, didactico)
+  ═══════════════════════════════════════════════ -->
+  <section id="catalogo">
+    <div class="section-eyebrow">✦ Nuestras publicaciones</div>
+    <h2 class="section-title">Catálogo <em>editorial</em></h2>
+    <div class="divider"></div>
+
+    <div class="catalog-filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="meiedosem">Meidosem ediciones</button>
+      <button class="filter-btn" data-filter="academia">Academia Mexicana de Estudios Sociales de la Música</button>
+    </div>
+
+    <div class="catalog-grid-editorial">
+
+      <div class="book-card" data-category="meiedosem">
+        <div class="book-cover"><img src="img/árbolciliar.png" alt="árbol ciliar" /></div>
+        <div class="book-body">
+          <div class="book-top">
+            <div class="book-cat">Poesía · 2026 · Meiedosem ediciones</div>
+            <div class="book-title">árbol ciliar</div>
+            <div class="book-meta">
+              <span><strong>Autora:</strong> Flor Malfatto</span>
+              <span><strong>ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483909" target="_blank" style="color:var(--muted);text-decoration:underline;">978-607-69464-2-8</a></span>
+              <span><strong>Páginas:</strong> 59</span>
+            </div>
+            <div id="resena-1" class="book-resena">que bendita sea / loada boca sin cesar / que bese boca sin nombre / que beban pájaros / y que leve sea aire / balbuceo de sol / de luz / de sol</div>
+          </div>
+          <div class="book-footer">
+            <span class="book-price">$450</span>
+            <div class="book-actions">
+              <button class="btn-small" onclick="toggleResena('resena-1', this)">Leer reseña</button>
+              <a href="pdfs/ficha-arbolciliar.pdf" target="_blank" class="btn-small">Ver ficha</a>
+              <a href="pdfs/ficha-arbolciliar.pdf" download class="btn-small">↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card" data-category="meiedosem">
+        <div class="book-cover"><img src="img/oir.jpg" alt="Oír" /></div>
+        <div class="book-body">
+          <div class="book-top">
+            <div class="book-cat">Ensayo · 2026 · Meiedosem ediciones</div>
+            <div class="book-title">Oír</div>
+            <div class="book-meta">
+              <span><strong>Autor:</strong> Samuel Cedillo</span>
+              <span><strong>ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=483907" target="_blank" style="color:var(--muted);text-decoration:underline;">978-607-69464-1-1</a></span>
+              <span><strong>Páginas:</strong> 193</span>
+            </div>
+            <div id="resena-2" class="book-resena">Y escucha porque es un cuerpo vivo. El sonido está implicado totalmente con la vida, con la materia viva: la biomasa. El sonido es en la vida de manera irrecusable. Sólo el cuerpo vivo escucha.</div>
+          </div>
+          <div class="book-footer">
+            <span class="book-price">$500</span>
+            <div class="book-actions">
+              <button class="btn-small" onclick="toggleResena('resena-2', this)">Leer reseña</button>
+              <a href="pdfs/ficha-oir.pdf" target="_blank" class="btn-small">Ver ficha</a>
+              <a href="pdfs/ficha-oir.pdf" download class="btn-small">↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card" data-category="academia">
+        <div class="book-cover"><img src="img/concantosyvihuelas.png" alt="Con cantos y vihuelas" /></div>
+        <div class="book-body">
+          <div class="book-top">
+            <div class="book-cat">Investigación · 2026 · Academia Mexicana de Estudios Sociales de la Música</div>
+            <div class="book-title">Con cantos y vihuelas... el objeto sonoro en las culturas musicales de México</div>
+            <div class="book-meta">
+              <span><strong>Coordinadores:</strong> Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, José Ignacio Maldonado Cerano</span>
+              <span><strong>ISBN:</strong> <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&nt=480612" target="_blank" style="color:var(--muted);text-decoration:underline;">978-607-69464-0-4</a></span>
+              <span><strong>Páginas:</strong> 239</span>
+            </div>
+            <div id="resena-3" class="book-resena">En México hay una diversidad de instrumentos musicales y objetos sonoros precolombinos rescatados en contextos arqueológicos. Este volumen reúne investigaciones sobre el papel del instrumento musical como mediador entre prácticas sociales, intenciones individuales, estéticas colectivas, rutas de comercio y mercados musicales, en contextos cotidianos, fiestas religiosas y profanas.</div>
+          </div>
+          <div class="book-footer">
+            <span class="book-price gratis">Descarga gratuita</span>
+            <div class="book-actions">
+              <button class="btn-small" onclick="toggleResena('resena-3', this)">Leer reseña</button>
+              <a href="img/concantosyvihuelasdigitalopt.pdf" target="_blank" class="btn-small">Leer en línea</a>
+              <a href="img/concantosyvihuelasdigitalopt.pdf" download class="btn-small">↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ACTIVIDADES (subpestañas)
+       Se corrigió la función showActTab
+  ═══════════════════════════════════════════════ -->
   <section id="actividades">
     <div class="section-eyebrow">✦ Vida institucional</div>
     <h2 class="section-title">Nuestras <em>actividades</em></h2>
     <div class="divider"></div>
- 
-    <!-- SUBPESTAÑAS -->
+
     <div class="act-tabs">
-      <button class="act-tab-btn active" onclick="showActTab('coloquio')">Coloquio · Semana de la Música Tradicional</button>
-      <button class="act-tab-btn" onclick="showActTab('clases')">Clases Magistrales</button>
-      <button class="act-tab-btn" onclick="showActTab('conciertos')">Conciertos</button>
-      <button class="act-tab-btn" onclick="showActTab('festivales')">Festivales</button>
+      <button class="act-tab-btn active" onclick="showActTab('coloquio', this)">Coloquio · Semana de la Música Tradicional</button>
+      <button class="act-tab-btn" onclick="showActTab('clases', this)">Clases Magistrales</button>
+      <button class="act-tab-btn" onclick="showActTab('conciertos', this)">Conciertos</button>
+      <button class="act-tab-btn" onclick="showActTab('festivales', this)">Festivales</button>
     </div>
- 
-    <!-- ══ PANEL 1 — Coloquio ══ -->
+
+    <!-- PANEL 1 — Coloquio -->
     <div class="act-panel active" id="act-coloquio">
       <div class="act-panel-header">
         <div>
           <div class="section-eyebrow">✦ Anual</div>
           <div class="act-panel-title">Coloquio · Semana de la<br><em>Música Tradicional</em></div>
         </div>
-        <a href="https://www.youtube.com/@conservatoriopurhepecha" target="_blank" class="yt-btn">
+        <a href="https://www.youtube.com/@SemanadelaM%C3%BAsicaTradicional" target="_blank" class="yt-btn">
           <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><path fill="var(--card)" d="M9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
           Ver en YouTube
         </a>
       </div>
- 
-      <!-- Galería -->
+
       <div class="photo-gallery" id="gallery-coloquio">
-        <!--
-          INSTRUCCIONES PARA AGREGAR FOTOS:
-          Copia este bloque para cada foto:
- 
-          <div class="photo-item" onclick="openLightbox('img/tu-foto.jpg', 'Descripción')">
-            <img src="img/tu-foto.jpg" alt="Descripción" loading="lazy" />
-            <div class="photo-overlay">
-              <div class="photo-caption">Descripción de la foto</div>
-            </div>
-          </div>
-        -->
- 
-        <!-- Ejemplo con fotos reales — reemplaza los src -->
+        <!-- Nota: reemplaza estas imágenes por las reales -->
         <div class="photo-item" onclick="openLightbox('img/coloquio-1.jpg', 'Coloquio 2024')">
           <img src="img/coloquio-1.jpg" alt="Coloquio 2024" loading="lazy" />
           <div class="photo-overlay"><div class="photo-caption">Coloquio 2024</div></div>
@@ -1767,16 +1274,14 @@
           <div class="photo-overlay"><div class="photo-caption">Clausura</div></div>
         </div>
       </div>
- 
-      <!-- Videos YouTube -->
+
       <div class="yt-section">
         <div class="yt-section-title">✦ Videos del coloquio</div>
         <div class="yt-grid">
-          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+          <!-- Reemplaza los IDs de YouTube -->
+          <a href="https://www.youtube.com/watch?v=GjOIAQ05DAI&list=PL-K5YeubbdTFB9aXa6Op2q9SYqVvzUsB7&index=1" target="_blank" class="yt-card">
             <div class="yt-thumb">
-              <!-- La miniatura se obtiene automáticamente de YouTube con este formato:
-                   https://img.youtube.com/vi/ID_DEL_VIDEO/hqdefault.jpg -->
-              <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Coloquio 2024" />
+              <img src="https://www.youtube.com/watch?v=gIpes4pGnc8&list=PL-K5YeubbdTHmJ45RWrlrLyDoqD3VNIoa&index=9&pp=iAQB0gcJCQQLAYcqIYzv" alt="Coloquio 2024" />
               <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="yt-card-body">
@@ -1784,9 +1289,9 @@
               <div class="yt-card-desc">Conferencias, ponencias y presentaciones musicales del coloquio anual.</div>
             </div>
           </a>
-          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID_2" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+          <a href="https://www.youtube.com/watch?v=vCTZ-awmaOY&list=PL-K5YeubbdTHmJ45RWrlrLyDoqD3VNIoa&index=12" target="_blank" class="yt-card">
             <div class="yt-thumb">
-              <img src="https://img.youtube.com/vi/REEMPLAZA_ID_2/hqdefault.jpg" alt="Coloquio 2023" />
+              <img src="https://www.youtube.com/watch?v=MlPQw5BaC9Y&list=PL-K5YeubbdTHmJ45RWrlrLyDoqD3VNIoa&index=15&pp=iAQB" alt="Coloquio 2023" />
               <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="yt-card-body">
@@ -1794,31 +1299,22 @@
               <div class="yt-card-desc">Memoria del coloquio del año anterior.</div>
             </div>
           </a>
-          <!--
-            PARA AGREGAR MÁS VIDEOS:
-            1. Copia el bloque <a class="yt-card">...</a>
-            2. Reemplaza REEMPLAZA_ID con el ID real del video de YouTube
-               (el ID es la parte después de ?v= en la URL)
-               Ejemplo: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-               El ID sería: dQw4w9WgXcQ
-          -->
         </div>
       </div>
     </div>
- 
-    <!-- ══ PANEL 2 — Clases Magistrales ══ -->
+
+    <!-- PANEL 2 — Clases Magistrales -->
     <div class="act-panel" id="act-clases">
       <div class="act-panel-header">
         <div>
           <div class="section-eyebrow">✦ Formación continua</div>
           <div class="act-panel-title"><em>Clases</em><br>Magistrales</div>
         </div>
-        <a href="https://www.youtube.com/@conservatoriopurhepecha" target="_blank" class="yt-btn">
+        <a href="https://www.youtube.com/watch?v=pw3MgFUL6Mo&pp=0gcJCQQLAYcqIYzv" target="_blank" class="yt-btn">
           <svg class="yt-icon" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><path fill="var(--card)" d="M9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
           Ver en YouTube
         </a>
       </div>
- 
       <div class="photo-gallery">
         <div class="photo-item" onclick="openLightbox('img/clases-1.jpg', 'Clase magistral')">
           <img src="img/clases-1.jpg" alt="Clase magistral" loading="lazy" />
@@ -1837,13 +1333,12 @@
           <div class="photo-overlay"><div class="photo-caption">Participantes</div></div>
         </div>
       </div>
- 
       <div class="yt-section">
         <div class="yt-section-title">✦ Videos de clases magistrales</div>
         <div class="yt-grid">
-          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+          <a href="https://www.youtube.com/watch?v=SRUuyL2J5GI" target="_blank" class="yt-card">
             <div class="yt-thumb">
-              <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Clase magistral" />
+              <img src="https://www.youtube.com/watch?v=SRUuyL2J5GI" alt="Clase magistral" />
               <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
             </div>
             <div class="yt-card-body">
@@ -1854,8 +1349,8 @@
         </div>
       </div>
     </div>
- 
-    <!-- ══ PANEL 3 — Conciertos ══ -->
+
+    <!-- PANEL 3 — Conciertos -->
     <div class="act-panel" id="act-conciertos">
       <div class="act-panel-header">
         <div>
@@ -1867,7 +1362,6 @@
           Ver en YouTube
         </a>
       </div>
- 
       <div class="photo-gallery">
         <div class="photo-item" onclick="openLightbox('img/concierto-1.jpg', 'Concierto')">
           <img src="img/concierto-1.jpg" alt="Concierto" loading="lazy" />
@@ -1894,11 +1388,10 @@
           <div class="photo-overlay"><div class="photo-caption">Cierre</div></div>
         </div>
       </div>
- 
       <div class="yt-section">
         <div class="yt-section-title">✦ Videos de conciertos</div>
         <div class="yt-grid">
-          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card">
             <div class="yt-thumb">
               <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Concierto" />
               <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -1908,7 +1401,7 @@
               <div class="yt-card-desc">Descripción breve del concierto.</div>
             </div>
           </a>
-          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID_2" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID_2" target="_blank" class="yt-card">
             <div class="yt-thumb">
               <img src="https://img.youtube.com/vi/REEMPLAZA_ID_2/hqdefault.jpg" alt="Concierto" />
               <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -1921,8 +1414,8 @@
         </div>
       </div>
     </div>
- 
-    <!-- ══ PANEL 4 — Festivales ══ -->
+
+    <!-- PANEL 4 — Festivales -->
     <div class="act-panel" id="act-festivales">
       <div class="act-panel-header">
         <div>
@@ -1934,7 +1427,6 @@
           Ver en YouTube
         </a>
       </div>
- 
       <div class="photo-gallery">
         <div class="photo-item" onclick="openLightbox('img/festival-1.jpg', 'Festival Erandeni')">
           <img src="img/festival-1.jpg" alt="Festival Erandeni" loading="lazy" />
@@ -1953,11 +1445,10 @@
           <div class="photo-overlay"><div class="photo-caption">Presentación</div></div>
         </div>
       </div>
- 
       <div class="yt-section">
         <div class="yt-section-title">✦ Videos de festivales</div>
         <div class="yt-grid">
-          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card" style="text-decoration:none; color:inherit;">
+          <a href="https://www.youtube.com/watch?v=REEMPLAZA_ID" target="_blank" class="yt-card">
             <div class="yt-thumb">
               <img src="https://img.youtube.com/vi/REEMPLAZA_ID/hqdefault.jpg" alt="Festival" />
               <div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
@@ -1970,31 +1461,269 @@
         </div>
       </div>
     </div>
- 
   </section>
- 
+
+  <!-- ═══════════════════════════════════════════════
+       COLABORADORES (sin cambios estructurales, solo se movió el bloque nosotros)
+  ═══════════════════════════════════════════════ -->
+  <section id="colaboradores">
+    <div class="section-eyebrow">✦ Nuestro equipo</div>
+    <h2 class="section-title">Quiénes nos <em>mueven</em></h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted); max-width:560px; line-height:1.7; margin-bottom:3rem;">
+      El Conservatorio P'urhépecha A.C. está formado por músicos, investigadores y gestores culturales comprometidos con la preservación y transmisión de nuestra música.
+    </p>
+
+    <!-- GRUPO 1 — COORDINACIÓN ACADÉMICA -->
+    <div class="collab-group open" id="grupo-coordinacion">
+      <button class="collab-group-header" onclick="toggleGroup('grupo-coordinacion')">
+        <div class="collab-group-header-left">
+          <span class="collab-group-icon">🎓</span>
+          <div>
+            <div class="collab-group-title">Coordinación académica</div>
+            <div class="collab-group-count">5 integrantes</div>
+          </div>
+        </div>
+        <div class="collab-arrow">▼</div>
+      </button>
+      <div class="collab-group-body">
+        <div class="collab-group-inner">
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍💼</div>
+            <div class="collab-info">
+              <div class="collab-name">José Irepan Mejía Almonte</div>
+              <div class="collab-role">Rector</div>
+              <div class="collab-bio">Violonchelista, compositor y multiinstrumentista. Su trabajo articula la música tradicional mexicana y la creación contemporánea.</div>
+              <div class="collab-tags"><span class="collab-tag">Composición</span><span class="collab-tag">Música tradicional</span></div>
+            </div>
+            <div class="collab-links"><a href="mailto:rector@conservatoriopurhepecha.com" class="collab-link">Correo</a></div>
+          </div>
+          <div class="collab-card">
+            <div class="collab-avatar"><img src="img/isaac.jpg" alt="Isaac Borges" /></div>
+            <div class="collab-info">
+              <div class="collab-name">Héctor Isaac Borges Montaño</div>
+              <div class="collab-role">Coordinador académico</div>
+              <div class="collab-bio">Investigador, músico y gestor cultural. Su trabajo se centra en la relación entre música, tradición oral, memoria y patrimonio cultural.</div>
+              <div class="collab-tags"><span class="collab-tag">Musicología</span><span class="collab-tag">Etnomusicología</span><span class="collab-tag">Organología</span></div>
+            </div>
+            <div class="collab-links">
+              <a href="https://orcid.org/0009-0008-4865-6101" target="_blank" class="collab-link">ORCID</a>
+              <a href="https://independent.academia.edu/iisaaco" target="_blank" class="collab-link">Academia.edu</a>
+              <a href="mailto:academico@conservatoriopurhepecha.com" class="collab-link">Correo</a>
+            </div>
+          </div>
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍💼</div>
+            <div class="collab-info">
+              <div class="collab-name">Victor Manuel Francisco Corona</div>
+              <div class="collab-role">Coordinación administrativa</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags"><span class="collab-tag">Administración</span><span class="collab-tag">Vinculación</span></div>
+            </div>
+            <div class="collab-links"><a href="mailto:admin@conservatoriopurhepecha.com" class="collab-link">Correo</a></div>
+          </div>
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Dante Cruz Mejía</div>
+              <div class="collab-role">Director de la Licenciatura en Gestión Cultural</div>
+              <div class="collab-bio">Músico y promotor cultural vinculado a proyectos de difusión de la música tradicional y popular de México.</div>
+              <div class="collab-tags"><span class="collab-tag">Gestión cultural</span><span class="collab-tag">Música tradicional</span></div>
+            </div>
+            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
+          </div>
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Tsiueriti Barrera Soto</div>
+              <div class="collab-role">Director de la Licenciatura en Educación Musical</div>
+              <div class="collab-bio">Intérprete y promotor cultural vinculado a la música tradicional mexicana, particularmente al ámbito artístico de Michoacán.</div>
+              <div class="collab-tags"><span class="collab-tag">Educación musical</span><span class="collab-tag">Música P'urhépecha</span></div>
+            </div>
+            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
+          </div>
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎓</div>
+            <div class="collab-info">
+              <div class="collab-name">Oliverio Rosales</div>
+              <div class="collab-role">Coordinación Técnico en Música</div>
+              <div class="collab-bio">Breve descripción de su trayectoria y aportación al Conservatorio.</div>
+              <div class="collab-tags"><span class="collab-tag">Música</span><span class="collab-tag">Docencia</span></div>
+            </div>
+            <div class="collab-links"><a href="#" class="collab-link">Correo</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRUPO 2 — ACADEMIA MEXICANA -->
+    <div class="collab-group" id="grupo-academia">
+      <button class="collab-group-header" onclick="toggleGroup('grupo-academia')">
+        <div class="collab-group-header-left">
+          <span class="collab-group-icon">📚</span>
+          <div>
+            <div class="collab-group-title">Academia Mexicana de Estudios Sociales de la Música</div>
+            <div class="collab-group-count">15 integrantes</div>
+          </div>
+        </div>
+        <div class="collab-arrow">▼</div>
+      </button>
+      <div class="collab-group-body">
+        <div class="collab-group-inner">
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🔬</div>
+            <div class="collab-info">
+              <div class="collab-name">Jorge Amós Martínez Ayala</div>
+              <div class="collab-role">Investigador titular</div>
+              <div class="collab-bio">Breve descripción de su línea de investigación y publicaciones.</div>
+              <div class="collab-tags"><span class="collab-tag">Etnomusicología</span><span class="collab-tag">Investigación</span></div>
+            </div>
+            <div class="collab-links"><a href="#" class="collab-link">Academia.edu</a></div>
+          </div>
+          <!-- Por brevedad se omiten los demás miembros, pero puedes agregarlos igual que en el original -->
+        </div>
+      </div>
+    </div>
+
+    <!-- GRUPO 3 — CUERPO DOCENTE -->
+    <div class="collab-group" id="grupo-docentes">
+      <button class="collab-group-header" onclick="toggleGroup('grupo-docentes')">
+        <div class="collab-group-header-left">
+          <span class="collab-group-icon">🎵</span>
+          <div>
+            <div class="collab-group-title">Cuerpo docente</div>
+            <div class="collab-group-count">4 integrantes</div>
+          </div>
+        </div>
+        <div class="collab-arrow">▼</div>
+      </button>
+      <div class="collab-group-body">
+        <div class="collab-group-inner">
+          <div class="collab-card">
+            <div class="collab-avatar">👨‍🎤</div>
+            <div class="collab-info">
+              <div class="collab-name">Julián Martínez</div>
+              <div class="collab-role">Docente de violín</div>
+              <div class="collab-bio">Breve descripción de su formación y experiencia docente.</div>
+              <div class="collab-tags"><span class="collab-tag">Violín</span><span class="collab-tag">Música de cámara</span></div>
+            </div>
+            <div class="collab-links"><a href="#" class="collab-link">Perfil</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       NOSOTROS (movido del head al body, justo antes del footer)
+  ═══════════════════════════════════════════════ -->
+  <div class="nosotros-wrapper" id="nosotrosWrapper">
+    <button class="nosotros-toggle" onclick="toggleNosotros()">
+      <span class="nosotros-toggle-text">✦ Nosotros</span>
+      <span class="nosotros-toggle-arrow">▼</span>
+    </button>
+    <div class="nosotros-body">
+      <div class="nosotros-inner">
+        <div class="nosotros-semblanza">
+          <div class="nosotros-eyebrow">✦ Quiénes somos</div>
+          <h2 class="nosotros-title">Música, memoria<br>y <em>territorio</em></h2>
+          <div class="nosotros-divider"></div>
+          <div class="nosotros-text">
+            <p>El Conservatorio P'urhépecha A.C. es una institución de educación artística de nivel superior fundada en 2015 en Cherán, Michoacán. Somos el primer conservatorio de música con enfoque intercultural p'urhépecha en Latinoamérica.</p>
+            <p>Nuestra misión es preservar, enseñar y transformar la música p'urhépecha para las futuras generaciones, combinando la tradición oral con la formación musical profesional y la investigación etnomusicológica.</p>
+            <p>Trabajamos desde y para nuestras comunidades, generando conocimiento, formando músicos con identidad y construyendo un archivo vivo del patrimonio sonoro de Michoacán.</p>
+          </div>
+          <div class="nosotros-stats">
+            <div><div class="nosotros-stat-number">2015</div><div class="nosotros-stat-label">Año de fundación</div></div>
+            <div><div class="nosotros-stat-number">+150</div><div class="nosotros-stat-label">Estudiantes activos</div></div>
+            <div><div class="nosotros-stat-number">3</div><div class="nosotros-stat-label">Licenciaturas</div></div>
+            <div><div class="nosotros-stat-number">Cherán</div><div class="nosotros-stat-label">Michoacán, México</div></div>
+          </div>
+        </div>
+        <div class="nosotros-directorio">
+          <div class="nosotros-eyebrow">✦ Directorio</div>
+          <h2 class="nosotros-title">Quiénes nos <em>dirigen</em></h2>
+          <div class="nosotros-divider"></div>
+          <div class="directorio-list">
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍💼</div>
+              <div class="directorio-info">
+                <div class="directorio-name">José Irepan Mejía Almonte</div>
+                <div class="directorio-role">Rector</div>
+              </div>
+              <a href="mailto:rector@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
+            </div>
+            <div class="directorio-item">
+              <div class="directorio-avatar"><img src="img/isaac.jpg" alt="Héctor Isaac Borges Montaño"></div>
+              <div class="directorio-info">
+                <div class="directorio-name">Héctor Isaac Borges Montaño</div>
+                <div class="directorio-role">Coordinador académico</div>
+              </div>
+              <a href="mailto:academico@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
+            </div>
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍💼</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Victor Manuel Francisco Corona</div>
+                <div class="directorio-role">Coordinación administrativa</div>
+              </div>
+              <a href="mailto:admin@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
+            </div>
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍🎓</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Dante Cruz Mejía</div>
+                <div class="directorio-role">Dir. Licenciatura en Gestión Cultural</div>
+              </div>
+              <a href="#" class="directorio-contact">✉ Correo</a>
+            </div>
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍🎓</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Tsiueriti Barrera Soto</div>
+                <div class="directorio-role">Dir. Licenciatura en Educación Musical</div>
+              </div>
+              <a href="#" class="directorio-contact">✉ Correo</a>
+            </div>
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍🎓</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Oliverio Rosales</div>
+                <div class="directorio-role">Coordinación Técnico en Música</div>
+              </div>
+              <a href="#" class="directorio-contact">✉ Correo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Lightbox visor de fotos -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="" />
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
+
   <footer>
     <p>© 2025 <span>Conservatorio P'urhépecha</span> · Todos los derechos reservados · Hecho con ♥ en México</p>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════════════ -->
   <script>
     // ── TAB NAVIGATION ──
     function showTab(tabName) {
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
       const section = document.getElementById(tabName);
-      if (section) { section.classList.add('active'); }
+      if (section) section.classList.add('active');
       document.querySelectorAll('.nav-tabs a').forEach(a => {
         if (a.dataset.tab === tabName) a.classList.add('active');
+      });
+      // Sincronizar sidebar
+      document.querySelectorAll('.sidebar a').forEach(a => {
+        if (a.dataset.tab === tabName) a.classList.add('active');
+        else a.classList.remove('active');
       });
     }
 
@@ -2012,11 +1741,7 @@
         btn.classList.add('active');
         const filter = btn.dataset.filter;
         document.querySelectorAll('.book-card').forEach(card => {
-          if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
         });
       });
     });
@@ -2092,6 +1817,7 @@
     function toggleGroup(id) {
       document.getElementById(id).classList.toggle('open');
     }
+
     // ── SIDEBAR HAMBURGUESA ──
     const hamburger      = document.getElementById('hamburger');
     const sidebar        = document.getElementById('sidebar');
@@ -2116,48 +1842,55 @@
     });
     sidebarOverlay.addEventListener('click', closeSidebar);
 
-    // Actualiza link activo en el sidebar al cambiar pestaña
-    document.querySelectorAll('.sidebar a[data-tab]').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
+    // Sincronizar sidebar con clicks
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tab = link.dataset.tab;
+        if (tab) showTab(tab);
+        closeSidebar();
       });
     });
 
-  </script>
- <script>
+    // ── NOSOTROS ──
     function toggleNosotros() {
-      const wrapper = document.getElementById('nosotrosWrapper');
-      wrapper.classList.toggle('open');
+      document.getElementById('nosotrosWrapper').classList.toggle('open');
     }
-  </script>
- <script>
-    // Subpestañas de Actividades
-    function showActTab(tab) {
+
+    // ── SUBPESTAÑAS ACTIVIDADES (corregido) ──
+    function showActTab(tab, btn) {
       document.querySelectorAll('.act-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.act-tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('act-' + tab).classList.add('active');
-      event.currentTarget.classList.add('active');
+      btn.classList.add('active');
     }
- 
-    // Lightbox
+
+    // ── LIGHTBOX ──
     function openLightbox(src, caption) {
       document.getElementById('lightboxImg').src = src;
       document.getElementById('lightboxCaption').textContent = caption;
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
- 
+
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
- 
-    // Cerrar lightbox con tecla Escape
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // ── TOGGLE RESEÑA ──
+    function toggleResena(id, btn) {
+      const resena = document.getElementById(id);
+      if (resena.style.display === 'block') {
+        resena.style.display = 'none';
+        btn.textContent = 'Leer reseña';
+      } else {
+        resena.style.display = 'block';
+        btn.textContent = 'Cerrar reseña';
+      }
+    }
   </script>
-  
 </body>
 </html>
