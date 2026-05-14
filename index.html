@@ -448,7 +448,367 @@
       .section-eyebrow { font-size: .68rem; }
       footer { padding: 1.5rem; font-size: .75rem; }
     }
-
+ 
+  <style>
+    /* ── Sección Nosotros ── */
+    .nosotros-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      margin-top: 0;
+    }
+ 
+    /* Botón para desplegar */
+    .nosotros-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.4rem 2rem;
+      background: rgba(10,15,10,0.85);
+      backdrop-filter: blur(12px);
+      border: none;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      transition: background .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+ 
+    .nosotros-toggle:hover {
+      background: rgba(20,31,20,0.95);
+    }
+ 
+    .nosotros-toggle-text {
+      font-size: .78rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      font-weight: 500;
+    }
+ 
+    .nosotros-toggle-arrow {
+      color: var(--accent1);
+      font-size: .85rem;
+      transition: transform .35s ease;
+    }
+ 
+    .nosotros-wrapper.open .nosotros-toggle-arrow {
+      transform: rotate(180deg);
+    }
+ 
+    /* Contenido desplegable */
+    .nosotros-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .55s cubic-bezier(.4,0,.2,1);
+      background: var(--bg);
+    }
+ 
+    .nosotros-wrapper.open .nosotros-body {
+      max-height: 3000px;
+    }
+ 
+    .nosotros-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+ 
+    /* ── Semblanza ── */
+    .nosotros-semblanza {}
+ 
+    .nosotros-eyebrow {
+      font-size: .78rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 1rem;
+    }
+ 
+    .nosotros-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+ 
+    .nosotros-title em {
+      font-style: italic;
+      color: var(--accent1);
+    }
+ 
+    .nosotros-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--accent1), transparent);
+      margin-bottom: 2rem;
+    }
+ 
+    .nosotros-text {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.85;
+    }
+ 
+    .nosotros-text p + p {
+      margin-top: 1.2rem;
+    }
+ 
+    /* Stats de la semblanza */
+    .nosotros-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+ 
+    .nosotros-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent1);
+      line-height: 1;
+    }
+ 
+    .nosotros-stat-label {
+      color: var(--muted);
+      font-size: .8rem;
+      margin-top: .3rem;
+    }
+ 
+    /* ── Directorio ── */
+    .nosotros-directorio {}
+ 
+    .directorio-list {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      margin-top: 2rem;
+    }
+ 
+    .directorio-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color .2s, transform .2s;
+    }
+ 
+    .directorio-item:hover {
+      border-color: var(--accent1);
+      transform: translateX(4px);
+    }
+ 
+    .directorio-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #1a1a28, #0e0e18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      transition: border-color .2s;
+    }
+ 
+    .directorio-item:hover .directorio-avatar {
+      border-color: var(--accent1);
+    }
+ 
+    .directorio-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+ 
+    .directorio-info { flex: 1; min-width: 0; }
+ 
+    .directorio-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+ 
+    .directorio-role {
+      color: var(--accent1);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: .15rem;
+    }
+ 
+    .directorio-contact {
+      font-size: .75rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+ 
+    .directorio-contact:hover { color: var(--accent1); }
+ 
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nosotros-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3rem 1.5rem;
+      }
+    }
+ 
+    @media (max-width: 480px) {
+      .nosotros-toggle { padding: 1.1rem 1.5rem; }
+      .directorio-item { padding: .9rem 1rem; }
+    }
+  </style>
+ 
+  <div class="nosotros-wrapper" id="nosotrosWrapper">
+ 
+    <!-- Botón de despliegue -->
+    <button class="nosotros-toggle" onclick="toggleNosotros()">
+      <span class="nosotros-toggle-text">✦ Nosotros</span>
+      <span class="nosotros-toggle-arrow">▼</span>
+    </button>
+ 
+    <!-- Contenido -->
+    <div class="nosotros-body">
+      <div class="nosotros-inner">
+ 
+        <!-- COLUMNA IZQUIERDA — Semblanza -->
+        <div class="nosotros-semblanza">
+          <div class="nosotros-eyebrow">✦ Quiénes somos</div>
+          <h2 class="nosotros-title">Música, memoria<br>y <em>territorio</em></h2>
+          <div class="nosotros-divider"></div>
+          <div class="nosotros-text">
+            <p>
+              El Conservatorio P'urhépecha A.C. es una institución de educación
+              artística de nivel superior fundada en 2015 en Cherán, Michoacán.
+              Somos el primer conservatorio de música con enfoque intercultural
+              p'urhépecha en Latinoamérica.
+            </p>
+            <p>
+              Nuestra misión es preservar, enseñar y transformar la música
+              p'urhépecha para las futuras generaciones, combinando la tradición
+              oral con la formación musical profesional y la investigación
+              etnomusicológica.
+            </p>
+            <p>
+              Trabajamos desde y para nuestras comunidades, generando conocimiento,
+              formando músicos con identidad y construyendo un archivo vivo del
+              patrimonio sonoro de Michoacán.
+            </p>
+            <!-- ✏️ Edita estos textos con la semblanza real del Conservatorio -->
+          </div>
+ 
+          <div class="nosotros-stats">
+            <div>
+              <div class="nosotros-stat-number">2015</div>
+              <div class="nosotros-stat-label">Año de fundación</div>
+            </div>
+            <div>
+              <div class="nosotros-stat-number">+150</div>
+              <div class="nosotros-stat-label">Estudiantes activos</div>
+            </div>
+            <div>
+              <div class="nosotros-stat-number">3</div>
+              <div class="nosotros-stat-label">Licenciaturas</div>
+            </div>
+            <div>
+              <div class="nosotros-stat-number">Cherán</div>
+              <div class="nosotros-stat-label">Michoacán, México</div>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- COLUMNA DERECHA — Directorio -->
+        <div class="nosotros-directorio">
+          <div class="nosotros-eyebrow">✦ Directorio</div>
+          <h2 class="nosotros-title">Quiénes nos <em>dirigen</em></h2>
+          <div class="nosotros-divider"></div>
+ 
+          <div class="directorio-list">
+ 
+            <div class="directorio-item">
+              <div class="directorio-avatar">
+                <!-- Foto: <img src="img/nombre.jpg" alt="Nombre"> -->
+                👨‍💼
+              </div>
+              <div class="directorio-info">
+                <div class="directorio-name">José Irepan Mejía Almonte</div>
+                <div class="directorio-role">Rector</div>
+              </div>
+              <a href="mailto:rector@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
+            </div>
+ 
+            <div class="directorio-item">
+              <div class="directorio-avatar">
+                <img src="img/isaac.jpg" alt="Héctor Isaac Borges Montaño">
+              </div>
+              <div class="directorio-info">
+                <div class="directorio-name">Héctor Isaac Borges Montaño</div>
+                <div class="directorio-role">Coordinador académico</div>
+              </div>
+              <a href="mailto:academico@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
+            </div>
+ 
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍💼</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Victor Manuel Francisco Corona</div>
+                <div class="directorio-role">Coordinación administrativa</div>
+              </div>
+              <a href="mailto:admin@conservatoriopurhepecha.com" class="directorio-contact">✉ Correo</a>
+            </div>
+ 
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍🎓</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Dante Cruz Mejía</div>
+                <div class="directorio-role">Dir. Licenciatura en Gestión Cultural</div>
+              </div>
+              <a href="#" class="directorio-contact">✉ Correo</a>
+            </div>
+ 
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍🎓</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Tsiueriti Barrera Soto</div>
+                <div class="directorio-role">Dir. Licenciatura en Educación Musical</div>
+              </div>
+              <a href="#" class="directorio-contact">✉ Correo</a>
+            </div>
+ 
+            <div class="directorio-item">
+              <div class="directorio-avatar">👨‍🎓</div>
+              <div class="directorio-info">
+                <div class="directorio-name">Oliverio Rosales</div>
+                <div class="directorio-role">Coordinación Técnico en Música</div>
+              </div>
+              <a href="#" class="directorio-contact">✉ Correo</a>
+            </div>
+ 
+            <!--
+              PARA AGREGAR MÁS: copia un bloque
+              <div class="directorio-item">...</div>
+              y actualiza nombre, cargo y correo
+            -->
+ 
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+               
   </style>
 </head>
 <body>
@@ -1192,6 +1552,13 @@
     });
 
   </script>
+ <script>
+    function toggleNosotros() {
+      const wrapper = document.getElementById('nosotrosWrapper');
+      wrapper.classList.toggle('open');
+    }
+  </script>
 
+  
 </body>
 </html>
