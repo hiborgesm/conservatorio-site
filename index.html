@@ -324,12 +324,12 @@
     .video-caption { text-align: center; color: var(--muted); margin-top: 1rem; font-size: 0.9rem; }
 
     /* ===== AMESMúsicas (micrositio acordeones) ===== */
-    .inv-modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.7); align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+    .inv-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.8); align-items: center; justify-content: center; padding: 1rem; }
     .inv-modal.open { display: flex; }
-    .inv-modal-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; animation: fadeUp .3s ease; }
+    .inv-modal-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 750px; width: 95%; max-height: 85vh; overflow-y: auto; padding: 2.5rem 2rem 2rem; position: relative; animation: fadeUp .3s ease; scrollbar-width: thin; scrollbar-color: var(--accent1) var(--surface); }
     .inv-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; color: var(--text); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
     .inv-modal-close:hover { background: var(--accent1); color: #000; }
-    .inv-modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent1); margin: 0 auto 1rem; display: block; }
+    .inv-modal-content::-webkit-scrollbar { width: 6px; }\n    .inv-modal-content::-webkit-scrollbar-track { background: var(--surface); border-radius: 3px; }\n    .inv-modal-content::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 3px; }\n.inv-modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent1); margin: 0 auto 1rem; display: block; }
     .inv-modal-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; text-align: center; color: var(--text); margin-bottom: 0.3rem; }
     .inv-modal-inst { text-align: center; color: var(--accent1); font-size: 0.9rem; margin-bottom: 1.5rem; }
     .inv-modal-semblanza { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 1.5rem; text-align: justify; }
