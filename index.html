@@ -324,7 +324,20 @@
     .video-caption { text-align: center; color: var(--muted); margin-top: 1rem; font-size: 0.9rem; }
 
     /* ===== AMESMúsicas (micrositio acordeones) ===== */
-    .ames-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .inv-modal { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.7); align-items: center; justify-content: center; padding: 2rem; backdrop-filter: blur(4px); }
+    .inv-modal.open { display: flex; }
+    .inv-modal-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; animation: fadeUp .3s ease; }
+    .inv-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; color: var(--text); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .inv-modal-close:hover { background: var(--accent1); color: #000; }
+    .inv-modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent1); margin: 0 auto 1rem; display: block; }
+    .inv-modal-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; text-align: center; color: var(--text); margin-bottom: 0.3rem; }
+    .inv-modal-inst { text-align: center; color: var(--accent1); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .inv-modal-semblanza { color: var(--muted); font-size: 0.9rem; line-height: 1.75; margin-bottom: 1.5rem; text-align: justify; }
+    .inv-modal-email { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.2rem; background: var(--accent1); color: #000; text-decoration: none; border-radius: 20px; font-weight: 600; font-size: 0.85rem; transition: background .2s; }
+    .inv-modal-email:hover { background: var(--accent2); }
+    .inv-name-link { cursor: pointer; transition: color .2s; }
+    .inv-name-link:hover { color: var(--accent1); text-decoration: underline; }
+.ames-grid { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
     .ames-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
     .ames-header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; cursor: pointer; background: var(--surface); transition: background 0.2s; }
     .ames-header:hover { background: #1c1c28; }
@@ -638,7 +651,7 @@
   <div class="divider"></div>
   <div class="ames-grid">
     <div class="ames-card" id="ames-pres"><div class="ames-header" onclick="toggleAmesCard('ames-pres')"><span class="ames-title">📖 Presentación e historia</span><span class="ames-arrow">▼</span></div><div class="ames-content"><p>La <strong>Academia Mexicana de Estudios Sociales de la Música (AMESMúsicas)</strong> es un espacio interdisciplinario fundado en 2020, adscrito al Conservatorio P'urhépecha. Reúne a musicólogos, etnomusicólogos, historiadores y antropólogos dedicados al estudio de la música desde una perspectiva social y cultural.</p><p>Su objetivo es promover la investigación, la discusión académica y la difusión del patrimonio sonoro de México.</p></div></div>
-    <div class="ames-card" id="ames-dir"><div class="ames-header" onclick="toggleAmesCard('ames-dir')"><span class="ames-title">🎓 Directorio de investigadores y colaboradores</span><span class="ames-arrow"></span></div><div class="ames-content"><div class="investigator-list"><div class="investigator-item"><span class="investigator-name">Jorge Amós Martínez Ayala</span> UMSNH</div><div class="investigator-item"><span class="investigator-name">Cloe X. Pérez Valladares</span> UNAM, ENES, Morelia</div><div class="investigator-item"><span class="investigator-name">Héctor Isaac Borges Montaño</span> Conservatorio P’urhépecha</div><div class="investigator-item"><span class="investigator-name">Dante Cruz Mejía</span> UMSNH</div><div class="investigator-item"><span class="investigator-name">Ts’iueriti Barrera Soto</span> UMSNH</div><div class="investigator-item"><span class="investigator-name">José Irepan Mejía Almonte</span> Conservatorio P’urhépecha</div><div class="investigator-item"><span class="investigator-name">Ireri Mejía Almonte</span> Conservatorio P’urhépecha</div><div class="investigator-item"><span class="investigator-name">José Ignacio Maldonado Cerano</span> UAM</div><div class="investigator-item"><span class="investigator-name">Ulises Salazar Rosales</span> COLMICH</div><div class="investigator-item"><span class="investigator-name">América G. López Hernández</span> FAM, UNAM</div><div class="investigator-item"><span class="investigator-name">Alejandro Martínez de la Rosa</span> UG</div><div class="investigator-item"><span class="investigator-name">Eduardo Martínez Muñóz</span> UdeG</div><div class="investigator-item"><span class="investigator-name">Arturo Javier Ramírez Estrada</span> UAN</div><div class="investigator-item"><span class="investigator-name">Amanda Zoar Cuevas Cárcamo</span> Conservatorio de las Rosas</div></div></div>
+    <div class="ames-card" id="ames-dir"><div class="ames-header" onclick="toggleAmesCard('ames-dir')"><span class="ames-title">🎓 Directorio de investigadores y colaboradores</span><span class="ames-arrow"></span></div><div class="ames-content"><div class="investigator-list"><div class="investigator-item"><span class="investigator-name">Jorge Amós Martínez Ayala</span> UMSNH</div><div class="investigator-item"><span class="investigator-name">Cloe X. Pérez Valladares</span> UNAM, ENES, Morelia</div><div class="investigator-item"><span class="investigator-name inv-name-link" onclick="openInvModal('Héctor Isaac Borges Montaño')">Héctor Isaac Borges Montaño</span> Conservatorio P’urhépecha</div><div class="investigator-item"><span class="investigator-name">Dante Cruz Mejía</span> UMSNH</div><div class="investigator-item"><span class="investigator-name">Ts’iueriti Barrera Soto</span> UMSNH</div><div class="investigator-item"><span class="investigator-name">José Irepan Mejía Almonte</span> Conservatorio P’urhépecha</div><div class="investigator-item"><span class="investigator-name">Ireri Mejía Almonte</span> Conservatorio P’urhépecha</div><div class="investigator-item"><span class="investigator-name">José Ignacio Maldonado Cerano</span> UAM</div><div class="investigator-item"><span class="investigator-name">Ulises Salazar Rosales</span> COLMICH</div><div class="investigator-item"><span class="investigator-name">América G. López Hernández</span> FAM, UNAM</div><div class="investigator-item"><span class="investigator-name">Alejandro Martínez de la Rosa</span> UG</div><div class="investigator-item"><span class="investigator-name">Eduardo Martínez Muñóz</span> UdeG</div><div class="investigator-item"><span class="investigator-name">Arturo Javier Ramírez Estrada</span> UAN</div><div class="investigator-item"><span class="investigator-name">Amanda Zoar Cuevas Cárcamo</span> Conservatorio de las Rosas</div></div></div>
 
     <div class="ames-card" id="ames-pub"><div class="ames-header" onclick="toggleAmesCard('ames-pub')"><span class="ames-title">📖 Publicaciones y catálogo</span><span class="ames-arrow"></span></div><div class="ames-content"><p>La AMESMúsicas cuenta con un sello editorial propio.</p><div class="cross-ref-btn"><button class="btn-small" onclick="irACatalogoAcademia()">Ver publicaciones de AMESMúsicas →</button></div><p style="margin-top:1rem">Entre los títulos destacados: <em>Con cantos y vihuelas...</em> (2026)</p></div></div>
     <div class="ames-card" id="ames-eventos"><div class="ames-header" onclick="toggleAmesCard('ames-eventos')"><span class="ames-title">📅 Eventos y coloquios</span><span class="ames-arrow"></span></div><div class="ames-content"><p>La AMESMúsicas organiza anualmente el <strong>Coloquio Semana de la Música Tradicional</strong>.</p><div class="cross-ref-btn"><button class="btn-small" onclick="irAColoquio()">Ver coloquios en Actividades →</button></div><p style="margin-top:1rem">Próximo evento: X Simposio de Música y Comunidad - Octubre 2026.</p></div>
@@ -658,6 +671,19 @@
   <p>© 2025 <span>Conservatorio P'urhépecha</span> · Todos los derechos reservados · Hecho con ♥ en México</p>
 </footer>
 
+<!-- MODAL INVESTIGADOR -->
+<div class="inv-modal" id="invModal">
+  <div class="inv-modal-content">
+    <button class="inv-modal-close" onclick="closeInvModal()">✖</button>
+    <img class="inv-modal-photo" id="invModalPhoto" src="" alt="">
+    <div class="inv-modal-name" id="invModalName"></div>
+    <div class="inv-modal-inst" id="invModalInst"></div>
+    <div class="inv-modal-semblanza" id="invModalSemblanza"></div>
+    <div style="text-align:center;">
+      <a class="inv-modal-email" id="invModalEmail" href="" target="_blank">✉ Enviar correo</a>
+    </div>
+  </div>
+</div>
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()"><button class="lightbox-close" onclick="closeLightbox()">✕</button><img class="lightbox-img" id="lightboxImg" src="" alt="" /><div class="lightbox-caption" id="lightboxCaption"></div></div>
 
@@ -811,6 +837,26 @@
   }
   // Auto-play
   setInterval(() => moveSmtCarousel(1), 5000);
+
+  var invData = {"Héctor Isaac Borges Montaño":{"photo":"img/investigadores/isaac-borges.jpg","inst":"Conservatorio P'urhépecha","email":"isaacborges@conservatoriopurhepecha.com","bio":"Investigador, gestor cultural, músico y docente. Licenciado en Música en el área de Musicología por el Conservatorio de las Rosas. Ha participado en varios congresos nacionales e internacionales, dentro de sus líneas de investigación están las músicas novohispanas, resultado de ello su colaboración en el proyecto Investigación sobre fuentes poético-musicales (PAPIIT404417), en la realización del catálogo y libro: Repertorio de fuentes poético-musicales del Archivo del Colegio de Santa Rosa de Santa María (UNAM, 2023), coordinado por Anastasia Krutitskaya, miembro colaborador du Répertoire International des Sources Musicales, coordinando el proyecto Fuentes musicales del Archivo de Santa Rosa de Santa María. Otra de sus líneas temáticas son los repertorios, conservación y difusión de las músicas tradicionales, en particular las de la Tierra Caliente de Michoacán, como resultado publicó el libro: Cuadernos de Música de Don Alberto Albarrán coordinado por Jorge Amós (UMSNH-AMESMúsicas), además de participar en la coordinación de tres volúmenes monográficos de investigación musical. Así como la coordinación de actividades académicas, tales como el VIII y XIX Coloquio de la Semana de la Música Tradicional, entre varias más. Actualmente es Coordinador Académico del Conservatorio P’urhépecha."}};
+  function openInvModal(name) {
+    var d = invData[name];
+    if (!d) return;
+    document.getElementById('invModalPhoto').src = d.photo;
+    document.getElementById('invModalName').textContent = name;
+    document.getElementById('invModalInst').textContent = d.inst;
+    document.getElementById('invModalSemblanza').textContent = d.bio;
+    document.getElementById('invModalEmail').href = 'mailto:' + d.email;
+    document.getElementById('invModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeInvModal() {
+    document.getElementById('invModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeInvModal();
+  });
 </script>
 </body>
 </html>
