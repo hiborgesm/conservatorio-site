@@ -305,7 +305,7 @@
     /* ===== LIGHTBOX para fotos ===== */
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.92); z-index: 500; display: none; align-items: center; justify-content: center; padding: 2rem; }
     .lightbox.open { display: flex; }
-    .lightbox-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border: 1px solid var(--border); }
+    .lightbox-img { max-width: 90vw; max-height: 95vh; object-fit: contain; border: 1px solid var(--border); }
     .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: transparent; border: 1px solid var(--border); color: var(--text); font-size: 1.4rem; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
     .lightbox-close:hover { background: var(--glow); color: var(--accent1); }
     .lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: .85rem; text-align: center; white-space: nowrap; }
@@ -326,7 +326,7 @@
     /* ===== AMESMúsicas (micrositio acordeones) ===== */
     .inv-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.8); align-items: center; justify-content: center; padding: 1rem; }
     .inv-modal.open { display: flex; }
-    .inv-modal-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 750px; width: 95%; max-height: 85vh; overflow-y: auto; padding: 2.5rem 2rem 2rem; position: relative; animation: fadeUp .3s ease; scrollbar-width: thin; scrollbar-color: var(--accent1) var(--surface); }
+    .inv-modal-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 750px; width: 95%; max-height: 95vh; overflow-y: auto; padding: 2.5rem 2rem 2rem; position: relative; animation: fadeUp .3s ease; scrollbar-width: thin; scrollbar-color: var(--accent1) var(--surface); }
     .inv-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; background: var(--surface); border: 1px solid var(--border); border-radius: 50%; color: var(--text); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
     .inv-modal-close:hover { background: var(--accent1); color: #000; }
     .inv-modal-content::-webkit-scrollbar { width: 6px; }\n    .inv-modal-content::-webkit-scrollbar-track { background: var(--surface); border-radius: 3px; }\n    .inv-modal-content::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 3px; }\n.inv-modal-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent1); margin: 0 auto 1rem; display: block; }
@@ -848,11 +848,9 @@
     document.getElementById('invModalSemblanza').textContent = d.bio;
     document.getElementById('invModalEmail').href = 'mailto:' + d.email;
     document.getElementById('invModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
   }
   function closeInvModal() {
     document.getElementById('invModal').classList.remove('open');
-    document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeInvModal();
