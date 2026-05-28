@@ -273,7 +273,20 @@
     .photo-item:hover .photo-overlay { background: rgba(10,15,10,0.55); }
     .photo-caption { color: #fff; font-size: .8rem; opacity: 0; transform: translateY(6px); transition: all .3s; line-height: 1.4; }
     .photo-item:hover .photo-caption { opacity: 1; transform: translateY(0); }
-    .yt-section { margin-top: 1rem; }
+    .smt-carousel { position: relative; margin: 3rem auto; max-width: 1100px; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); background: var(--card); }
+    .smt-carousel-track { display: flex; transition: transform 0.5s cubic-bezier(.4,0,.2,1); }
+    .smt-carousel-slide { min-width: 100%; position: relative; }
+    .smt-carousel-slide img { width: 100%; height: 500px; object-fit: cover; display: block; }
+    .smt-carousel-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.2rem 2rem; background: linear-gradient(transparent, rgba(0,0,0,.8)); color: #fff; font-size: 1rem; }
+    .smt-carousel-caption strong { font-family: 'Playfair Display', serif; font-size: 1.3rem; display: block; margin-bottom: 0.3rem; }
+    .smt-carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,.5); border: none; color: #fff; font-size: 1.2rem; cursor: pointer; z-index: 5; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+    .smt-carousel-arrow:hover { background: rgba(0,0,0,.8); }
+    .smt-carousel-arrow.prev { left: 10px; }
+    .smt-carousel-arrow.next { right: 10px; }
+    .smt-carousel-dots { display: flex; justify-content: center; gap: 0.5rem; padding: 0.8rem; background: var(--surface); }
+    .smt-carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: all .3s; padding: 0; }
+    .smt-carousel-dot.active { background: var(--accent1); width: 24px; border-radius: 4px; }
+.yt-section { margin-top: 1rem; }
     .yt-section-title { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent1); margin-bottom: 1.2rem; }
     .yt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
     .yt-card { background: var(--card); border: 1px solid var(--border); overflow: hidden; transition: transform .3s, box-shadow .3s; text-decoration: none; color: inherit; }
@@ -538,7 +551,40 @@
       <div class="yt-section-title">✦ Videos del coloquio</div>
       <div class="yt-grid">
         <a href="https://www.youtube.com/@SemanadelaM%C3%BAsicaTradicional/streams" class="yt-card">
-          <div class="yt-thumb"><img src="https://img.youtube.com/vi/vUu1urRbj7c/maxresdefault.jpg" alt="video"><div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
+          <div class="yt-thumb"><img src="https://img.youtube.com/vi/vUu1urRbj7c/maxresdefault.jpg" alt="video"><div class="yt-play"><div class="yt-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>        <div class="smt-carousel" id="smtCarousel">
+      <div class="smt-carousel-track" id="smtCarouselTrack">
+        <div class="smt-carousel-slide">
+          <img src="img/smt-carousel-1.jpg" alt="X Edición SMT" loading="lazy">
+          <div class="smt-carousel-caption"><strong>X Edición</strong>Coloquio Semana de la Música Tradicional 2026</div>
+        </div>
+        <div class="smt-carousel-slide">
+          <img src="img/smt-x-edicion-1.jpg" alt="X Edición SMT" loading="lazy">
+          <div class="smt-carousel-caption"><strong>Aquí nadie canta solo</strong>Lema oficial de la X Edición</div>
+        </div>
+        <div class="smt-carousel-slide">
+          <img src="img/smt-x-edicion-2.jpg" alt="X Edición SMT" loading="lazy">
+          <div class="smt-carousel-caption"><strong>17-21 noviembre 2026</strong>Fechas del Coloquio</div>
+        </div>
+        <div class="smt-carousel-slide">
+          <img src="img/smt-x-edicion-3.jpg" alt="X Edición SMT" loading="lazy">
+          <div class="smt-carousel-caption"><strong>Convocatoria abierta</strong>Participa con tu propuesta</div>
+        </div>
+        <div class="smt-carousel-slide">
+          <img src="img/smt-x-edicion-4.jpg" alt="X Edición SMT" loading="lazy">
+          <div class="smt-carousel-caption"><strong>Conservatorio P'urhépecha</strong>Organiza · AMESMúsicas</div>
+        </div>
+      </div>
+      <button class="smt-carousel-arrow prev" onclick="moveSmtCarousel(-1)">‹</button>
+      <button class="smt-carousel-arrow next" onclick="moveSmtCarousel(1)">›</button>
+      <div class="smt-carousel-dots" id="smtCarouselDots">
+        <button class="smt-carousel-dot active" data-index="0"></button>
+        <button class="smt-carousel-dot" data-index="1"></button>
+        <button class="smt-carousel-dot" data-index="2"></button>
+        <button class="smt-carousel-dot" data-index="3"></button>
+        <button class="smt-carousel-dot" data-index="4"></button>
+      </div>
+    </div>
+</div></div>
           <div class="yt-card-body"><div class="yt-card-title">Coloquio 2024</div><div class="yt-card-desc">Conferencias y ponencias</div></div>
         </a>
       </div>
@@ -742,6 +788,19 @@
 
   // Inicializar pestaña
   showTab('presentacion');
+
+  // Carrusel SMT
+  let smtCarouselIndex = 0;
+  function moveSmtCarousel(dir) {
+    const track = document.getElementById('smtCarouselTrack');
+    const dots = document.querySelectorAll('#smtCarouselDots .smt-carousel-dot');
+    const total = dots.length;
+    smtCarouselIndex = (smtCarouselIndex + dir + total) % total;
+    track.style.transform = 'translateX(-' + (smtCarouselIndex * 100) + '%)';
+    dots.forEach((d,i) => d.classList.toggle('active', i === smtCarouselIndex));
+  }
+  // Auto-play
+  setInterval(() => moveSmtCarousel(1), 5000);
 </script>
 </body>
 </html>
