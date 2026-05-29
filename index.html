@@ -454,6 +454,12 @@
   </div>
 </section>
 
+<!-- ========== NOSOTROS (desplegable con video documental) ========== -->
+<div class="nosotros-wrapper" id="nosotrosWrapper">
+  <button class="nosotros-toggle" onclick="toggleNosotros()"><span class="nosotros-toggle-text">✦ Nosotros · Documental</span><span class="nosotros-toggle-arrow">▼</span></button>
+  <div class="nosotros-body"><div class="video-container"><iframe src="https://www.youtube.com/embed/g7-e-G8c1YE?start=56" title="Documental Conservatorio P'urhépecha" frameborder="0" allowfullscreen></iframe><div class="video-caption">Documental institucional · Conservatorio P'urhépecha A.C. (2017)</div></div></div>
+</div>
+
 <!-- ========== SERVICIOS (carrusel completo) ========== -->
 <section id="servicios">
   <div class="section-eyebrow">✦ Oferta académica</div>
@@ -656,10 +662,36 @@
     <div class="ames-card" id="ames-pub"><div class="ames-header" onclick="toggleAmesCard('ames-pub')"><span class="ames-title">📖 Publicaciones y catálogo</span><span class="ames-arrow"></span></div><div class="ames-content"><p>La AMESMúsicas cuenta con un sello editorial propio.</p><div class="cross-ref-btn"><button class="btn-small" onclick="irACatalogoAcademia()">Ver publicaciones de AMESMúsicas →</button></div><p style="margin-top:1rem">Entre los títulos destacados: <em>Con cantos y vihuelas...</em> (2026)</p></div></div>
     <div class="ames-card" id="ames-eventos"><div class="ames-header" onclick="toggleAmesCard('ames-eventos')"><span class="ames-title">📅 Eventos y coloquios</span><span class="ames-arrow"></span></div><div class="ames-content"><p>La AMESMúsicas organiza anualmente el <strong>Coloquio Semana de la Música Tradicional</strong>.</p><div class="cross-ref-btn"><button class="btn-small" onclick="irAColoquio()">Ver coloquios en Actividades →</button></div><p style="margin-top:1rem">Próximo evento: X Simposio de Música y Comunidad - Octubre 2026.</p></div>
     <div class="ames-card" id="ames-sound"><div class="ames-header" onclick="toggleAmesCard('ames-sound')"><span class="ames-title">🎵 Archivo Sonoro</span><span class="ames-arrow"></span></div><div class="ames-content"><a href="#" class="soundcloud-link" target="_blank">🎵 Sones de Cherán (SoundCloud)</a><a href="#" class="soundcloud-link" target="_blank">🎵 Música de Semana Santa (SoundCloud)</a><p style="color:var(--muted); margin-top:1rem; font-size:0.85rem;">(Reemplaza los enlaces con URLs reales de SoundCloud)</p></div></div>
+    <div class="ames-card" id="ames-lineas"><div class="ames-header" onclick="toggleAmesCard('ames-lineas')"><span class="ames-title">🔍 Líneas de investigación</span><span class="ames-arrow">▼</span></div><div class="ames-content"><ul style="margin-left:1.5rem;"><li>Musicología histórica de Michoacán</li><li>Patrimonio musical inmaterial</li><li>Educación musical intercultural</li><li>Archivos sonoros y memoria comunitaria</li></ul></div></div>
 </div>
 
 </div>
 </div>
+
+<!-- ========== CONTACTO ========== -->
+<section id="contacto">
+  <div class="section-eyebrow">✦ Comunícate con nosotros</div>
+  <h2 class="section-title">Contáctanos</h2>
+  <div class="divider"></div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+    <div class="contact-form">
+      <form id="contactForm">
+        <div class="form-group"><label>Nombre completo *</label><input type="text" id="nombre" required></div>
+        <div class="form-group"><label>Correo electrónico *</label><input type="email" id="email" required></div>
+        <div class="form-group"><label>Asunto</label><input type="text" id="asunto"></div>
+        <div class="form-group"><label>Mensaje *</label><textarea id="mensaje" rows="4" required></textarea></div>
+        <button type="submit" class="btn-submit">Enviar mensaje ✉</button>
+      </form>
+      <p style="font-size:0.7rem; margin-top:1rem;">Se abrirá tu cliente de correo para completar el envío.</p>
+    </div>
+    <div class="contact-info">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;">Otros medios</h3>
+      <p style="color:var(--text);margin-bottom:0.8rem;"><strong style="color:var(--accent1);">Correo directo:</strong><br><a href="mailto:serviciosescolares@conservatoriopurhepecha.com" style="color:var(--muted);text-decoration:underline;">serviciosescolares@conservatoriopurhepecha.com</a></p>
+      <p style="color:var(--text);margin-bottom:0.8rem;"><strong style="color:var(--accent1);">WhatsApp:</strong><br><a href="https://wa.me/521234567890" target="_blank" class="whatsapp-btn">📱 Escríbenos</a></p>
+      <p style="color:var(--text);"><strong style="color:var(--accent1);">Dirección:</strong><br>Conservatorio P'urhépecha, Cherán, Michoacán</p>
+    </div>
+  </div>
+</section>
 
 <!-- ========== FOOTER ========== -->
 <footer>
