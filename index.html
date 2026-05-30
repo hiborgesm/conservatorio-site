@@ -147,7 +147,7 @@
     #presentacion {
       position: relative;
       min-height: 100vh;
-      display: flex !important;
+      display: flex;
       align-items: center;
       padding: 0 !important;
       overflow: hidden;
@@ -726,6 +726,7 @@
     document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
     const section = document.getElementById(tabName);
     if (section) section.classList.add('active');
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     document.querySelectorAll('.nav-tabs a').forEach(a => {
       if (a.dataset.tab === tabName) a.classList.add('active');
     });
