@@ -152,6 +152,7 @@
       padding: 0 !important;
       overflow: hidden;
     }
+    #presentacion:not(.active) { display: none; }
     .hero-slides { position: absolute; inset: 0; z-index: 0; }
     .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease; }
     .hero-slide.active { opacity: 1; }
@@ -725,8 +726,10 @@
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
     const section = document.getElementById(tabName);
-    if (section) section.classList.add('active');
+    if (section) {
+      section.classList.add('active');
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     document.querySelectorAll('.nav-tabs a').forEach(a => {
       if (a.dataset.tab === tabName) a.classList.add('active');
     });
