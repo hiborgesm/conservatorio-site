@@ -321,6 +321,10 @@
     .nosotros-body { max-height: 0; overflow: hidden; transition: max-height .55s cubic-bezier(.4,0,.2,1); background: var(--bg); }
     .nosotros-wrapper.open .nosotros-body { max-height: 800px; }
     .video-container { max-width: 1000px; margin: 3rem auto; padding: 0 2rem 3rem; }
+    .video-container iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; border-radius: 4px; }
+    .video-caption { margin-top: 0.8rem; color: var(--muted); font-size: 0.85rem; text-align: center; font-style: italic; }
+    .video-container iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; border-radius: 4px; }
+    .video-caption { margin-top: 0.8rem; color: var(--muted); font-size: 0.85rem; text-align: center; font-style: italic; }
     .video-container iframe { width: 100%; aspect-ratio: 16/9; border: 1px solid var(--border); border-radius: 8px; }
     .video-caption { text-align: center; color: var(--muted); margin-top: 1rem; font-size: 0.9rem; }
 
@@ -399,7 +403,83 @@
       .ames-title { font-size: 1.1rem; }
       .contact-form, .contact-info { padding: 1rem; }
     }
-  </style>
+  
+    /* ===== CONTACTO RESPONSIVE ===== */
+    .contacto-grid { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 768px) {
+      .contacto-grid { grid-template-columns: 1fr; }
+      .btn-submit { width: 100%; }
+    }
+    .btn-submit {
+      width: auto; padding: 0.85rem 2.2rem;
+      background: var(--accent1); color: #0a0a0f;
+      font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-submit:hover { background: var(--accent2); transform: translateY(-2px); }
+    
+    .contact-form .form-group { margin-bottom: 1rem; }
+    .contact-form label { display: block; color: var(--muted); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 0.7rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--accent1);
+    }
+    .whatsapp-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      background: #25D366; color: #fff;
+      text-decoration: none; border-radius: 4px;
+      font-weight: 500; font-size: 0.85rem;
+      transition: opacity 0.2s;
+    }
+    .whatsapp-btn:hover { opacity: 0.85; }
+    
+  
+    /* ===== CONTACTO RESPONSIVE ===== */
+    .contacto-grid { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 768px) {
+      .contacto-grid { grid-template-columns: 1fr; }
+      .btn-submit { width: 100%; }
+    }
+    .btn-submit {
+      width: auto; padding: 0.85rem 2.2rem;
+      background: var(--accent1); color: #0a0a0f;
+      font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-submit:hover { background: var(--accent2); transform: translateY(-2px); }
+    .contact-form .form-group { margin-bottom: 1rem; }
+    .contact-form label { display: block; color: var(--muted); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 0.7rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--accent1);
+    }
+    .whatsapp-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      background: #25D366; color: #fff;
+      text-decoration: none; border-radius: 4px;
+      font-weight: 500; font-size: 0.85rem;
+      transition: opacity 0.2s;
+    }
+    .whatsapp-btn:hover { opacity: 0.85; }
+    </style>
 </head>
 <body>
 
@@ -408,6 +488,7 @@
   <img src="img/LOGO.jpg" alt="Conservatorio P'urhépecha" style="height:38px; width:auto;" />
   <ul class="nav-tabs">
     <li><a href="#" data-tab="presentacion" class="active">Presentación</a></li>
+    <li><a href="#" data-tab="nosotros">Nosotros</a></li>
     <li><a href="#" data-tab="servicios">Servicios</a></li>
     <li><a href="#" data-tab="catalogo">Sello Editorial</a></li>
     <li><a href="#" data-tab="actividades">Actividades</a></li>
@@ -422,6 +503,7 @@
     <div class="hero-slide" style="background-image: url('img/hero-smt.jpg')"></div>
 <div class="sidebar" id="sidebar">
   <a href="#" data-tab="presentacion">✦ Presentación</a>
+  <a href="#" data-tab="nosotros">✦ Nosotros</a>
   <a href="#" data-tab="servicios">✦ Servicios</a>
   <a href="#" data-tab="catalogo">✦ Sello Editorial</a>
   <a href="#" data-tab="actividades">✦ Actividades</a>
@@ -455,10 +537,17 @@
   </div>
 </section>
 
-<!-- ========== NOSOTROS (desplegable con video documental) ========== -->
-<div class="nosotros-wrapper" id="nosotrosWrapper">
-  <button class="nosotros-toggle" onclick="toggleNosotros()"><span class="nosotros-toggle-text">✦ Nosotros · Documental</span><span class="nosotros-toggle-arrow">▼</span></button>
-  <div class="nosotros-body"><div class="video-container"><iframe src="https://www.youtube.com/embed/g7-e-G8c1YE?start=56" title="Documental Conservatorio P'urhépecha" frameborder="0" allowfullscreen></iframe><div class="video-caption">Documental institucional · Conservatorio P'urhépecha A.C. (2017)</div></div></div>
+<!-- ========== NOSOTROS ========== -->
+<section id="nosotros">
+  <div class="section-eyebrow">✦ Conócenos</div>
+  <h2 class="section-title">Nosotros</h2>
+  <div class="divider"></div>
+  <div class="nosotros-wrapper" id="nosotrosWrapper">
+    <button class="nosotros-toggle" onclick="toggleNosotros()"><span class="nosotros-toggle-text">✦ Documental institucional</span><span class="nosotros-toggle-arrow">▼</span></button>
+    <div class="nosotros-body"><div class="video-container"><iframe src="https://www.youtube.com/embed/g7-e-G8c1YE?start=56" title="Documental Conservatorio Purhepecha" style="width:100%;aspect-ratio:16/9;border:0;" allowfullscreen></iframe><div class="video-caption">Documental institucional · Conservatorio Purhepecha A.C. (2017)</div></div></div>
+  </div>
+  <p style="color:var(--muted); max-width:700px; line-height:1.8; margin-top:1rem;">El Conservatorio P'urhépecha A.C. es una institución educativa fundada en 2016 en Cherán, Michoacán, dedicada a la formación musical con enfoque intercultural y comunitario. Formamos nuevas generaciones con identidad y memoria.</p>
+</section>
 </div>
 
 <!-- ========== SERVICIOS (carrusel completo) ========== -->
@@ -674,16 +763,16 @@
   <div class="section-eyebrow">✦ Comunícate con nosotros</div>
   <h2 class="section-title">Contáctanos</h2>
   <div class="divider"></div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;" class="contacto-grid">
     <div class="contact-form">
-      <form id="contactForm">
-        <div class="form-group"><label>Nombre completo *</label><input type="text" id="nombre" required></div>
-        <div class="form-group"><label>Correo electrónico *</label><input type="email" id="email" required></div>
-        <div class="form-group"><label>Asunto</label><input type="text" id="asunto"></div>
-        <div class="form-group"><label>Mensaje *</label><textarea id="mensaje" rows="4" required></textarea></div>
+      <form id="contactForm" action="mailto:serviciosescolares@conservatoriopurhepecha.com" method="post" enctype="text/plain">
+        <div class="form-group"><label>Nombre completo *</label><input type="text" name="nombre" id="nombre" required></div>
+        <div class="form-group"><label>Correo electrónico *</label><input type="email" name="email" id="email" required></div>
+        <div class="form-group"><label>Asunto</label><input type="text" name="asunto" id="asunto"></div>
+        <div class="form-group"><label>Mensaje *</label><textarea name="mensaje" id="mensaje" rows="4" required></textarea></div>
         <button type="submit" class="btn-submit">Enviar mensaje ✉</button>
       </form>
-      <p style="font-size:0.7rem; margin-top:1rem;">Se abrirá tu cliente de correo para completar el envío.</p>
+      <p style="font-size:0.7rem; margin-top:1rem;">Se abrirá tu cliente de correo para completar el envío. También puedes escribirnos directamente a <a href="mailto:serviciosescolares@conservatoriopurhepecha.com" style="color:var(--accent1);">serviciosescolares@conservatoriopurhepecha.com</a></p>
     </div>
     <div class="contact-info">
       <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:1.2rem;">Otros medios</h3>
