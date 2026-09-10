@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Del rancho a la canción… ¡Ah qué la canción ranchera! — AMESMúsicas</title>
+  <meta name="description" content="Del rancho a la canción… ¡Ah qué la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera. Libro colectivo coordinado por Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño y José Ignacio Maldonado Cerano. ISBN 978-607-69464-3-5." />
+  <meta name="author" content="Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, José Ignacio Maldonado Cerano" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="Del rancho a la canción… ¡Ah qué la canción ranchera!" />
+  <meta property="og:description" content="Estudios sobre el espacio y la cultura musical ranchera. Libro colectivo del Conservatorio P’urhépecha y AMESMúsicas." />
+  <meta property="og:image" content="portada.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="stylesheet" href="../../assets/estilo.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="../../index.html">AMES<span>Músicas</span></a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Inicio</a></li>
+      <li><a class="active" href="../index.html">Libros</a></li>
+    </ul>
+  </nav>
+
+  <main class="wrap">
+    <p class="breadcrumb"><a href="../../index.html">Inicio</a> / <a href="../index.html">Libros</a> / Del rancho a la canción…</p>
+
+    <div class="book-hero">
+      <div class="cover">
+        <img src="portada.jpg" alt="Portada del libro Del rancho a la canción… ¡Ah qué la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera" />
+      </div>
+      <div>
+        <p class="book-meta">Libro colectivo · Conservatorio P’urhépecha · Academia Mexicana de Estudios Sociales de la Música</p>
+        <h1>Del rancho a la canción… ¡Ah qué la canción ranchera!</h1>
+        <p class="prose">Estudios sobre el espacio y la cultura musical ranchera</p>
+
+        <dl class="ficha">
+          <dt>Coordinadores</dt>
+          <dd>Jorge Amós Martínez Ayala · Héctor Isaac Borges Montaño · José Ignacio Maldonado Cerano</dd>
+          <dt>ISBN</dt>
+          <dd>978-607-69464-3-5</dd>
+        </dl>
+
+        <p class="prose">Edición digital: en preparación.</p>
+      </div>
+    </div>
+
+    <section aria-labelledby="resena">
+      <h2 id="resena" class="section-title">Reseña</h2>
+      <p class="prose">La canción ranchera fue el producto cultural que apoyó el desarrollo de la industria cultural mexicana.</p>
+      <p><button class="btn btn-secondary" id="abrir-resena" type="button">Leer la reseña</button></p>
+    </section>
+  </main>
+
+  <dialog id="modal-resena" class="modal" aria-labelledby="modal-resena-titulo">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h2 id="modal-resena-titulo">Del rancho a la canción… ¡Ah qué la canción ranchera!</h2>
+        <button class="modal-cerrar" id="cerrar-resena" type="button" aria-label="Cerrar reseña">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>La canción ranchera fue el producto cultural que apoyó el desarrollo de la industria cultural mexicana. Los diversos procesos sociales que dieron paso a la creación de la “canción ranchera”, como género lírico musical, su centralidad como producto cultural ofertado por la industria cultural mexicana en México, América y Europa, la proliferación de creadores y de piezas, son interesantes para comparar, analizar y estudiar de manera sistemática.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('modal-resena');
+      var abrir = document.getElementById('abrir-resena');
+      var cerrar = document.getElementById('cerrar-resena');
+      if (!modal || !abrir) return;
+      abrir.addEventListener('click', function () {
+        if (typeof modal.showModal === 'function') { modal.showModal(); }
+        else { modal.setAttribute('open', ''); }
+      });
+      if (cerrar) {
+        cerrar.addEventListener('click', function () {
+          if (typeof modal.close === 'function') { modal.close(); }
+          else { modal.removeAttribute('open'); }
+        });
+      }
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal && typeof modal.close === 'function') { modal.close(); }
+      });
+    })();
+  </script>
+
+  <footer>
+    <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
+    <p><a href="../index.html">Volver al catálogo</a></p>
+  </footer>
+</body>
+</html>

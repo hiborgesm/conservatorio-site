@@ -9,16 +9,29 @@ host de archivos estáticos.
 
 ```
 amesmusicas/
-├── index.html                       portada del micrositio ("AMESMúsicas")
-├── assets/estilo.css                estilos (paleta/tipografías del sitio)
+├── index.html                                portada del micrositio ("AMESMúsicas")
+├── assets/estilo.css                         estilos (paleta/tipografías del sitio)
 └── libros/
-    ├── index.html                   índice/catálogo de libros
-    └── <slug-del-libro>/
-        ├── index.html               página del libro (ficha + reseña + botones)
-        ├── <slug-del-libro>.pdf     PDF descargable
-        └── portada.png              portada
-_PLANTILLA-libro/index.html          plantilla comentada para el siguiente libro
+    ├── index.html                            índice/catálogo de libros
+    ├── con-cantos-y-vihuelas/
+    │   ├── index.html                        página del libro (ficha + reseña + botones)
+    │   ├── con-cantos-y-vihuelas.pdf         PDF descargable
+    │   └── portada.png                       portada
+    └── ah-que-la-cancion-ranchera/
+        ├── index.html                        página del libro (ficha + reseña)
+        └── portada.jpg                       portada
+_PLANTILLA-libro/index.html                   plantilla comentada para el siguiente libro
 ```
+
+## Libros publicados
+
+| Slug | Título | ISBN |
+|------|--------|------|
+| `con-cantos-y-vihuelas` | Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México | 978-607-69464-0-4 |
+| `ah-que-la-cancion-ranchera` | Del rancho a la canción… ¡Ah qué la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera | 978-607-69464-3-5 |
+
+> Las URLs son estables: se usan como destino de **códigos QR** impresos.
+> Si se cambia un slug, los QR ya impresos dejan de funcionar.
 
 ## Cómo publicar un libro nuevo
 
@@ -29,9 +42,9 @@ _PLANTILLA-libro/index.html          plantilla comentada para el siguiente libro
    ```
 
 2. **Copia los recursos** dentro de esa carpeta:
-   - `portada.png` — imagen de portada.
-   - `<slug-del-libro>.pdf` — PDF de descarga (el nombre del archivo debe
-     coincidir con el `{{SLUG}}.pdf` de los botones).
+   - `portada.png` (o `portada.jpg`) — imagen de portada.
+   - `<slug-del-libro>.pdf` — PDF de descarga, si existe (el nombre del archivo
+     debe coincidir con el `{{SLUG}}.pdf` de los botones).
 
 3. **Crea la página del libro** copiando la plantilla:
    ```
@@ -42,19 +55,22 @@ _PLANTILLA-libro/index.html          plantilla comentada para el siguiente libro
    `{{AUTORES}}`, `{{ISBN}}`, `{{PAGINAS}}`, `{{RESENA}}`,
    `{{RESENA_CORTA}}`, `{{SLUG}}`.
 
-   > Las rutas `../../assets/estilo.css` de la plantilla ya son correctas
-   > cuando el archivo vive en `amesmusicas/libros/<slug>/index.html`.
+   > Las rutas `../../assets/estilo.css` ya son correctas cuando el archivo
+   > vive en `amesmusicas/libros/<slug>/index.html`.
 
-4. **Añade la ficha al catálogo** `amesmusicas/libros/index.html`:
-   copia un bloque `<article class="book-item"> … </article>` y actualiza
-   portada, enlace, categoría, título y reseña.
+4. **Reseña en pop-up (convención del micrositio):** la reseña larga va dentro
+   de `<dialog id="modal-resena">` y se abre con el botón «Leer la reseña»
+   (`#abrir-resena`). En la página solo se muestra una línea de entrada.
 
-5. **Opcional:** añade una tarjeta al bloque de destacados en
+5. **Añade la ficha al catálogo** `amesmusicas/libros/index.html`: copia un
+   bloque `<article class="book-item"> … </article>` y actualiza portada,
+   enlace, categoría, título y reseña.
+
+6. **Opcional:** añade una tarjeta al bloque de destacados en
    `amesmusicas/index.html`.
 
-6. **Verifica** que los dos botones de la página del libro
-   ("Descargar PDF" y "Leer en línea") apunten al PDF local de la carpeta,
-   y que `portada.png` cargue (con texto `alt` descriptivo).
+7. **Verifica** que los enlaces relativos resuelvan (portada, CSS, PDF si lo hay)
+   y que `portada.png`/`portada.jpg` carguen (con texto `alt` descriptivo).
 
 ## Convenciones
 
@@ -63,3 +79,5 @@ _PLANTILLA-libro/index.html          plantilla comentada para el siguiente libro
 - Texto visible del micrositio: **AMESMúsicas**.
 - Toda página incluye `<title>`, `meta description` y Open Graph.
 - Imágenes siempre con `alt` descriptivo.
+- Si un dato bibliográfico no está confirmado, **no se inventa**: se omite o se
+  marca explícitamente como pendiente.
