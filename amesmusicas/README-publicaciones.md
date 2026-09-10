@@ -25,10 +25,10 @@ _PLANTILLA-libro/index.html                   plantilla comentada para el siguie
 
 ## Libros publicados
 
-| Slug | Título | ISBN |
-|------|--------|------|
-| `con-cantos-y-vihuelas` | Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México | 978-607-69464-0-4 |
-| `ah-que-la-cancion-ranchera` | Del rancho a la canción… ¡Ah qué la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera | 978-607-69464-3-5 |
+| Slug | Título | ISBN | Año | Páginas |
+|------|--------|------|-----|---------|
+| `con-cantos-y-vihuelas` | Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México | 978-607-69464-0-4 | 2026 | 239 |
+| `ah-que-la-cancion-ranchera` | Del rancho a la canción… ¡Ah que la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera | 978-607-69464-3-5 | 2026 | 174 |
 
 > Las URLs son estables: se usan como destino de **códigos QR** impresos.
 > Si se cambia un slug, los QR ya impresos dejan de funcionar.
