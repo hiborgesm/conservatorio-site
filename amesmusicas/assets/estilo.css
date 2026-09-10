@@ -1,0 +1,205 @@
+/* ============================================================
+   AMESMúsicas — estilo del micrositio
+   Paleta y tipografías tomadas del index.html del sitio.
+   Sin frameworks ni CDN. Todo relativo.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0a0f0a;
+  --surface:  #101810;
+  --card:     #141f14;
+  --accent1:  #5a9e6f;
+  --accent2:  #7cbd8f;
+  --text:     #edf2ee;
+  --muted:    #7a8f7c;
+  --border:   rgba(90,158,111,0.22);
+  --glow:     rgba(90,158,111,0.10);
+  /* Las tipografías del sitio (Playfair Display / DM Sans) se
+     referencian con fallbacks locales, sin enlazar CDN. */
+  --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
+  --font-body:    'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: .5;
+}
+
+a { color: var(--accent2); }
+
+/* ===== CONTENEDOR ===== */
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+}
+
+/* ===== NAVEGACIÓN ===== */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+  background: rgba(10,15,10,0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1.15rem;
+  color: var(--text); text-decoration: none;
+  letter-spacing: .02em;
+}
+.nav-brand span { color: var(--accent1); }
+.nav-links { display: flex; gap: .5rem; list-style: none; flex-wrap: wrap; }
+.nav-links a {
+  display: block; padding: .5rem 1.1rem;
+  text-decoration: none; color: var(--muted);
+  font-size: .82rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  border: 1px solid transparent; border-radius: 3px;
+  transition: all .25s ease;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--accent1); border-color: var(--border); background: var(--glow);
+}
+
+/* ===== HERO / PORTADA ===== */
+.hero { text-align: center; padding: 3rem 0 2rem; }
+.eyebrow {
+  color: var(--accent1); font-size: .8rem; font-weight: 500;
+  letter-spacing: .28em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 900; font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.08; margin-bottom: 1rem;
+}
+.hero h1 em { color: var(--accent2); font-style: italic; }
+.hero p {
+  color: var(--muted); max-width: 46ch; margin: 0 auto 1.5rem;
+  font-size: 1.02rem; font-weight: 300;
+}
+.divider {
+  width: 64px; height: 2px; margin: 1.5rem auto;
+  background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+}
+
+/* ===== TARJETAS ===== */
+.grid { display: grid; gap: 1.4rem; }
+@media (min-width: 720px) { .grid.cols-2 { grid-template-columns: 1fr 1fr; } }
+
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 1.6rem;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.card:hover { border-color: var(--accent1); transform: translateY(-2px); }
+.card h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.3rem; margin-bottom: .4rem;
+}
+.card p { color: var(--muted); font-size: .95rem; font-weight: 300; }
+.card a.card-link { text-decoration: none; color: inherit; display: block; }
+
+/* ===== LISTA DE LIBROS ===== */
+.book-item {
+  display: grid; gap: 1.2rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 1.4rem;
+}
+@media (min-width: 640px) {
+  .book-item { grid-template-columns: 140px 1fr; align-items: start; }
+}
+.book-item img {
+  width: 100%; height: auto; border-radius: 4px;
+  border: 1px solid var(--border); display: block;
+}
+.book-item h3 {
+  font-family: var(--font-display); font-size: 1.35rem;
+  font-weight: 700; line-height: 1.25; margin-bottom: .5rem;
+}
+.book-meta {
+  color: var(--accent1); font-size: .78rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: .6rem;
+}
+.book-item p.resumen { color: var(--muted); font-size: .94rem; font-weight: 300; }
+
+/* ===== FICHA DEL LIBRO ===== */
+.book-hero { display: grid; gap: 2rem; margin-bottom: 2.5rem; }
+@media (min-width: 720px) {
+  .book-hero { grid-template-columns: 280px 1fr; align-items: start; }
+}
+.book-hero .cover img {
+  width: 100%; height: auto; display: block;
+  border-radius: 6px; border: 1px solid var(--border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.book-hero h1 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.15;
+  margin-bottom: 1rem;
+}
+dl.ficha { margin: 1.2rem 0; }
+dl.ficha dt {
+  color: var(--accent1); font-size: .74rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; margin-top: .9rem;
+}
+dl.ficha dd { color: var(--text); font-size: .96rem; font-weight: 300; }
+
+/* ===== BOTONES ===== */
+.acciones { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.btn {
+  display: inline-block; text-decoration: none;
+  padding: .8rem 1.6rem; border-radius: 4px;
+  font-size: .86rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  border: 1px solid var(--accent1);
+  transition: all .25s ease;
+}
+.btn-primary { background: var(--accent1); color: #061006; }
+.btn-primary:hover { background: var(--accent2); border-color: var(--accent2); }
+.btn-secondary { background: transparent; color: var(--accent1); }
+.btn-secondary:hover { background: var(--glow); color: var(--accent2); }
+
+/* ===== SECCIONES DE TEXTO ===== */
+.section-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.6rem; margin-bottom: 1rem;
+}
+.prose { color: var(--muted); font-weight: 300; margin-bottom: 1.2rem; }
+.prose strong { color: var(--text); font-weight: 500; }
+
+/* ===== PIE ===== */
+footer {
+  position: relative; z-index: 1;
+  text-align: center; padding: 2.5rem 1.5rem;
+  color: var(--muted); font-size: .8rem;
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--accent1); text-decoration: none; }
+
+/* ===== MIGA DE PAN ===== */
+.breadcrumb {
+  font-size: .78rem; color: var(--muted);
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent1); }

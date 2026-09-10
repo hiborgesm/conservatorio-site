@@ -1,0 +1,88 @@
+<!--
+  ============================================================
+  PLANTILLA DE PÁGINA DE LIBRO — AMESMúsicas
+  ============================================================
+  CÓMO USARLA
+  1. Copia esta carpeta renombrada como el slug del libro dentro de:
+       amesmusicas/libros/<slug-del-libro>/
+     de modo que quede:  amesmusicas/libros/<slug-del-libro>/index.html
+  2. Coloca dentro de esa misma carpeta:
+       portada.png                       (imagen de portada)
+       <slug-del-libro>.pdf              (PDF descargable)
+  3. Reemplaza TODOS los {{PLACEHOLDERS}} de este archivo.
+  4. Añade la ficha del libro en amesmusicas/libros/index.html
+     (copia el bloque <article class="book-item"> ... </article>).
+  5. Opcional: añade una tarjeta en amesmusicas/index.html.
+
+  NOTAS
+  - Las rutas relativas de abajo (../../assets/estilo.css) asumen que
+    este archivo vive en amesmusicas/libros/<slug>/index.html.
+  - Sin frameworks ni CDN. Todos los enlaces son relativos.
+  - El texto visible del micrositio siempre dice "AMESMúsicas".
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITULO}} — AMESMúsicas</title>
+  <meta name="description" content="{{RESENA_CORTA}}" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="{{TITULO}}" />
+  <meta property="og:description" content="{{RESENA_CORTA}}" />
+  <meta property="og:image" content="portada.png" />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="stylesheet" href="../assets/estilo.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="../index.html">AMES<span>Músicas</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a class="active" href="../libros/index.html">Libros</a></li>
+    </ul>
+  </nav>
+
+  <main class="wrap">
+    <p class="breadcrumb"><a href="../index.html">Inicio</a> / <a href="../libros/index.html">Libros</a> / {{TITULO_CORTO}}</p>
+
+    <div class="book-hero">
+      <div class="cover">
+        <!-- ALT obligatorio y descriptivo -->
+        <img src="portada.png" alt="Portada del libro {{TITULO}}" />
+      </div>
+      <div>
+        <p class="book-meta">{{CATEGORIA}} · {{ANIO}} · Academia Mexicana de Estudios Sociales de la Música</p>
+        <h1>{{TITULO}}</h1>
+
+        <dl class="ficha">
+          <dt>Coordinadores / Autores</dt>
+          <dd>{{AUTORES}}</dd>
+          <dt>ISBN</dt>
+          <dd>{{ISBN}}</dd>
+          <dt>Páginas</dt>
+          <dd>{{PAGINAS}} · Descarga gratuita</dd>
+        </dl>
+
+        <div class="acciones">
+          <!-- Ambos botones apuntan al PDF local de la carpeta -->
+          <a class="btn btn-primary" href="{{SLUG}}.pdf" download>Descargar PDF</a>
+          <a class="btn btn-secondary" href="{{SLUG}}.pdf" target="_blank" rel="noopener">Leer en línea</a>
+        </div>
+      </div>
+    </div>
+
+    <section aria-labelledby="resena">
+      <h2 id="resena" class="section-title">Reseña</h2>
+      <p class="prose">{{RESENA}}</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
+    <p><a href="../libros/index.html">Volver al catálogo</a></p>
+  </footer>
+</body>
+</html>
