@@ -52,12 +52,52 @@
 
     <section aria-labelledby="resena">
       <h2 id="resena" class="section-title">Reseña</h2>
-      <p class="prose">En México hay una diversidad de instrumentos musicales y objetos sonoros precolombinos rescatados en contextos arqueológicos. Este volumen reúne investigaciones sobre el papel del instrumento musical como mediador entre prácticas sociales, estéticas colectivas, rutas de comercio y mercados musicales.</p>
+      <p class="prose">Texto de la introducción del volumen, a cargo de sus coordinadores.</p>
+      <p><button class="btn btn-secondary" id="abrir-resena" type="button">Leer la reseña</button></p>
       <p class="prose">Registro ISBN:
         <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&amp;nt=480612" target="_blank" rel="noopener">isbnmexico.indautor.cerlalc.org</a>
       </p>
     </section>
   </main>
+
+  <dialog id="modal-resena" class="modal" aria-labelledby="modal-resena-titulo">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h2 id="modal-resena-titulo">Con cantos y vihuelas: el objeto sonoro en las culturas musicales de México</h2>
+        <button class="modal-cerrar" id="cerrar-resena" type="button" aria-label="Cerrar reseña">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>En México hay una diversidad de instrumentos musicales y objetos sonoros precolombinos rescatados en contextos arqueológicos; la colección del maestro Guillermo Contreras tiene más de cuatro mil instrumentos musicales obtenidos de las diversas regiones geo-culturales del país; pero estamos lejos de suponer que ésa es la cifra total; por ejemplo, en Michoacán hemos recuperado instrumentos que estaban fuera del foco de las personas dedicadas a la etnomusicología, el tenor, un instrumento de cuerda pulsada, mástil y forma de 8, con 5 órdenes de cuerdas dobles de metal usado en la música p’urhépecha; o la armonía de igual especie y con 5 órdenes de cuerdas dobles de metal, usada en Los Balcones; otros sólo están referidos en los relatos de músicos, como “la periquita”, un requinto de cuatro cuerdas, del tamaño de un violín, que punteaba la melodía en la cuenca del río Puruarán, y que nos describieron don Leandro Corona y Vicente Murillo; o el arpa jarabera que aparece en la literatura en el Mazahuacán, al oriente de Michoacán. Por no incluir las variedades de “flautas” de carrizo que cada vez se construyen menos, con la llegada de las de modelo barroco y material plástico.</p>
+        <p>El tener catalogado un instrumento musical, con su correspondiente ficha, no es una garantía de su “conocimiento”; pues en las fichas falta muchas veces el contexto de uso, por ejemplo, la o las afinaciones que puede tener de acuerdo con los hechos musicales; los procesos constructivos y sus dimensiones. En la Costa Sierra de Michoacán distingue la “jarana” de la “guitarra de golpe”, por el ancho de los aros, su sonido “ladino”, menos grave, y por su uso para el ámbito ritual en las funciones religiosas; así que un instrumento musical que puede parecernos “el mismo”, es diferenciado por su timbre, por su dimensión y su contexto de uso.</p>
+        <p>El estudio de los instrumentos musicales puede ser entonces una disciplina en sí misma, como ha propuesto Víctor Hernández Vaca con la etnolaudería, a partir de su construcción; pero también desde otras perspectivas, como la historia, la arqueología y las demás disciplinas sociales y humanísticas.</p>
+        <p>Estamos lejos de conocer algo todavía sobre los instrumentos musicales y menos sobre los objetos sonoros que, en contextos arqueológicos, han perdido las formas y objetivos de uso; sin embargo, a lo largo de las cuatro partes en que dividimos este libro, podemos recuperar algunas propuestas para su análisis. Iniciamos con los objetos arqueológicos, de tarascos y pirindas, en colecciones museísticas analizados con una perspectiva arqueológica e histórica, manejada por Dante Bernardo Martínez Vázquez que combina fuentes históricas y arqueológicas, y una arqueomusicológica, que hace sonar los instrumentos para registrar frecuencias y alturas en la música occidental, pero con una intención descentrada, realizada por Héctor Isaac Borges Montaño.</p>
+        <p>La segunda parte se dedica a explorar al objeto sonoro en la danza, inicia con los toros de carnaval en Tacámbaro, registro realizado por Ulises Salazar, quien describe dos momentos en la fiesta, que trajeron cambios en la dotación instrumental y por ello también tímbricos. En seguida Ana Cristina González Villanueva y Victoria Jiménez Ramos analizan la danza del paloteo en Puruándiro, caracterizada por el entrechoque de los “palos” que los danzantes portan en sus manos.</p>
+        <p>Sigue una tercera parte que se ocupa de los objetos sonoros en los paisajes, la corporalidad y los discursos, para ello Sonia Medrano Ruiz y Luis Díaz Santana recuperan el papel de la música vida cotidiana de Zacatecas, y para ello usan como fuente los escritos periodísticos de Luis G. Ledezma, quien da cuenta de la vida del ilustre músico zacatecano Genaro Codina, quien inició junto con sus hermanos tocando un arpa de juguete.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('modal-resena');
+      var abrir = document.getElementById('abrir-resena');
+      var cerrar = document.getElementById('cerrar-resena');
+      if (!modal || !abrir) return;
+      abrir.addEventListener('click', function () {
+        if (typeof modal.showModal === 'function') { modal.showModal(); }
+        else { modal.setAttribute('open', ''); }
+      });
+      if (cerrar) {
+        cerrar.addEventListener('click', function () {
+          if (typeof modal.close === 'function') { modal.close(); }
+          else { modal.removeAttribute('open'); }
+        });
+      }
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal && typeof modal.close === 'function') { modal.close(); }
+      });
+    })();
+  </script>
 
   <footer>
     <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
