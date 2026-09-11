@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+  <link rel="apple-touch-icon" href="../../favicon-180.png" />
+  <title>Cuadernos de Música de Don Alberto Albarrán Palacios — AMESMúsicas</title>
+  <meta name="description" content="Cuadernos de Música de Don Alberto Albarrán Palacios. Investigación de la Academia Mexicana de Estudios Sociales de la Música. ISBN 978-607-69464-4-2. Descarga gratuita." />
+  <meta name="author" content="Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, Amanda Zoar Cuevas Cárcamo, Allan Ulises Zepeda Ibarra" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="Cuadernos de Música de Don Alberto Albarrán Palacios" />
+  <meta property="og:description" content="Edición que recupera y estudia los cuadernos de música de don Alberto Albarrán Palacios, testimonio de la práctica musical en Michoacán durante el siglo XX. Academia Mexicana de Estudios Sociales de la Música. Descarga gratuita." />
+  <meta property="og:image" content="portada.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="stylesheet" href="../../assets/estilo.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="../../index.html">AMES<span>Músicas</span></a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Inicio</a></li>
+      <li><a class="active" href="../index.html">Libros</a></li>
+    </ul>
+  </nav>
+
+  <main class="wrap">
+    <p class="breadcrumb"><a href="../../index.html">Inicio</a> / <a href="../index.html">Libros</a> / Cuadernos de Música de Don Alberto Albarrán Palacios</p>
+
+    <div class="book-hero">
+      <div class="cover">
+        <img src="portada.jpg" alt="Portada del libro Cuadernos de Música de Don Alberto Albarrán Palacios" />
+      </div>
+      <div>
+        <p class="book-meta">Investigación · 2026 · Academia Mexicana de Estudios Sociales de la Música</p>
+        <h1>Cuadernos de Música de Don Alberto Albarrán Palacios</h1>
+
+        <dl class="ficha">
+          <dt>Editor</dt>
+          <dd>Jorge Amós Martínez Ayala</dd>
+          <dt>Autores</dt>
+          <dd>Jorge Amós Martínez Ayala · Héctor Isaac Borges Montaño · Amanda Zoar Cuevas Cárcamo · Allan Ulises Zepeda Ibarra</dd>
+          <dt>ISBN</dt>
+          <dd>978-607-69464-4-2</dd>
+          <dt>Páginas</dt>
+          <dd>110 · Descarga gratuita</dd>
+        </dl>
+
+        <div class="acciones">
+          <a class="btn btn-primary" href="cuadernos-albarran-palacios.pdf" download>Descargar PDF</a>
+          <a class="btn btn-secondary" href="cuadernos-albarran-palacios.pdf" target="_blank" rel="noopener">Leer en línea</a>
+        </div>
+      </div>
+    </div>
+
+    <section aria-labelledby="resena">
+      <h2 id="resena" class="section-title">Reseña</h2>
+      <p class="prose">Reseña del volumen registrada en el catálogo ISBN.</p>
+      <p><button class="btn btn-secondary" id="abrir-resena" type="button">Leer la reseña</button></p>
+      <p class="prose">Registro ISBN:
+        <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&amp;nt=486408" target="_blank" rel="noopener">isbnmexico.indautor.cerlalc.org</a>
+      </p>
+    </section>
+  </main>
+
+  <dialog id="modal-resena" class="modal" aria-labelledby="modal-resena-titulo">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h2 id="modal-resena-titulo">Cuadernos de Música de Don Alberto Albarrán Palacios</h2>
+        <button class="modal-cerrar" id="cerrar-resena" type="button" aria-label="Cerrar reseña">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Los cuadernos de música de don Alberto Albarrán Palacios constituyen un testimonio invaluable de la práctica musical en Michoacán durante el siglo XX. Esta edición recupera y estudia estos manuscritos, ofreciendo una ventana a la vida musical de la región.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('modal-resena');
+      var abrir = document.getElementById('abrir-resena');
+      var cerrar = document.getElementById('cerrar-resena');
+      if (!modal || !abrir) return;
+      abrir.addEventListener('click', function () {
+        if (typeof modal.showModal === 'function') { modal.showModal(); }
+        else { modal.setAttribute('open', ''); }
+      });
+      if (cerrar) {
+        cerrar.addEventListener('click', function () {
+          if (typeof modal.close === 'function') { modal.close(); }
+          else { modal.removeAttribute('open'); }
+        });
+      }
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal && typeof modal.close === 'function') { modal.close(); }
+      });
+    })();
+  </script>
+
+  <footer>
+    <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
+    <p><a href="../index.html">Volver al catálogo</a></p>
+  </footer>
+</body>
+</html>
