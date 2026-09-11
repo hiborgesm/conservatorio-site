@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La mujer en la música tradicional — AMESMúsicas</title>
+  <meta name="description" content="La mujer en la música tradicional. Investigación del Conservatorio P’urhépecha y la Academia Mexicana de Estudios Sociales de la Música. ISBN 978-607-69464-5-9. Descarga gratuita." />
+  <meta name="author" content="Jorge Amós Martínez Ayala, Héctor Isaac Borges Montaño, José Ignacio Maldonado Cerano" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="La mujer en la música tradicional" />
+  <meta property="og:description" content="Investigación sobre la figura de la mujer en las músicas tradicionales de México. Conservatorio P’urhépecha y Academia Mexicana de Estudios Sociales de la Música. Descarga gratuita." />
+  <meta property="og:image" content="portada.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="stylesheet" href="../../assets/estilo.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="../../index.html">AMES<span>Músicas</span></a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Inicio</a></li>
+      <li><a class="active" href="../index.html">Libros</a></li>
+    </ul>
+  </nav>
+
+  <main class="wrap">
+    <p class="breadcrumb"><a href="../../index.html">Inicio</a> / <a href="../index.html">Libros</a> / La mujer en la música tradicional</p>
+
+    <div class="book-hero">
+      <div class="cover">
+        <img src="portada.jpg" alt="Portada del libro La mujer en la música tradicional" />
+      </div>
+      <div>
+        <p class="book-meta">Investigación · 2026 · Academia Mexicana de Estudios Sociales de la Música</p>
+        <h1>La mujer en la música tradicional</h1>
+
+        <dl class="ficha">
+          <dt>Coordinadores</dt>
+          <dd>Jorge Amós Martínez Ayala · Héctor Isaac Borges Montaño · José Ignacio Maldonado Cerano</dd>
+          <dt>ISBN</dt>
+          <dd>978-607-69464-5-9</dd>
+          <dt>Páginas</dt>
+          <dd>183 · Descarga gratuita</dd>
+        </dl>
+
+        <div class="acciones">
+          <a class="btn btn-primary" href="la-mujer-en-la-musica-tradicional.pdf" download>Descargar PDF</a>
+          <a class="btn btn-secondary" href="la-mujer-en-la-musica-tradicional.pdf" target="_blank" rel="noopener">Leer en línea</a>
+        </div>
+      </div>
+    </div>
+
+    <section aria-labelledby="resena">
+      <h2 id="resena" class="section-title">Reseña</h2>
+      <p class="prose">Reseña del volumen registrada en el catálogo ISBN.</p>
+      <p><button class="btn btn-secondary" id="abrir-resena" type="button">Leer la reseña</button></p>
+      <p class="prose">Registro ISBN:
+        <a href="https://isbnmexico.indautor.cerlalc.org/catalogo.php?mode=detalle&amp;nt=487492" target="_blank" rel="noopener">isbnmexico.indautor.cerlalc.org</a>
+      </p>
+    </section>
+  </main>
+
+  <dialog id="modal-resena" class="modal" aria-labelledby="modal-resena-titulo">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h2 id="modal-resena-titulo">La mujer en la música tradicional</h2>
+        <button class="modal-cerrar" id="cerrar-resena" type="button" aria-label="Cerrar reseña">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>La figura de la mujer en las músicas tradicionales de México ha sido diversa, y esto ha variado en cada uno de sus contextos a través de la Historia. A partir de nuevas teorías desde diferentes áreas de las ciencias sociales, el arte y las humanidades es que podemos reflexionar en la relevancia histórica del género femenino en la música, el canto, el baile y el verso, así como en la gestión y promoción de estas manifestaciones culturales; a la vez que siendo parte esencial del sostén de la vida familiar en los contextos que dan continuidad a las músicas tradicionales.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('modal-resena');
+      var abrir = document.getElementById('abrir-resena');
+      var cerrar = document.getElementById('cerrar-resena');
+      if (!modal || !abrir) return;
+      abrir.addEventListener('click', function () {
+        if (typeof modal.showModal === 'function') { modal.showModal(); }
+        else { modal.setAttribute('open', ''); }
+      });
+      if (cerrar) {
+        cerrar.addEventListener('click', function () {
+          if (typeof modal.close === 'function') { modal.close(); }
+          else { modal.removeAttribute('open'); }
+        });
+      }
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal && typeof modal.close === 'function') { modal.close(); }
+      });
+    })();
+  </script>
+
+  <footer>
+    <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
+    <p><a href="../index.html">Volver al catálogo</a></p>
+  </footer>
+</body>
+</html>

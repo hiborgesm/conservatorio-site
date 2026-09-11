@@ -17,7 +17,10 @@ amesmusicas/
     │   ├── index.html                        página del libro (ficha + reseña + botones)
     │   ├── con-cantos-y-vihuelas.pdf         PDF descargable
     │   └── portada.png                       portada
-    └── ah-que-la-cancion-ranchera/
+    ├── ah-que-la-cancion-ranchera/
+    │   ├── index.html                        página del libro (ficha + reseña)
+    │   └── portada.jpg                       portada
+    └── la-mujer-en-la-musica-tradicional/
         ├── index.html                        página del libro (ficha + reseña)
         └── portada.jpg                       portada
 _PLANTILLA-libro/index.html                   plantilla comentada para el siguiente libro
@@ -29,6 +32,7 @@ _PLANTILLA-libro/index.html                   plantilla comentada para el siguie
 |------|--------|------|-----|---------|
 | `con-cantos-y-vihuelas` | Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México | 978-607-69464-0-4 | 2026 | 239 |
 | `ah-que-la-cancion-ranchera` | Del rancho a la canción… ¡Ah que la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera | 978-607-69464-3-5 | 2026 | 174 |
+| `la-mujer-en-la-musica-tradicional` | La mujer en la música tradicional | 978-607-69464-5-9 | 2026 | 183 |
 
 > Las URLs son estables: se usan como destino de **códigos QR** impresos.
 > Si se cambia un slug, los QR ya impresos dejan de funcionar.
