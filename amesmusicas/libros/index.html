@@ -11,7 +11,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Libros — AMESMúsicas" />
   <meta property="og:description" content="Catálogo de libros de investigación de AMESMúsicas. Descarga gratuita." />
-  <meta property="og:image" content="con-cantos-y-vihuelas/portada.png" />
+  <meta property="og:image" content="https://conservatoriopurhepecha.com/amesmusicas/libros/con-cantos-y-vihuelas/portada.png" />
+  <meta property="og:url" content="https://conservatoriopurhepecha.com/amesmusicas/libros/" />
   <meta property="og:locale" content="es_MX" />
   <link rel="stylesheet" href="../assets/estilo.css" />
 </head>
@@ -29,52 +30,140 @@
     <h1 class="section-title">Catálogo de libros</h1>
     <p class="prose">Publicaciones de la Academia Mexicana de Estudios Sociales de la Música.</p>
 
-    <div class="grid">
-      <article class="book-item">
-        <a href="con-cantos-y-vihuelas/index.html">
-          <img src="con-cantos-y-vihuelas/portada.png" alt="Portada del libro Con cantos y vihuelas... el objeto sonoro en las culturas musicales de México" />
-        </a>
-        <div>
-          <p class="book-meta">Investigación · 2026</p>
-          <h3><a href="con-cantos-y-vihuelas/index.html" style="text-decoration:none;color:inherit;">Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México</a></h3>
-       <div class="acciones">
-            <a class="btn btn-secondary" href="con-cantos-y-vihuelas/index.html">Ver ficha</a>
-          </div>
-        </div>
-      </article>
+    <section class="estanteria" id="estanteria" aria-labelledby="estanteria-titulo">
+      <h2 id="estanteria-titulo" class="visually-hidden">Estantería de publicaciones</h2>
 
-      <article class="book-item">
-        <a href="ah-que-la-cancion-ranchera/index.html">
-          <img src="ah-que-la-cancion-ranchera/portada.jpg" alt="Portada del libro Del rancho a la canción… ¡Ah qué la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera" />
-        </a>
-        <div>
-          <p class="book-meta">Investigación · 2026</p>
-          <h3><a href="ah-que-la-cancion-ranchera/index.html" style="text-decoration:none;color:inherit;">Del rancho a la canción… ¡Ah que la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera</a></h3>
-          
-          <div class="acciones">
-            <a class="btn btn-secondary" href="ah-que-la-cancion-ranchera/index.html">Ver ficha</a>
-          </div>
-        </div>
-      </article>
+      <div class="estanteria-viewport" id="estanteriaViewport" tabindex="0" role="region" aria-label="Estantería de libros. Usa las flechas para recorrer el catálogo.">
+        <ul class="estanteria-track" id="estanteriaTrack">
+          <li class="libro">
+            <a href="con-cantos-y-vihuelas/index.html">
+              <span class="libro-portada">
+                <img src="con-cantos-y-vihuelas/portada.png" alt="Portada del libro Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México" loading="lazy" />
+              </span>
+              <span class="libro-datos">
+                <span class="book-meta">Investigación · 2026</span>
+                <span class="libro-titulo">Con cantos y vihuelas… el objeto sonoro en las culturas musicales de México</span>
+                <span class="libro-cta">Ver ficha →</span>
+              </span>
+            </a>
+          </li>
 
-      <article class="book-item">
-        <a href="la-mujer-en-la-musica-tradicional/index.html">
-          <img src="la-mujer-en-la-musica-tradicional/portada.jpg" alt="Portada del libro La mujer en la música tradicional" />
-        </a>
-        <div>
-          <p class="book-meta">Investigación · 2026</p>
-          <h3><a href="la-mujer-en-la-musica-tradicional/index.html" style="text-decoration:none;color:inherit;">La mujer en la música tradicional</a></h3>
-          <div class="acciones">
-            <a class="btn btn-secondary" href="la-mujer-en-la-musica-tradicional/index.html">Ver ficha</a>
-          </div>
-        </div>
-      </article>
-    </div>
+          <li class="libro">
+            <a href="ah-que-la-cancion-ranchera/index.html">
+              <span class="libro-portada">
+                <img src="ah-que-la-cancion-ranchera/portada.jpg" alt="Portada del libro Del rancho a la canción… ¡Ah qué la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera" loading="lazy" />
+              </span>
+              <span class="libro-datos">
+                <span class="book-meta">Investigación · 2026</span>
+                <span class="libro-titulo">Del rancho a la canción… ¡Ah que la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera</span>
+                <span class="libro-cta">Ver ficha →</span>
+              </span>
+            </a>
+          </li>
+
+          <li class="libro">
+            <a href="la-mujer-en-la-musica-tradicional/index.html">
+              <span class="libro-portada">
+                <img src="la-mujer-en-la-musica-tradicional/portada.jpg" alt="Portada del libro La mujer en la música tradicional" loading="lazy" />
+              </span>
+              <span class="libro-datos">
+                <span class="book-meta">Investigación · 2026</span>
+                <span class="libro-titulo">La mujer en la música tradicional</span>
+                <span class="libro-cta">Ver ficha →</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <button class="est-arrow prev" type="button" aria-label="Ver publicaciones anteriores" hidden>‹</button>
+      <button class="est-arrow next" type="button" aria-label="Ver más publicaciones" hidden>›</button>
+
+      <div class="est-dots" id="estanteriaDots" role="tablist" aria-label="Posiciones de la estantería"></div>
+    </section>
   </main>
 
   <footer>
     <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
     <p><a href="../index.html">Volver al inicio</a></p>
   </footer>
+
+  <script>
+    (function () {
+      var est = document.getElementById('estanteria');
+      var vp = document.getElementById('estanteriaViewport');
+      var track = document.getElementById('estanteriaTrack');
+      var dotsBox = document.getElementById('estanteriaDots');
+      var prev = est && est.querySelector('.est-arrow.prev');
+      var next = est && est.querySelector('.est-arrow.next');
+      if (!est || !vp || !track) return;
+
+      var libros = Array.prototype.slice.call(track.querySelectorAll('.libro'));
+      if (!libros.length) return;
+
+      function gap() {
+        var cs = getComputedStyle(track);
+        return parseFloat(cs.columnGap || cs.gap) || 0;
+      }
+      function paso() {
+        return libros[0].getBoundingClientRect().width + gap();
+      }
+      function hayDesborde() {
+        return vp.scrollWidth - vp.clientWidth > 2;
+      }
+      function maxScroll() {
+        return Math.max(0, vp.scrollWidth - vp.clientWidth);
+      }
+      function indiceVisible() {
+        var p = paso();
+        if (!p) return 0;
+        return Math.min(libros.length - 1, Math.round(vp.scrollLeft / p));
+      }
+      function irA(i) {
+        var destino = Math.min(i * paso(), maxScroll());
+        vp.scrollTo({ left: destino, behavior: 'smooth' });
+      }
+
+      var dots = libros.map(function (_, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'est-dot';
+        b.setAttribute('aria-label', 'Ir a la publicación ' + (i + 1));
+        b.addEventListener('click', function () { irA(i); });
+        dotsBox.appendChild(b);
+        return b;
+      });
+
+      function pintar() {
+        var desborde = hayDesborde();
+        est.classList.toggle('sin-desborde', !desborde);
+        prev.hidden = !desborde;
+        next.hidden = !desborde;
+        dotsBox.hidden = !desborde;
+
+        var i = indiceVisible();
+        dots.forEach(function (d, k) {
+          var activo = k === i;
+          d.classList.toggle('active', activo);
+          d.setAttribute('aria-current', activo ? 'true' : 'false');
+        });
+        if (desborde) {
+          prev.disabled = vp.scrollLeft <= 2;
+          next.disabled = vp.scrollLeft >= maxScroll() - 2;
+        }
+      }
+
+      prev.addEventListener('click', function () { irA(indiceVisible() - 1); });
+      next.addEventListener('click', function () { irA(indiceVisible() + 1); });
+      vp.addEventListener('scroll', pintar, { passive: true });
+      window.addEventListener('resize', pintar);
+      vp.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); irA(indiceVisible() + 1); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); irA(indiceVisible() - 1); }
+      });
+
+      pintar();
+    })();
+  </script>
 </body>
 </html>

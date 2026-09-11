@@ -204,11 +204,151 @@ footer a { color: var(--accent1); text-decoration: none; }
 .breadcrumb a { color: var(--muted); text-decoration: none; }
 .breadcrumb a:hover { color: var(--accent1); }
 
+/* ===== UTILIDADES ===== */
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+
+/* ===== ESTANTERÍA (catálogo de libros) ===== */
+/* Los libros se alinean sobre un anaquel horizontal con scroll y snap.
+   Si caben todos, no se muestran flechas ni puntos. */
+.estanteria {
+  --est-lbl: 122px;      /* altura fija del bloque de datos (alinea los lomos) */
+  --est-cover: 3 / 2;    /* proporcion alto:ancho de la portada */
+  position: relative;
+  margin: 1.6rem -1.5rem 0;
+}
+
+.estanteria-viewport {
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.1rem 1.5rem 0;
+  scrollbar-width: none;
+}
+.estanteria-viewport::-webkit-scrollbar { height: 0; }
+.estanteria-viewport:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: -3px;
+  border-radius: 8px;
+}
+
+.estanteria-track {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.1rem;
+  width: max-content;
+  min-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* anaquel: tabla justo debajo de las portadas */
+.estanteria-track::before {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  bottom: calc(var(--est-lbl) - 3px);
+  height: 3px; z-index: 2;
+  background: linear-gradient(90deg,
+    rgba(90, 158, 111, 0.12),
+    rgba(90, 158, 111, 0.55) 10%,
+    rgba(90, 158, 111, 0.55) 90%,
+    rgba(90, 158, 111, 0.12));
+  box-shadow: 0 6px 14px -4px rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+}
+
+.libro {
+  flex: 1 0 clamp(148px, 44vw, 260px);
+  max-width: 280px;
+  scroll-snap-align: start;
+}
+.libro a { display: block; text-decoration: none; color: inherit; }
+
+.libro-portada {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.libro-portada img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 2 / 3; object-fit: cover;
+}
+.libro a:hover .libro-portada,
+.libro a:focus-visible .libro-portada {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.62);
+  border-color: var(--accent1);
+}
+
+.libro-datos {
+  display: flex; flex-direction: column;
+  height: var(--est-lbl);
+  padding: .85rem .15rem 0;
+  overflow: hidden;
+}
+.libro-titulo {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; line-height: 1.32; color: var(--text);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.libro-cta {
+  margin-top: auto; padding-top: .5rem;
+  color: var(--accent1); font-size: .74rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.libro a:hover .libro-cta,
+.libro a:focus-visible .libro-cta { color: var(--accent2); }
+
+/* flechas (mismo lenguaje visual que el carrusel del sitio) */
+.est-arrow {
+  position: absolute; top: 34%;
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.55); color: #fff; border: 1px solid var(--border);
+  font-size: 1.35rem; line-height: 1; cursor: pointer; z-index: 5;
+  transition: background .2s ease, opacity .2s ease;
+}
+.est-arrow:hover { background: var(--accent1); color: #061006; }
+.est-arrow:disabled { opacity: .3; cursor: default; }
+.est-arrow.prev { left: 1.5rem; }
+.est-arrow.next { right: 1.5rem; }
+
+/* puntos */
+.est-dots { display: flex; justify-content: center; gap: .5rem; padding-top: .9rem; }
+.est-dot {
+  width: 10px; height: 10px; padding: 0; border-radius: 50%;
+  background: var(--border); border: none; cursor: pointer;
+  transition: all .25s ease;
+}
+.est-dot.active { background: var(--accent1); width: 24px; border-radius: 4px; }
+
+.estanteria.sin-desborde .est-arrow,
+.estanteria.sin-desborde .est-dots { display: none; }
+
+@media (max-width: 639px) {
+  .estanteria { --est-lbl: 116px; }
+  .est-arrow { display: none; }
+}
+
 /* ===== FOCO VISIBLE ===== */
 .btn:focus-visible,
 .modal-cerrar:focus-visible,
 .nav-links a:focus-visible,
-.book-item a:focus-visible {
+.book-item a:focus-visible,
+.libro a:focus-visible,
+.est-dot:focus-visible {
   outline: 2px solid var(--accent2);
   outline-offset: 3px;
 }
