@@ -23,7 +23,10 @@ amesmusicas/
     ├── la-mujer-en-la-musica-tradicional/
     │   ├── index.html                        página del libro (ficha + reseña)
     │   └── portada.jpg                       portada
-    └── cuadernos-albarran-palacios/
+    ├── cuadernos-albarran-palacios/
+    │   ├── index.html                        página del libro (ficha + reseña)
+    │   └── portada.jpg                       portada
+    └── por-santa-cecilia/
         ├── index.html                        página del libro (ficha + reseña)
         └── portada.jpg                       portada
 _PLANTILLA-libro/index.html                   plantilla comentada para el siguiente libro
@@ -37,6 +40,7 @@ _PLANTILLA-libro/index.html                   plantilla comentada para el siguie
 | `ah-que-la-cancion-ranchera` | Del rancho a la canción… ¡Ah que la canción ranchera! Estudios sobre el espacio y la cultura musical ranchera | 978-607-69464-3-5 | 2026 | 174 |
 | `la-mujer-en-la-musica-tradicional` | La mujer en la música tradicional | 978-607-69464-5-9 | 2026 | 183 |
 | `cuadernos-albarran-palacios` | Cuadernos de Música de Don Alberto Albarrán Palacios | 978-607-69464-4-2 | 2026 | 110 |
+| `por-santa-cecilia` | ¡Por Santa Cecilia, que suene la música!… Estudios sobre tradiciones musicales | 978-84-10474-29-1 | 2024 | 315 |
 
 > Las URLs son estables: se usan como destino de **códigos QR** impresos.
 > Si se cambia un slug, los QR ya impresos dejan de funcionar.

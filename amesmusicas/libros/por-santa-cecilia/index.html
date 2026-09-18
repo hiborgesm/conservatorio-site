@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png" />
+  <link rel="apple-touch-icon" href="../../favicon-180.png" />
+  <title>¡Por Santa Cecilia, que suene la música!… Estudios sobre tradiciones musicales — AMESMúsicas</title>
+  <meta name="description" content="¡Por Santa Cecilia, que suene la música!… Estudios sobre tradiciones musicales. Coordinado por Jorge Amós Martínez Ayala, José Ignacio Maldonado Cerano y Ulises Salazar Rosales. Edición impresa: Aguaescondida ediciones, 2024. ISBN 978-84-10474-29-1." />
+  <meta name="author" content="Jorge Amós Martínez Ayala, José Ignacio Maldonado Cerano, Ulises Salazar Rosales" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="¡Por Santa Cecilia, que suene la música!… Estudios sobre tradiciones musicales" />
+  <meta property="og:description" content="Estudios sobre tradiciones musicales en torno a la fiesta de Santa Cecilia. Coordinado por Jorge Amós Martínez Ayala, José Ignacio Maldonado Cerano y Ulises Salazar Rosales." />
+  <meta property="og:image" content="portada.jpg" />
+  <meta property="og:locale" content="es_MX" />
+  <link rel="stylesheet" href="../../assets/estilo.css" />
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="../../index.html">AMES<span>Músicas</span></a>
+    <ul class="nav-links">
+      <li><a href="../../index.html">Inicio</a></li>
+      <li><a class="active" href="../index.html">Libros</a></li>
+    </ul>
+  </nav>
+
+  <main class="wrap">
+    <p class="breadcrumb"><a href="../../index.html">Inicio</a> / <a href="../index.html">Libros</a> / ¡Por Santa Cecilia, que suene la música!…</p>
+
+    <div class="book-hero">
+      <div class="cover">
+        <img src="portada.jpg" alt="Portada del libro ¡Por Santa Cecilia, que suene la música!… Estudios sobre tradiciones musicales" />
+      </div>
+      <div>
+        <p class="book-meta">Investigación · 2024 · Aguaescondida ediciones</p>
+        <h1>¡Por Santa Cecilia, que suene la música!… Estudios sobre tradiciones musicales</h1>
+
+        <dl class="ficha">
+          <dt>Coordinadores</dt>
+          <dd>Jorge Amós Martínez Ayala · José Ignacio Maldonado Cerano · Ulises Salazar Rosales</dd>
+          <dt>ISBN</dt>
+          <dd>978-84-10474-29-1</dd>
+          <dt>Páginas</dt>
+          <dd>315</dd>
+          <dt>Edición impresa</dt>
+          <dd>Aguaescondida ediciones, 2024</dd>
+          <dt>Edición digital</dt>
+          <dd>Conservatorio P’urhépecha – AMESMúsicas (próximamente)</dd>
+        </dl>
+
+        <div class="acciones">
+          <a class="btn btn-primary" href="https://wa.me/524431818708" target="_blank" rel="noopener">Adquiere tu ejemplar</a>
+          <button class="btn btn-secondary" type="button" disabled aria-disabled="true">Descargar PDF</button>
+          <button class="btn btn-secondary" type="button" disabled aria-disabled="true">Leer en línea</button>
+        </div>
+        <p class="prose">Edición digital a cargo del Conservatorio P’urhépecha – AMESMúsicas: <strong>próximamente</strong>.</p>
+      </div>
+    </div>
+
+    <section aria-labelledby="resena">
+      <h2 id="resena" class="section-title">Reseña</h2>
+      <p class="prose">Estudios sobre las tradiciones musicales en torno a la fiesta de Santa Cecilia, la «musiquera», patrona de los músicos.</p>
+      <p><button class="btn btn-secondary" id="abrir-resena" type="button">Leer la reseña</button></p>
+    </section>
+  </main>
+
+  <dialog id="modal-resena" class="modal" aria-labelledby="modal-resena-titulo">
+    <div class="modal-inner">
+      <div class="modal-head">
+        <h2 id="modal-resena-titulo">¡Por Santa Cecilia, que suene la música!…</h2>
+        <button class="modal-cerrar" id="cerrar-resena" type="button" aria-label="Cerrar reseña">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>La madrugada del 22 de noviembre resuenan los cohetes. A las iglesias que la tienen en sus altares a Santa Cecilia entran grupos de personas, muchas de ellas con instrumentos diversos y tocan «Las mañanitas». Van bandas de viento, conjuntos norteños, mariachis, «gruperos» que tocan en grupos versátiles, hasta organilleros y organistas de la catedral. En todo el país hay comidas y las agrupaciones tocan en los atrios y plazas públicas; mientras, con coronas de rosas blancas y rosas, le bailan a la «patrona» de los músicos. ¡Que suene la música por Santa Cecilia! ¡Toda la noche y todo el día! Dice el refrán castellano, por esta razón popularmente se le llamaba «musiquera» a la santa; y la gente dice que, en su fiesta «la noche es día». Esta fiesta del orbe hispano sirvió para que, hace casi una década, un grupo de interesados en las músicas de tradición oral en torno a Música y Baile Tradicional A. C. iniciáramos un coloquio que ha ido creciendo en el número de participantes, mesas de diálogo, conciertos, talleres y días de festejo y reflexión; de tal manera que ahora es una semana de actividades. Aunque siempre se pensó en la publicación de algunas de ellas, la debacle económica de la universidad pública y la excesiva burocracia editorial frenaron esos impulsos; pero el empeño nos ha traído hasta aquí para poner frente a ustedes, amables lectores, algunas de las comunicaciones que se han presentado, muchas muy interesantes.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var modal = document.getElementById('modal-resena');
+      var abrir = document.getElementById('abrir-resena');
+      var cerrar = document.getElementById('cerrar-resena');
+      if (!modal || !abrir) return;
+      abrir.addEventListener('click', function () {
+        if (typeof modal.showModal === 'function') { modal.showModal(); }
+        else { modal.setAttribute('open', ''); }
+      });
+      if (cerrar) {
+        cerrar.addEventListener('click', function () {
+          if (typeof modal.close === 'function') { modal.close(); }
+          else { modal.removeAttribute('open'); }
+        });
+      }
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal && typeof modal.close === 'function') { modal.close(); }
+      });
+    })();
+  </script>
+
+  <footer>
+    <p>AMESMúsicas · Academia Mexicana de Estudios Sociales de la Música</p>
+    <p><a href="../index.html">Volver al catálogo</a></p>
+  </footer>
+</body>
+</html>
