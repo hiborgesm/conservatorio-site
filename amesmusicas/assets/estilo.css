@@ -216,7 +216,7 @@ footer a { color: var(--accent1); text-decoration: none; }
 /* Los libros se alinean sobre un anaquel horizontal con scroll y snap.
    Si caben todos, no se muestran flechas ni puntos. */
 .estanteria {
-  --est-lbl: 122px;      /* altura fija del bloque de datos (alinea los lomos) */
+  --est-lbl: 138px;      /* altura fija del bloque de datos (alinea los lomos; cabe el titulo mas largo completo) */
   --est-cover: 3 / 2;    /* proporcion alto:ancho de la portada */
   position: relative;
   margin: 1.6rem -1.5rem 0;
@@ -300,8 +300,7 @@ footer a { color: var(--accent1); text-decoration: none; }
 .libro-titulo {
   font-family: var(--font-display); font-weight: 700;
   font-size: 1rem; line-height: 1.32; color: var(--text);
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: block;
 }
 .libro-cta {
   margin-top: auto; padding-top: .5rem;
@@ -338,7 +337,7 @@ footer a { color: var(--accent1); text-decoration: none; }
 .estanteria.sin-desborde .est-dots { display: none; }
 
 @media (max-width: 639px) {
-  .estanteria { --est-lbl: 116px; }
+  .estanteria { --est-lbl: 138px; }
   .est-arrow { display: none; }
 }
 
